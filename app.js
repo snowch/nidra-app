@@ -14,6 +14,9 @@ const progressEl = document.getElementById('progress');
 const fillEl     = document.getElementById('progressFill');
 const labelEl    = document.getElementById('progressLabel');
 const player     = document.getElementById('player');
+const offlineBox = document.getElementById('offlineBox');
+const offlineAll = document.getElementById('offlineAll');
+const offlineSt  = document.getElementById('offlineStatus');
 
 const mini = {
   root:    document.getElementById('mini'),
@@ -28,8 +31,10 @@ const mini = {
 const STORE = 'nidra-progress-v1';
 const done  = JSON.parse(localStorage.getItem(STORE) || '{}');
 const saveDone = () => localStorage.setItem(STORE, JSON.stringify(done));
+const hasCaches = 'caches' in window;
 
 let practisable = [];
+let offlineTargets = [];   // { url, btn }
 let activeBtn = null;
 
 const fmt = (s) => (s && isFinite(s)) || s === 0
@@ -62,6 +67,43 @@ player.ontimeupdate = () => {
 mini.play.onclick    = () => { if (player.src) player.paused ? player.play() : player.pause(); };
 mini.restart.onclick = () => { if (player.src) { player.currentTime = 0; player.play(); } };
 mini.seek.oninput    = () => { if (player.duration) player.currentTime = (mini.seek.value / 1000) * player.duration; };
+
+/* ---------- offline / download ---------- */
+const isCached = async (url) => { try { return hasCaches && !!(await caches.match(url)); } catch { return false; } };
+const ensureCached = async (url) => { try { await fetch(url); } catch (e) { console.warn('cache', e); } };
+function markOffline(btn) { btn.classList.add('saved'); btn.title = 'Available offline'; }
+
+async function downloadTrack(url, name, btn) {
+  try {
+    const res = await fetch(url);            // service worker caches this for offline use
+    const blob = await res.blob();
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    markOffline(btn);
+  } catch (e) { console.warn('download', e); }
+}
+
+async function saveAllOffline() {
+  offlineAll.disabled = true;
+  let n = 0;
+  for (const t of offlineTargets) {
+    await ensureCached(t.url); markOffline(t.btn);
+    offlineSt.textContent = `saving ${++n} / ${offlineTargets.length}…`;
+  }
+  offlineAll.textContent = '✓ Saved for offline';
+  offlineSt.textContent = '';
+}
+async function refreshOfflineUI() {
+  if (!hasCaches || !offlineTargets.length) { offlineBox.hidden = true; return; }
+  offlineBox.hidden = false;
+  let cached = 0;
+  for (const t of offlineTargets) if (await isCached(t.url)) { markOffline(t.btn); cached++; }
+  if (cached === offlineTargets.length) { offlineAll.textContent = '✓ Saved for offline'; offlineAll.disabled = true; }
+  else offlineSt.textContent = `${offlineTargets.length} recordings`;
+}
 
 /* ---------- progress ---------- */
 function toggleDone(el) {
@@ -99,10 +141,12 @@ function partRow(seq, title, key, part) {
     if (!built) return plannedRow(m, '▶');
     practisable.push(id);
     const on = done[id] ? 'on' : '';
+    const name = part.audio.split('/').pop();
     return `<li class="part">
       <button class="play" data-src="${part.audio}" data-title="${title}" data-part="${m.label}" aria-label="Play ${m.label}">▶</button>
       <div class="part-main"><div class="part-label">${m.label}</div>
         <div class="part-meta">${m.hint}${part.durationSec ? ' · ' + fmt(part.durationSec) : ''}</div></div>
+      <button class="dl" data-url="${part.audio}" data-name="${name}" aria-label="Download ${m.label}" title="Download for offline">⤓</button>
       <button class="check ${on}" data-id="${id}" title="Mark practised">${done[id] ? '✓' : ''}</button>
     </li>`;
   }
@@ -150,8 +194,13 @@ async function init() {
       b.addEventListener('click', () => startTrack(b)));
     journeyEl.querySelectorAll('.check').forEach((c) =>
       c.addEventListener('click', () => toggleDone(c)));
+    offlineTargets = [...journeyEl.querySelectorAll('.dl')].map((b) => ({ url: b.dataset.url, btn: b }));
+    journeyEl.querySelectorAll('.dl').forEach((b) =>
+      b.addEventListener('click', () => downloadTrack(b.dataset.url, b.dataset.name, b)));
+    offlineAll.addEventListener('click', saveAllOffline);
     updateProgress();
     refreshCards();
+    refreshOfflineUI();
   } catch (e) {
     journeyEl.innerHTML = `<p class="loading">Could not load the journey (${e.message}).</p>`;
   }

@@ -58,6 +58,15 @@ body {
 }
 .progress-label { color: var(--faint); font-size: .8rem; margin-top: 8px; }
 
+.offline { margin: 16px auto 0; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.offline[hidden] { display: none; }
+.offline-btn {
+  background: var(--bg-elev2); color: var(--gold); border: 1px solid #4a3a27;
+  border-radius: 99px; padding: 8px 16px; font-size: .82rem; cursor: pointer;
+}
+.offline-btn:disabled { opacity: .85; cursor: default; color: var(--gold-soft); }
+.offline-status { color: var(--faint); font-size: .76rem; }
+
 /* ---------- journey ---------- */
 .journey {
   max-width: 640px; margin: 12px auto 0; padding: 12px 16px 40px;
@@ -93,7 +102,7 @@ body {
 /* parts */
 .parts { list-style: none; margin: 12px 0 4px; padding: 0; }
 .part {
-  display: flex; align-items: center; gap: 12px;
+  display: flex; align-items: center; gap: 10px;
   padding: 10px 4px; border-top: 1px solid var(--line);
 }
 .part:first-child { border-top: none; }
@@ -119,6 +128,14 @@ body {
   color: transparent; font-size: .8rem; display: grid; place-items: center;
 }
 .check.on { background: var(--gold); color: #1a130a; border-color: var(--gold); }
+
+.dl {
+  flex: 0 0 auto; width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid #4a3a27; background: transparent; color: var(--gold-soft);
+  font-size: .95rem; cursor: pointer; display: grid; place-items: center;
+}
+.dl:hover { background: var(--bg-elev2); }
+.dl.saved { background: var(--gold); color: #1a130a; border-color: var(--gold); }
 .soon { color: var(--faint); font-size: .78rem; padding-right: 6px; }
 span.play { cursor: default; }
 .part.planned .play { opacity: .28; border-style: dashed; }
