@@ -140,8 +140,8 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_05_stillness_teaching.txt",
-          "audio": "audio/nidra_05_stillness_teaching.m4a?v=e67b7c5b",
-          "durationSec": 77.0,
+          "audio": "audio/nidra_05_stillness_teaching.m4a?v=8b08bde1",
+          "durationSec": 115.9,
           "status": "built"
         },
         "micro": {
