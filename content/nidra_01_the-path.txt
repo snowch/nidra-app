@@ -1,4 +1,4 @@
-The path.
+We begin with the path.
 
 <break time="2.0s" />
 

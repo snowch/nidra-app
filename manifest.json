@@ -12,21 +12,21 @@
       "seq": "00", "id": "intro", "title": "Programme introduction",
       "type": "orientation", "sources": [],
       "parts": {
-        "teaching": { "script": "content/nidra_00_intro.txt", "audio": "audio/nidra_00_intro.m4a", "durationSec": 217.4, "status": "built" }
+        "teaching": { "script": "content/nidra_00_intro.txt", "audio": "audio/nidra_00_intro.m4a", "durationSec": 218.5, "status": "built" }
       }
     },
     {
       "seq": "01", "id": "the-path", "title": "The path — where nidra sits in the eight limbs",
       "type": "orientation", "sources": ["Yoga Sutras 2.29"],
       "parts": {
-        "teaching": { "script": "content/nidra_01_the-path.txt", "audio": "audio/nidra_01_the-path.m4a", "durationSec": 181.8, "status": "built" }
+        "teaching": { "script": "content/nidra_01_the-path.txt", "audio": "audio/nidra_01_the-path.m4a", "durationSec": 182.7, "status": "built" }
       }
     },
     {
       "seq": "02", "id": "the-depths", "title": "The depths — the five sheaths",
       "type": "orientation", "sources": ["Taittiriya Upanishad (pancha kosha)"],
       "parts": {
-        "teaching": { "script": "content/nidra_02_the-depths.txt", "audio": "audio/nidra_02_the-depths.m4a", "durationSec": 139.5, "status": "built" }
+        "teaching": { "script": "content/nidra_02_the-depths.txt", "audio": "audio/nidra_02_the-depths.m4a", "durationSec": 140.4, "status": "built" }
       }
     },
     {

@@ -54,7 +54,11 @@ Guidance thins in four stages so the recordings become scaffolding you eventuall
 ## Cue-card format (`nidra_NN_slug_cue.md`)
 A glanceable single page: the stage names in order, each with 2–4 trigger words and the intended pause. Purpose: run the practice from the page, then from memory.
 
+## Scripting gotchas
+- **No lone-word first segment.** Kokoro hallucinates a phantom onset when the very first `<break>`-delimited segment is a short standalone utterance ("Welcome." → "you're welcome"; "The depths." → "It adapts"). Open every script with a **full phrase** (≥4 words) or the two-sentence `Module N. Title.` pattern, which renders clean. Verify a new opening with an STT pass before shipping.
+
 ## Production standards
 - All speech silence-trimmed via `trim_silence` (breaks hit their authored length).
+- Every track opens with a ~1.5s lead-in and closes with a ~1.5s tail-out (`LEAD_IN`/`TAIL_OUT`).
 - Target a single consistent loudness across the whole set before release (normalise pass — currently all ~−7 dBFS, un-normalised).
 - Licence: model Apache-2.0, wrapper MIT — audio is free to use, incl. commercially.

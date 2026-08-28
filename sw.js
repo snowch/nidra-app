@@ -1,5 +1,5 @@
 /* Yoga Nidra PWA service worker — offline-capable practice */
-const VERSION = 'nidra-v3';
+const VERSION = 'nidra-v4';
 const SHELL = [
   './',
   './index.html',
