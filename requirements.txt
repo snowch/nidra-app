@@ -1,0 +1,6 @@
+# Render pipeline (Apple Silicon / MLX)
+kokoro-mlx==0.1.2
+numpy
+
+# Optional — QA only (speech-to-text check of rendered audio)
+# mlx-whisper

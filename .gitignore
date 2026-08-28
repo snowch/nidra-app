@@ -1,0 +1,14 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Kokoro render temp files
+.tts_temp_*.wav
+.intro_temp_*.wav
+.pad_probe.wav
+.s_tmp.wav
+
+# OS
+.DS_Store
