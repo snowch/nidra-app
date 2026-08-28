@@ -2,7 +2,7 @@
 
 *Plant the one resolve. Same words every time. Positive, present-tense, already true.*
 
-> **Before you begin:** Lying in shavasana; able to settle into Stillness (M1).
+> **Before you begin:** Lying in shavasana (see Setting up); able to settle into Stillness (M1).
 
 1. **Settle** — still, a few slow breaths
 2. **Resolve** — silently, ×3, with feeling
