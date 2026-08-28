@@ -26,7 +26,7 @@ SETTLE  →  RESOLVE  →  CORE  →  REST  →  RETURN
 
 ### Micro vs Extended (resolves the "practices get too long" problem)
 - **Micro** (~2–4 min, for frequent daily reps): `SETTLE → RESOLVE(brief) → only the NEW element → RETURN`. Drills one skill.
-- **Extended** (for when time permits, grows ~6 → 25+ min by M8): `SETTLE → RESOLVE → the full cumulative CORE up to this module → REST → RETURN`. This is where the folding actually happens; by Module 10 the extended practice *is* a complete Yoga Nidra.
+- **Extended** (~3–4 min, when time permits): `SETTLE → RESOLVE → the SAME element, explored longer and more spaciously → REST → RETURN`. A deeper solo sit on that one element — not cumulative (that would near-duplicate across modules). The cumulative *whole* lives once, in the M14 full nidra.
 
 ## Saṅkalpa bookend (Decision 2)
 - Chosen **once** in Module 2 (with guidance on crafting it: single, positive, present-tense).

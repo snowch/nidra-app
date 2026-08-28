@@ -133,8 +133,8 @@
         "extended": {
           "script": "content/nidra_05_stillness_extended.txt",
           "audio": "audio/nidra_05_stillness_extended.m4a",
-          "durationSec": null,
-          "status": "planned"
+          "durationSec": 198.4,
+          "status": "built"
         },
         "cueCard": {
           "file": "content/nidra_05_stillness_cue.md",
@@ -165,7 +165,10 @@
           "status": "built"
         },
         "extended": {
-          "status": "planned"
+          "script": "content/nidra_06_sankalpa_extended.txt",
+          "audio": "audio/nidra_06_sankalpa_extended.m4a",
+          "durationSec": 189.6,
+          "status": "built"
         },
         "cueCard": {
           "file": "content/nidra_06_sankalpa_cue.md",
@@ -197,7 +200,10 @@
           "status": "built"
         },
         "extended": {
-          "status": "planned"
+          "script": "content/nidra_07_pratyahara_extended.txt",
+          "audio": "audio/nidra_07_pratyahara_extended.m4a",
+          "durationSec": 194.8,
+          "status": "built"
         },
         "cueCard": {
           "file": "content/nidra_07_pratyahara_cue.md",
@@ -228,7 +234,10 @@
           "status": "built"
         },
         "extended": {
-          "status": "planned"
+          "script": "content/nidra_08_nyasa_extended.txt",
+          "audio": "audio/nidra_08_nyasa_extended.m4a",
+          "durationSec": 230.8,
+          "status": "built"
         },
         "cueCard": {
           "file": "content/nidra_08_nyasa_cue.md",
@@ -260,7 +269,10 @@
           "status": "built"
         },
         "extended": {
-          "status": "planned"
+          "script": "content/nidra_09_breath_extended.txt",
+          "audio": "audio/nidra_09_breath_extended.m4a",
+          "durationSec": 198.1,
+          "status": "built"
         },
         "cueCard": {
           "file": "content/nidra_09_breath_cue.md",
@@ -292,7 +304,10 @@
           "status": "built"
         },
         "extended": {
-          "status": "planned"
+          "script": "content/nidra_10_opposites_extended.txt",
+          "audio": "audio/nidra_10_opposites_extended.m4a",
+          "durationSec": 189.7,
+          "status": "built"
         },
         "cueCard": {
           "file": "content/nidra_10_opposites_cue.md",
@@ -324,7 +339,10 @@
           "status": "built"
         },
         "extended": {
-          "status": "planned"
+          "script": "content/nidra_11_inner-space_extended.txt",
+          "audio": "audio/nidra_11_inner-space_extended.m4a",
+          "durationSec": 199.3,
+          "status": "built"
         },
         "cueCard": {
           "file": "content/nidra_11_inner-space_cue.md",
@@ -355,7 +373,10 @@
           "status": "built"
         },
         "extended": {
-          "status": "planned"
+          "script": "content/nidra_12_witness_extended.txt",
+          "audio": "audio/nidra_12_witness_extended.m4a",
+          "durationSec": 207.3,
+          "status": "built"
         },
         "cueCard": {
           "file": "content/nidra_12_witness_cue.md",
@@ -384,7 +405,10 @@
           "status": "built"
         },
         "extended": {
-          "status": "planned"
+          "script": "content/nidra_13_return_extended.txt",
+          "audio": "audio/nidra_13_return_extended.m4a",
+          "durationSec": 180.1,
+          "status": "built"
         },
         "cueCard": {
           "file": "content/nidra_13_return_cue.md",
