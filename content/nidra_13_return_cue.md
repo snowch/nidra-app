@@ -2,6 +2,8 @@
 
 *Come back slowly. Resolve first, then externalise.*
 
+> **Before you begin:** Lying in shavasana; Stillness (M1); your saṅkalpa (M2).
+
 1. **Resolve** — one final time, ×3 (mind still deep)
 2. **Breath** — natural breath
 3. **Body** — heavy, still

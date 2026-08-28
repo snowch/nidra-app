@@ -2,6 +2,8 @@
 
 *Feel each fully; be moved by neither. Equanimity (Gita).*
 
+> **Before you begin:** Lying in shavasana; Stillness (M1); your saṅkalpa (M2).
+
 1. **Settle** → **Resolve** (×3)
 2. **Heavy** ↔ **Light**
 3. **Warm** ↔ **Cool**

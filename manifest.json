@@ -160,7 +160,11 @@
           "file": "content/nidra_05_stillness_cue.md",
           "status": "built"
         }
-      }
+      },
+      "prerequisites": [
+        "First hear the orientation teachings (00\u201304)",
+        "Lie down in shavasana \u2014 see 'Setting up'"
+      ]
     },
     {
       "seq": "06",
@@ -194,7 +198,11 @@
           "file": "content/nidra_06_sankalpa_cue.md",
           "status": "built"
         }
-      }
+      },
+      "prerequisites": [
+        "Lie down in shavasana",
+        "Able to settle into Stillness (M1)"
+      ]
     },
     {
       "seq": "07",
@@ -229,7 +237,12 @@
           "file": "content/nidra_07_pratyahara_cue.md",
           "status": "built"
         }
-      }
+      },
+      "prerequisites": [
+        "Lie down in shavasana",
+        "Comfortable with Stillness (M1)",
+        "A sa\u1e45kalpa chosen (M2)"
+      ]
     },
     {
       "seq": "08",
@@ -263,7 +276,12 @@
           "file": "content/nidra_08_nyasa_cue.md",
           "status": "built"
         }
-      }
+      },
+      "prerequisites": [
+        "Lie down in shavasana",
+        "Stillness (M1)",
+        "Your sa\u1e45kalpa (M2)"
+      ]
     },
     {
       "seq": "09",
@@ -298,7 +316,12 @@
           "file": "content/nidra_09_breath_cue.md",
           "status": "built"
         }
-      }
+      },
+      "prerequisites": [
+        "Lie down in shavasana",
+        "Stillness (M1)",
+        "Your sa\u1e45kalpa (M2)"
+      ]
     },
     {
       "seq": "10",
@@ -333,7 +356,12 @@
           "file": "content/nidra_10_opposites_cue.md",
           "status": "built"
         }
-      }
+      },
+      "prerequisites": [
+        "Lie down in shavasana",
+        "Stillness (M1)",
+        "Your sa\u1e45kalpa (M2)"
+      ]
     },
     {
       "seq": "11",
@@ -368,7 +396,12 @@
           "file": "content/nidra_11_inner-space_cue.md",
           "status": "built"
         }
-      }
+      },
+      "prerequisites": [
+        "Lie down in shavasana",
+        "Stillness (M1)",
+        "Your sa\u1e45kalpa (M2)"
+      ]
     },
     {
       "seq": "12",
@@ -402,7 +435,12 @@
           "file": "content/nidra_12_witness_cue.md",
           "status": "built"
         }
-      }
+      },
+      "prerequisites": [
+        "Lie down in shavasana",
+        "Stillness (M1)",
+        "Your sa\u1e45kalpa (M2)"
+      ]
     },
     {
       "seq": "13",
@@ -434,7 +472,12 @@
           "file": "content/nidra_13_return_cue.md",
           "status": "built"
         }
-      }
+      },
+      "prerequisites": [
+        "Lie down in shavasana",
+        "Stillness (M1)",
+        "Your sa\u1e45kalpa (M2)"
+      ]
     },
     {
       "seq": "14",
@@ -460,7 +503,11 @@
           "file": "content/nidra_14_build-your-own_cue.md",
           "status": "built"
         }
-      }
+      },
+      "prerequisites": [
+        "Lie down in shavasana",
+        "All elements learned \u2014 Modules 1 to 9"
+      ]
     },
     {
       "seq": "15",

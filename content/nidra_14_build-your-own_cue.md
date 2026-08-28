@@ -2,6 +2,8 @@
 
 *The complete Yoga Nidra, from memory. Ten steps.*
 
+> **Before you begin:** Lying in shavasana; all elements learned (M1–M9).
+
 1. **Stillness** — lie down, still, awake
 2. **Resolve** — sankalpa ×3
 3. **Withdraw** — senses (pratyahara)

@@ -197,6 +197,9 @@ function card(item) {
   ].join('');
   const sources = (item.sources && item.sources.length)
     ? `<p class="sources">Source: ${item.sources.join('; ')}</p>` : '';
+  const prereqs = (item.prerequisites && item.prerequisites.length)
+    ? `<div class="prereq"><span class="prereq-label">Before you begin</span><ul>${
+        item.prerequisites.map((p) => `<li>${p}</li>`).join('')}</ul></div>` : '';
   const parts = PART_ORDER
     .filter((k) => item.parts[k])
     .map((k) => partRow(item.seq, item.title, k, item.parts[k])).join('');
@@ -210,6 +213,7 @@ function card(item) {
         ${sources}
       </div>
     </div>
+    ${prereqs}
     <ul class="parts">${parts}</ul>
   </article>`;
 }

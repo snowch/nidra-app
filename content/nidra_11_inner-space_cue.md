@@ -2,6 +2,8 @@
 
 *Rest in the dark space behind the eyes; watch what arises, let it dissolve.*
 
+> **Before you begin:** Lying in shavasana; Stillness (M1); your saṅkalpa (M2).
+
 1. **Settle** → **Resolve** (×3)
 2. **Gaze** into the inner sky — darkness
 3. **Whatever appears** — colour, image — comes and goes

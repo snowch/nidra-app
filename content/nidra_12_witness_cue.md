@@ -2,6 +2,8 @@
 
 *Turn from what is watched to the one who watches. Rest as awareness.*
 
+> **Before you begin:** Lying in shavasana; Stillness (M1); your saṅkalpa (M2).
+
 1. **Settle** → **Resolve** (×3)
 2. Let everything be — turn to **the one who is aware**
 3. Not the sounds → the hearer; not the thoughts → the watcher
