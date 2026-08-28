@@ -35,8 +35,8 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_00_intro.txt",
-          "audio": "audio/nidra_00_intro.m4a?v=63638834",
-          "durationSec": 218.2,
+          "audio": "audio/nidra_00_intro.m4a?v=59feef1d",
+          "durationSec": 223.2,
           "status": "built"
         }
       }

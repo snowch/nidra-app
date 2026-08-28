@@ -2,7 +2,7 @@ Welcome to the programme.
 
 <break time="2.0s" />
 
-Before the first module, a few words about the journey you are beginning, and how to travel it.
+Before we begin, a few words about the journey you are beginning, and how to travel it.
 
 <break time="2.0s" />
 
@@ -34,7 +34,7 @@ The journey unfolds in two kinds of recording.
 
 <break time="1.5s" />
 
-A few are orientation teachings, like this one, and the two that follow. They set the map, and you simply listen.
+A few are orientation teachings, like this one, and those that follow. They set the map, and you simply listen.
 
 <break time="1.5s" />
 
@@ -78,4 +78,4 @@ That is the whole arc. Withdraw... deepen... witness... and return.
 
 <break time="1.5s" />
 
-When you are ready, begin with Module One. Stillness.
+A few short teachings follow, to map the ground before we practise. When you are ready, continue on to the next. The path.
