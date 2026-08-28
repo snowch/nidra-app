@@ -2,6 +2,7 @@
 
 *What may arise, and how to meet it.*
 
+- **Practise only where it's safe to relax fully and fall asleep** — never while driving or operating machinery.
 - **The mind will wander** — noticing that you drifted *is* the return. Come back gently, without judgement.
 - **Restlessness or an itch** — let it pass where you can; if you must move, move slowly, and return to stillness.
 - **Emotions or memories may surface** as the body relaxes — let them move through, like weather, and return to the breath.
