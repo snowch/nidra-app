@@ -230,13 +230,13 @@
         "micro": {
           "script": "content/nidra_08_nyasa_micro.txt",
           "audio": "audio/nidra_08_nyasa_micro.m4a",
-          "durationSec": 93.5,
+          "durationSec": 96.3,
           "status": "built"
         },
         "extended": {
           "script": "content/nidra_08_nyasa_extended.txt",
           "audio": "audio/nidra_08_nyasa_extended.m4a",
-          "durationSec": 230.8,
+          "durationSec": 272.4,
           "status": "built"
         },
         "cueCard": {
@@ -433,7 +433,7 @@
         "unaided": {
           "script": "content/nidra_14_build-your-own_unaided.txt",
           "audio": "audio/nidra_14_build-your-own_unaided.m4a",
-          "durationSec": 499.2,
+          "durationSec": 518.0,
           "status": "built"
         },
         "cueCard": {
