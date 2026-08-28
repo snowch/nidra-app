@@ -5,6 +5,8 @@ not a nightly track to lean on, but to teach you to **perform Yoga Nidra on
 yourself, from memory, unaided**. Grounded in the source texts (Upaniṣads, Yoga
 Sūtras, tantric tradition), not a modern protocol.
 
+**🌐 Live:** <https://snowch.github.io/nidra-app/>
+
 ## Repository layout
 ```
 content/       narration scripts (.txt, with <break time="Xs"/> pauses)
@@ -49,6 +51,17 @@ python tools/pp.py    content/nidra_05_stillness_micro.txt  # practice → Nicol
 ```
 Both trim Kokoro's padding so `<break time="Xs">` pauses land at their authored
 length. Output `.wav` is written beside the input script; move it into `audio/`.
+
+## Deployment (GitHub Pages)
+Served from `main` at the repository **root** — live at
+<https://snowch.github.io/nidra-app/>. With no `index.html` yet, Pages renders
+this README as the landing page.
+
+When the PWA is built, switch the Pages source to the **`/docs`** folder
+(Settings → Pages → Build and deployment → Branch `main`, Folder `/docs`).
+Two reasons: it keeps the app separate from `content/`, `audio/`, and `tools/`,
+and it avoids a name clash between this repo's data index (`manifest.json`) and
+the web-app manifest a PWA needs. The public URL stays the same either way.
 
 ## Licence
 Kokoro model **Apache-2.0**, wrapper **MIT** — generated audio is free to use,
