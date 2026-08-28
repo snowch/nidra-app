@@ -156,6 +156,8 @@ const plannedRow = (m, glyph) => `<li class="part planned"><span class="play">${
   <div class="part-main"><div class="part-label">${m.label}</div>
   <div class="part-meta">${m.hint}</div></div><span class="soon">coming soon</span></li>`;
 
+const sectionHeader = (label) => `<div class="section">${label}</div>`;
+
 function partRow(seq, title, key, part) {
   const m = PART_META[key] || { label: key, hint: '' };
   const built = part.status === 'built';
@@ -217,7 +219,15 @@ async function init() {
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
     practisable = []; offlineUrls = [];
-    journeyEl.innerHTML = data.items.map(card).join('');
+    let prevType = null;
+    journeyEl.innerHTML = data.items.map((item, i) => {
+      let head = '';
+      if (i === 0) head = sectionHeader('Orientation');
+      else if (item.type === 'practice' && prevType !== 'practice') head = sectionHeader('The practice');
+      else if (item.type === 'orientation' && prevType === 'practice') head = sectionHeader('In closing');
+      prevType = item.type;
+      return head + card(item);
+    }).join('');
     journeyEl.querySelectorAll('.play[data-src]').forEach((b) =>
       b.addEventListener('click', () => startTrack(b)));
     journeyEl.querySelectorAll('.check').forEach((c) =>

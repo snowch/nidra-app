@@ -73,6 +73,18 @@ body {
 }
 .loading { color: var(--muted); text-align: center; }
 
+.section {
+  display: flex; align-items: center; gap: 14px;
+  margin: 34px 6px 6px;
+  color: var(--gold-soft); font-family: var(--serif);
+  font-size: .74rem; letter-spacing: .22em; text-transform: uppercase;
+}
+.section:first-child { margin-top: 8px; }
+.section::before, .section::after {
+  content: ""; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line) 30%, var(--line) 70%, transparent);
+}
+
 .card {
   background: var(--bg-elev);
   border: 1px solid var(--line);
