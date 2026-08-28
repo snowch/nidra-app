@@ -154,20 +154,20 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_06_sankalpa_teaching.txt",
-          "audio": "audio/nidra_06_sankalpa_teaching.m4a?v=1ee0a14c",
-          "durationSec": 96.6,
+          "audio": "audio/nidra_06_sankalpa_teaching.m4a?v=df12059e",
+          "durationSec": 96.8,
           "status": "built"
         },
         "micro": {
           "script": "content/nidra_06_sankalpa_micro.txt",
-          "audio": "audio/nidra_06_sankalpa_micro.m4a?v=28d03b92",
+          "audio": "audio/nidra_06_sankalpa_micro.m4a?v=824c057b",
           "durationSec": 75.1,
           "status": "built"
         },
         "extended": {
           "script": "content/nidra_06_sankalpa_extended.txt",
-          "audio": "audio/nidra_06_sankalpa_extended.m4a?v=4c2023b1",
-          "durationSec": 189.6,
+          "audio": "audio/nidra_06_sankalpa_extended.m4a?v=aebb746a",
+          "durationSec": 189.7,
           "status": "built"
         },
         "cueCard": {
@@ -394,7 +394,7 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_13_return_teaching.txt",
-          "audio": "audio/nidra_13_return_teaching.m4a?v=15e7dddc",
+          "audio": "audio/nidra_13_return_teaching.m4a?v=f2c4083e",
           "durationSec": 88.4,
           "status": "built"
         },
@@ -426,14 +426,14 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_14_build-your-own_teaching.txt",
-          "audio": "audio/nidra_14_build-your-own_teaching.m4a?v=a8d6294a",
+          "audio": "audio/nidra_14_build-your-own_teaching.m4a?v=b6e4fbaa",
           "durationSec": 97.6,
           "status": "built"
         },
         "unaided": {
           "script": "content/nidra_14_build-your-own_unaided.txt",
-          "audio": "audio/nidra_14_build-your-own_unaided.m4a?v=37e0c10b",
-          "durationSec": 518.0,
+          "audio": "audio/nidra_14_build-your-own_unaided.m4a?v=f3eb448b",
+          "durationSec": 518.1,
           "status": "built"
         },
         "cueCard": {
