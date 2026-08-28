@@ -12,21 +12,21 @@
       "seq": "00", "id": "intro", "title": "Programme introduction",
       "type": "orientation", "sources": [],
       "parts": {
-        "teaching": { "script": "content/nidra_00_intro.txt", "audio": "audio/nidra_00_intro.m4a", "durationSec": 214.4, "status": "built" }
+        "teaching": { "script": "content/nidra_00_intro.txt", "audio": "audio/nidra_00_intro.m4a", "durationSec": 217.4, "status": "built" }
       }
     },
     {
       "seq": "01", "id": "the-path", "title": "The path — where nidra sits in the eight limbs",
       "type": "orientation", "sources": ["Yoga Sutras 2.29"],
       "parts": {
-        "teaching": { "script": "content/nidra_01_the-path.txt", "audio": "audio/nidra_01_the-path.m4a", "durationSec": 178.8, "status": "built" }
+        "teaching": { "script": "content/nidra_01_the-path.txt", "audio": "audio/nidra_01_the-path.m4a", "durationSec": 181.8, "status": "built" }
       }
     },
     {
       "seq": "02", "id": "the-depths", "title": "The depths — the five sheaths",
       "type": "orientation", "sources": ["Taittiriya Upanishad (pancha kosha)"],
       "parts": {
-        "teaching": { "script": "content/nidra_02_the-depths.txt", "audio": "audio/nidra_02_the-depths.m4a", "durationSec": 136.5, "status": "built" }
+        "teaching": { "script": "content/nidra_02_the-depths.txt", "audio": "audio/nidra_02_the-depths.m4a", "durationSec": 139.5, "status": "built" }
       }
     },
     {
@@ -47,8 +47,8 @@
       "seq": "05", "id": "stillness", "title": "Stillness", "type": "practice", "practiceModule": 1,
       "sources": ["Mandukya Upanishad (four states)", "Hatha texts (shavasana)"],
       "parts": {
-        "teaching": { "script": "content/nidra_05_stillness_teaching.txt", "audio": "audio/nidra_05_stillness_teaching.m4a", "durationSec": 74.0, "status": "built" },
-        "micro":    { "script": "content/nidra_05_stillness_micro.txt", "audio": "audio/nidra_05_stillness_micro.m4a", "durationSec": 93.8, "status": "built" },
+        "teaching": { "script": "content/nidra_05_stillness_teaching.txt", "audio": "audio/nidra_05_stillness_teaching.m4a", "durationSec": 77.0, "status": "built" },
+        "micro":    { "script": "content/nidra_05_stillness_micro.txt", "audio": "audio/nidra_05_stillness_micro.m4a", "durationSec": 96.8, "status": "built" },
         "extended": { "script": "content/nidra_05_stillness_extended.txt", "audio": "audio/nidra_05_stillness_extended.m4a", "durationSec": null, "status": "planned" },
         "cueCard":  { "file": "content/nidra_05_stillness_cue.md", "status": "planned" }
       }
@@ -65,7 +65,7 @@
       "seq": "07", "id": "pratyahara", "title": "Pratyahara — withdrawing the senses", "type": "practice", "practiceModule": 3,
       "sources": ["Yoga Sutras 2.54-55"],
       "parts": {
-        "teaching": { "script": "content/nidra_07_pratyahara_teaching.txt", "audio": "audio/nidra_07_pratyahara_teaching.m4a", "durationSec": 112.0, "status": "built", "note": "adopted from the earlier standalone explainer; may get a light re-record to reference the programme" },
+        "teaching": { "script": "content/nidra_07_pratyahara_teaching.txt", "audio": "audio/nidra_07_pratyahara_teaching.m4a", "durationSec": 115.0, "status": "built", "note": "adopted from the earlier standalone explainer; may get a light re-record to reference the programme" },
         "micro": { "status": "planned" }, "extended": { "status": "planned" }, "cueCard": { "status": "planned" }
       }
     },

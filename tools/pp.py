@@ -9,6 +9,9 @@ from kokoro_mlx import KokoroTTS
 VOICE = "af_nicole"
 SPEED = 0.85
 
+LEAD_IN = 1.5   # seconds of calm silence before the first word
+TAIL_OUT = 1.5  # seconds of silence after the last word
+
 
 def parse_script(text):
     pattern = r'<break\s+time=["\']([\d.]+)s["\']\s*/?>'
@@ -169,6 +172,10 @@ def main():
     print("Combining audio...")
 
     final_audio = np.concatenate(audio_segments)
+
+    lead = np.zeros(int(LEAD_IN * sample_rate), dtype=np.int16)
+    tail = np.zeros(int(TAIL_OUT * sample_rate), dtype=np.int16)
+    final_audio = np.concatenate([lead, final_audio, tail])
 
     write_wav(
         output_path,

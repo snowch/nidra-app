@@ -14,6 +14,9 @@ from kokoro_mlx import KokoroTTS
 VOICE = "af_heart"
 SPEED = 0.75
 
+LEAD_IN = 1.5   # seconds of calm silence before the first word
+TAIL_OUT = 1.5  # seconds of silence after the last word
+
 
 def main():
     if len(sys.argv) != 2:
@@ -53,6 +56,9 @@ def main():
             parts.append(audio)
 
     final_audio = np.concatenate(parts)
+    lead = np.zeros(int(LEAD_IN * sample_rate), dtype=np.int16)
+    tail = np.zeros(int(TAIL_OUT * sample_rate), dtype=np.int16)
+    final_audio = np.concatenate([lead, final_audio, tail])
     write_wav(output_path, final_audio, sample_rate, 1)
 
     duration = len(final_audio) / sample_rate

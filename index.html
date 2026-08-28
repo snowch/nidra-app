@@ -34,6 +34,17 @@
     <p class="muted">Audio: Kokoro TTS (Apache-2.0). Not a substitute for sleep or medical care.</p>
   </footer>
 
+  <!-- now-playing mini player -->
+  <div id="mini" class="mini" hidden>
+    <button id="miniPlay" class="mini-play" aria-label="Play or pause">❚❚</button>
+    <div class="mini-body">
+      <div class="mini-title" id="miniTitle"></div>
+      <input id="miniSeek" class="mini-seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek within track" />
+      <div class="mini-times"><span id="miniCur">0:00</span><span id="miniDur">0:00</span></div>
+    </div>
+    <button id="miniRestart" class="mini-btn" aria-label="Start again from the beginning" title="Start again">↺</button>
+  </div>
+
   <!-- single shared player -->
   <audio id="player" preload="none"></audio>
 

@@ -15,6 +15,16 @@ const fillEl     = document.getElementById('progressFill');
 const labelEl    = document.getElementById('progressLabel');
 const player     = document.getElementById('player');
 
+const mini = {
+  root:    document.getElementById('mini'),
+  play:    document.getElementById('miniPlay'),
+  restart: document.getElementById('miniRestart'),
+  title:   document.getElementById('miniTitle'),
+  seek:    document.getElementById('miniSeek'),
+  cur:     document.getElementById('miniCur'),
+  dur:     document.getElementById('miniDur'),
+};
+
 const STORE = 'nidra-progress-v1';
 const done  = JSON.parse(localStorage.getItem(STORE) || '{}');
 const saveDone = () => localStorage.setItem(STORE, JSON.stringify(done));
@@ -22,20 +32,36 @@ const saveDone = () => localStorage.setItem(STORE, JSON.stringify(done));
 let practisable = [];
 let activeBtn = null;
 
-const fmt = (s) => (s || s === 0)
-  ? `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}` : '';
+const fmt = (s) => (s && isFinite(s)) || s === 0
+  ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}` : '0:00';
 
-/* ---------- audio ---------- */
-function togglePlay(src, btn) {
-  if (activeBtn === btn) { player.paused ? player.play() : player.pause(); return; }
-  if (activeBtn) { activeBtn.classList.remove('playing'); activeBtn.textContent = '▶'; }
-  activeBtn = btn;
-  player.src = src;
-  player.play().catch((e) => console.warn('play failed', e));
+/* ---------- audio + mini-player ---------- */
+function setBtnState(btn, playing) {
+  btn.classList.toggle('playing', playing);
+  btn.textContent = playing ? '❚❚' : '▶';
 }
-player.onplay  = () => { if (activeBtn) { activeBtn.classList.add('playing'); activeBtn.textContent = '❚❚'; } };
-player.onpause = () => { if (activeBtn) { activeBtn.classList.remove('playing'); activeBtn.textContent = '▶'; } };
-player.onended = () => { if (activeBtn) { activeBtn.classList.remove('playing'); activeBtn.textContent = '▶'; } };
+function startTrack(btn) {
+  if (activeBtn === btn) { player.paused ? player.play() : player.pause(); return; }
+  if (activeBtn) setBtnState(activeBtn, false);
+  activeBtn = btn;
+  player.src = btn.dataset.src;
+  player.play().catch((e) => console.warn('play failed', e));
+  mini.title.textContent = `${btn.dataset.title} · ${btn.dataset.part}`;
+  mini.root.hidden = false;
+  mini.seek.value = 0; mini.cur.textContent = '0:00'; mini.dur.textContent = '0:00';
+}
+player.onplay  = () => { if (activeBtn) setBtnState(activeBtn, true);  mini.play.textContent = '❚❚'; };
+player.onpause = () => { if (activeBtn) setBtnState(activeBtn, false); mini.play.textContent = '▶'; };
+player.onended = () => { if (activeBtn) setBtnState(activeBtn, false); mini.play.textContent = '▶'; };
+player.onloadedmetadata = () => { mini.dur.textContent = fmt(player.duration); };
+player.ontimeupdate = () => {
+  if (!player.duration) return;
+  mini.seek.value = Math.round((player.currentTime / player.duration) * 1000);
+  mini.cur.textContent = fmt(player.currentTime);
+};
+mini.play.onclick    = () => { if (player.src) player.paused ? player.play() : player.pause(); };
+mini.restart.onclick = () => { if (player.src) { player.currentTime = 0; player.play(); } };
+mini.seek.oninput    = () => { if (player.duration) player.currentTime = (mini.seek.value / 1000) * player.duration; };
 
 /* ---------- progress ---------- */
 function toggleDone(el) {
@@ -60,23 +86,25 @@ function refreshCards() {
 }
 
 /* ---------- render ---------- */
-function partRow(seq, key, part) {
+const plannedRow = (m, glyph) => `<li class="part planned"><span class="play">${glyph}</span>
+  <div class="part-main"><div class="part-label">${m.label}</div>
+  <div class="part-meta">${m.hint}</div></div><span class="soon">coming soon</span></li>`;
+
+function partRow(seq, title, key, part) {
   const m = PART_META[key] || { label: key, hint: '' };
   const built = part.status === 'built';
   const id = `${seq}:${key}`;
 
   if (part.audio) {
-    if (built) {
-      practisable.push(id);
-      const on = done[id] ? 'on' : '';
-      return `<li class="part">
-        <button class="play" data-src="${part.audio}" aria-label="Play ${m.label}">▶</button>
-        <div class="part-main"><div class="part-label">${m.label}</div>
-          <div class="part-meta">${m.hint}${part.durationSec ? ' · ' + fmt(part.durationSec) : ''}</div></div>
-        <button class="check ${on}" data-id="${id}" title="Mark practised">${done[id] ? '✓' : ''}</button>
-      </li>`;
-    }
-    return plannedRow(m, '▶');
+    if (!built) return plannedRow(m, '▶');
+    practisable.push(id);
+    const on = done[id] ? 'on' : '';
+    return `<li class="part">
+      <button class="play" data-src="${part.audio}" data-title="${title}" data-part="${m.label}" aria-label="Play ${m.label}">▶</button>
+      <div class="part-main"><div class="part-label">${m.label}</div>
+        <div class="part-meta">${m.hint}${part.durationSec ? ' · ' + fmt(part.durationSec) : ''}</div></div>
+      <button class="check ${on}" data-id="${id}" title="Mark practised">${done[id] ? '✓' : ''}</button>
+    </li>`;
   }
   if (key === 'cueCard' && built && part.file) {
     return `<li class="part"><span class="play">▤</span>
@@ -85,9 +113,6 @@ function partRow(seq, key, part) {
   }
   return plannedRow(m, key === 'cueCard' ? '▤' : '▶');
 }
-const plannedRow = (m, glyph) => `<li class="part planned"><span class="play">${glyph}</span>
-  <div class="part-main"><div class="part-label">${m.label}</div>
-  <div class="part-meta">${m.hint}</div></div><span class="soon">coming soon</span></li>`;
 
 function card(item) {
   const isPractice = item.type === 'practice';
@@ -99,7 +124,7 @@ function card(item) {
     ? `<p class="sources">Source: ${item.sources.join('; ')}</p>` : '';
   const parts = PART_ORDER
     .filter((k) => item.parts[k])
-    .map((k) => partRow(item.seq, k, item.parts[k])).join('');
+    .map((k) => partRow(item.seq, item.title, k, item.parts[k])).join('');
 
   return `<article class="card ${item.type}">
     <div class="card-head">
@@ -122,7 +147,7 @@ async function init() {
     practisable = [];
     journeyEl.innerHTML = data.items.map(card).join('');
     journeyEl.querySelectorAll('.play[data-src]').forEach((b) =>
-      b.addEventListener('click', () => togglePlay(b.dataset.src, b)));
+      b.addEventListener('click', () => startTrack(b)));
     journeyEl.querySelectorAll('.check').forEach((c) =>
       c.addEventListener('click', () => toggleDone(c)));
     updateProgress();
