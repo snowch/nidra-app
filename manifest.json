@@ -1,113 +1,439 @@
 {
-  "programme": "Yoga Nidra — a self-directed journey from the ancient texts",
+  "programme": "Yoga Nidra \u2014 a self-directed journey from the ancient texts",
   "goal": "Teach the practitioner to perform Yoga Nidra unaided, from memory.",
-  "paths": { "scripts": "content/", "audio": "audio/" },
-  "voices": {
-    "teaching": { "voice": "af_heart", "speed": 0.75, "renderer": "tools/intro.py" },
-    "practice": { "voice": "af_nicole", "speed": 0.85, "renderer": "tools/pp.py" }
+  "paths": {
+    "scripts": "content/",
+    "audio": "audio/"
   },
-  "coreOrder": ["pratyahara", "nyasa", "breath", "opposites", "inner-space", "witness"],
+  "voices": {
+    "teaching": {
+      "voice": "af_heart",
+      "speed": 0.75,
+      "renderer": "tools/intro.py"
+    },
+    "practice": {
+      "voice": "af_nicole",
+      "speed": 0.85,
+      "renderer": "tools/pp.py"
+    }
+  },
+  "coreOrder": [
+    "pratyahara",
+    "nyasa",
+    "breath",
+    "opposites",
+    "inner-space",
+    "witness"
+  ],
   "items": [
     {
-      "seq": "00", "id": "intro", "title": "Programme introduction",
-      "type": "orientation", "sources": [],
-      "parts": {
-        "teaching": { "script": "content/nidra_00_intro.txt", "audio": "audio/nidra_00_intro.m4a", "durationSec": 218.5, "status": "built" }
-      }
-    },
-    {
-      "seq": "01", "id": "the-path", "title": "The path — where nidra sits in the eight limbs",
-      "type": "orientation", "sources": ["Yoga Sutras 2.29"],
-      "parts": {
-        "teaching": { "script": "content/nidra_01_the-path.txt", "audio": "audio/nidra_01_the-path.m4a", "durationSec": 182.7, "status": "built" }
-      }
-    },
-    {
-      "seq": "02", "id": "the-depths", "title": "The depths — the five sheaths",
-      "type": "orientation", "sources": ["Taittiriya Upanishad (pancha kosha)"],
-      "parts": {
-        "teaching": { "script": "content/nidra_02_the-depths.txt", "audio": "audio/nidra_02_the-depths.m4a", "durationSec": 140.4, "status": "built" }
-      }
-    },
-    {
-      "seq": "03", "id": "setting-up", "title": "Setting up your practice",
-      "type": "orientation", "sources": ["Hatha texts (shavasana)"],
-      "parts": {
-        "teaching": { "script": "content/nidra_03_setting-up.txt", "audio": "audio/nidra_03_setting-up.m4a", "durationSec": null, "status": "planned" }
-      }
-    },
-    {
-      "seq": "04", "id": "obstacles-and-care", "title": "Obstacles and care",
-      "type": "orientation", "sources": [],
-      "parts": {
-        "teaching": { "script": "content/nidra_04_obstacles-and-care.txt", "audio": "audio/nidra_04_obstacles-and-care.m4a", "durationSec": null, "status": "planned" }
-      }
-    },
-    {
-      "seq": "05", "id": "stillness", "title": "Stillness", "type": "practice", "practiceModule": 1,
-      "sources": ["Mandukya Upanishad (four states)", "Hatha texts (shavasana)"],
-      "parts": {
-        "teaching": { "script": "content/nidra_05_stillness_teaching.txt", "audio": "audio/nidra_05_stillness_teaching.m4a", "durationSec": 77.0, "status": "built" },
-        "micro":    { "script": "content/nidra_05_stillness_micro.txt", "audio": "audio/nidra_05_stillness_micro.m4a", "durationSec": 96.8, "status": "built" },
-        "extended": { "script": "content/nidra_05_stillness_extended.txt", "audio": "audio/nidra_05_stillness_extended.m4a", "durationSec": null, "status": "planned" },
-        "cueCard":  { "file": "content/nidra_05_stillness_cue.md", "status": "planned" }
-      }
-    },
-    {
-      "seq": "06", "id": "sankalpa", "title": "Sankalpa — the resolve", "type": "practice", "practiceModule": 2,
-      "sources": ["Chandogya Upanishad 3.14"],
-      "parts": {
-        "teaching": { "status": "planned" }, "micro": { "status": "planned" },
-        "extended": { "status": "planned" }, "cueCard": { "status": "planned" }
-      }
-    },
-    {
-      "seq": "07", "id": "pratyahara", "title": "Pratyahara — withdrawing the senses", "type": "practice", "practiceModule": 3,
-      "sources": ["Yoga Sutras 2.54-55"],
-      "parts": {
-        "teaching": { "script": "content/nidra_07_pratyahara_teaching.txt", "audio": "audio/nidra_07_pratyahara_teaching.m4a", "durationSec": 115.0, "status": "built", "note": "adopted from the earlier standalone explainer; may get a light re-record to reference the programme" },
-        "micro": { "status": "planned" }, "extended": { "status": "planned" }, "cueCard": { "status": "planned" }
-      }
-    },
-    {
-      "seq": "08", "id": "nyasa", "title": "Nyasa — rotating awareness through the body", "type": "practice", "practiceModule": 4,
-      "sources": ["Tantric nyasa"],
-      "parts": { "teaching": { "status": "planned" }, "micro": { "status": "planned" }, "extended": { "status": "planned" }, "cueCard": { "status": "planned" } }
-    },
-    {
-      "seq": "09", "id": "breath", "title": "Breath and the gap", "type": "practice", "practiceModule": 5,
-      "sources": ["Vijnana Bhairava Tantra", "Patanjali (pranayama)"],
-      "parts": { "teaching": { "status": "planned" }, "micro": { "status": "planned" }, "extended": { "status": "planned" }, "cueCard": { "status": "planned" } }
-    },
-    {
-      "seq": "10", "id": "opposites", "title": "Pairs of opposites", "type": "practice", "practiceModule": 6,
-      "sources": ["Bhagavad Gita 2.14, 6.7", "Vijnana Bhairava Tantra"],
-      "parts": { "teaching": { "status": "planned" }, "micro": { "status": "planned" }, "extended": { "status": "planned" }, "cueCard": { "status": "planned" } }
-    },
-    {
-      "seq": "11", "id": "inner-space", "title": "Inner space (cidakasha) — dharana", "type": "practice", "practiceModule": 7,
-      "sources": ["Vijnana Bhairava Tantra (void/space dharanas)", "Yoga Sutras 3.1 (dharana)"],
-      "parts": { "teaching": { "status": "planned" }, "micro": { "status": "planned" }, "extended": { "status": "planned" }, "cueCard": { "status": "planned" } }
-    },
-    {
-      "seq": "12", "id": "witness", "title": "The witness (turiya) — with AUM", "type": "practice", "practiceModule": 8,
-      "sources": ["Mandukya Upanishad (turiya, AUM)"],
-      "parts": { "teaching": { "status": "planned" }, "micro": { "status": "planned" }, "extended": { "status": "planned" }, "cueCard": { "status": "planned" } }
-    },
-    {
-      "seq": "13", "id": "return", "title": "Return — re-affirm the resolve, externalise", "type": "practice", "practiceModule": 9,
+      "seq": "00",
+      "id": "intro",
+      "title": "Programme introduction",
+      "type": "orientation",
       "sources": [],
-      "parts": { "teaching": { "status": "planned" }, "micro": { "status": "planned" }, "extended": { "status": "planned" }, "cueCard": { "status": "planned" } }
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_00_intro.txt",
+          "audio": "audio/nidra_00_intro.m4a",
+          "durationSec": 218.2,
+          "status": "built"
+        }
+      }
     },
     {
-      "seq": "14", "id": "build-your-own", "title": "Build your own — the full practice, unaided", "type": "practice", "practiceModule": 10,
+      "seq": "01",
+      "id": "the-path",
+      "title": "The path \u2014 where nidra sits in the eight limbs",
+      "type": "orientation",
+      "sources": [
+        "Yoga Sutras 2.29"
+      ],
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_01_the-path.txt",
+          "audio": "audio/nidra_01_the-path.m4a",
+          "durationSec": 182.7,
+          "status": "built"
+        }
+      }
+    },
+    {
+      "seq": "02",
+      "id": "the-depths",
+      "title": "The depths \u2014 the five sheaths",
+      "type": "orientation",
+      "sources": [
+        "Taittiriya Upanishad (pancha kosha)"
+      ],
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_02_the-depths.txt",
+          "audio": "audio/nidra_02_the-depths.m4a",
+          "durationSec": 140.4,
+          "status": "built"
+        }
+      }
+    },
+    {
+      "seq": "03",
+      "id": "setting-up",
+      "title": "Setting up your practice",
+      "type": "orientation",
+      "sources": [
+        "Hatha texts (shavasana)"
+      ],
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_03_setting-up.txt",
+          "audio": "audio/nidra_03_setting-up.m4a",
+          "durationSec": 112.4,
+          "status": "built"
+        }
+      }
+    },
+    {
+      "seq": "04",
+      "id": "obstacles-and-care",
+      "title": "Obstacles and care",
+      "type": "orientation",
       "sources": [],
-      "parts": { "teaching": { "status": "planned" }, "unaided": { "status": "planned" }, "cueCard": { "status": "planned" } }
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_04_obstacles-and-care.txt",
+          "audio": "audio/nidra_04_obstacles-and-care.m4a",
+          "durationSec": 111.7,
+          "status": "built"
+        }
+      }
     },
     {
-      "seq": "15", "id": "capstone", "title": "Capstone — what it is ultimately for",
-      "type": "orientation", "sources": ["Upanishadic (self-knowledge)"],
-      "parts": { "teaching": { "status": "planned" } }
+      "seq": "05",
+      "id": "stillness",
+      "title": "Stillness",
+      "type": "practice",
+      "practiceModule": 1,
+      "sources": [
+        "Mandukya Upanishad (four states)",
+        "Hatha texts (shavasana)"
+      ],
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_05_stillness_teaching.txt",
+          "audio": "audio/nidra_05_stillness_teaching.m4a",
+          "durationSec": 77.0,
+          "status": "built"
+        },
+        "micro": {
+          "script": "content/nidra_05_stillness_micro.txt",
+          "audio": "audio/nidra_05_stillness_micro.m4a",
+          "durationSec": 96.8,
+          "status": "built"
+        },
+        "extended": {
+          "script": "content/nidra_05_stillness_extended.txt",
+          "audio": "audio/nidra_05_stillness_extended.m4a",
+          "durationSec": null,
+          "status": "planned"
+        },
+        "cueCard": {
+          "file": "content/nidra_05_stillness_cue.md",
+          "status": "built"
+        }
+      }
+    },
+    {
+      "seq": "06",
+      "id": "sankalpa",
+      "title": "Sankalpa \u2014 the resolve",
+      "type": "practice",
+      "practiceModule": 2,
+      "sources": [
+        "Chandogya Upanishad 3.14"
+      ],
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_06_sankalpa_teaching.txt",
+          "audio": "audio/nidra_06_sankalpa_teaching.m4a",
+          "durationSec": 96.6,
+          "status": "built"
+        },
+        "micro": {
+          "script": "content/nidra_06_sankalpa_micro.txt",
+          "audio": "audio/nidra_06_sankalpa_micro.m4a",
+          "durationSec": 75.1,
+          "status": "built"
+        },
+        "extended": {
+          "status": "planned"
+        },
+        "cueCard": {
+          "file": "content/nidra_06_sankalpa_cue.md",
+          "status": "built"
+        }
+      }
+    },
+    {
+      "seq": "07",
+      "id": "pratyahara",
+      "title": "Pratyahara \u2014 withdrawing the senses",
+      "type": "practice",
+      "practiceModule": 3,
+      "sources": [
+        "Yoga Sutras 2.54-55"
+      ],
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_07_pratyahara_teaching.txt",
+          "audio": "audio/nidra_07_pratyahara_teaching.m4a",
+          "durationSec": 115.0,
+          "status": "built",
+          "note": "adopted from the earlier standalone explainer; may get a light re-record to reference the programme"
+        },
+        "micro": {
+          "script": "content/nidra_07_pratyahara_micro.txt",
+          "audio": "audio/nidra_07_pratyahara_micro.m4a",
+          "durationSec": 99.5,
+          "status": "built"
+        },
+        "extended": {
+          "status": "planned"
+        },
+        "cueCard": {
+          "file": "content/nidra_07_pratyahara_cue.md",
+          "status": "built"
+        }
+      }
+    },
+    {
+      "seq": "08",
+      "id": "nyasa",
+      "title": "Nyasa \u2014 rotating awareness through the body",
+      "type": "practice",
+      "practiceModule": 4,
+      "sources": [
+        "Tantric nyasa"
+      ],
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_08_nyasa_teaching.txt",
+          "audio": "audio/nidra_08_nyasa_teaching.m4a",
+          "durationSec": 92.5,
+          "status": "built"
+        },
+        "micro": {
+          "script": "content/nidra_08_nyasa_micro.txt",
+          "audio": "audio/nidra_08_nyasa_micro.m4a",
+          "durationSec": 93.5,
+          "status": "built"
+        },
+        "extended": {
+          "status": "planned"
+        },
+        "cueCard": {
+          "file": "content/nidra_08_nyasa_cue.md",
+          "status": "built"
+        }
+      }
+    },
+    {
+      "seq": "09",
+      "id": "breath",
+      "title": "Breath and the gap",
+      "type": "practice",
+      "practiceModule": 5,
+      "sources": [
+        "Vijnana Bhairava Tantra",
+        "Patanjali (pranayama)"
+      ],
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_09_breath_teaching.txt",
+          "audio": "audio/nidra_09_breath_teaching.m4a",
+          "durationSec": 87.6,
+          "status": "built"
+        },
+        "micro": {
+          "script": "content/nidra_09_breath_micro.txt",
+          "audio": "audio/nidra_09_breath_micro.m4a",
+          "durationSec": 89.5,
+          "status": "built"
+        },
+        "extended": {
+          "status": "planned"
+        },
+        "cueCard": {
+          "file": "content/nidra_09_breath_cue.md",
+          "status": "built"
+        }
+      }
+    },
+    {
+      "seq": "10",
+      "id": "opposites",
+      "title": "Pairs of opposites",
+      "type": "practice",
+      "practiceModule": 6,
+      "sources": [
+        "Bhagavad Gita 2.14, 6.7",
+        "Vijnana Bhairava Tantra"
+      ],
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_10_opposites_teaching.txt",
+          "audio": "audio/nidra_10_opposites_teaching.m4a",
+          "durationSec": 92.6,
+          "status": "built"
+        },
+        "micro": {
+          "script": "content/nidra_10_opposites_micro.txt",
+          "audio": "audio/nidra_10_opposites_micro.m4a",
+          "durationSec": 95.3,
+          "status": "built"
+        },
+        "extended": {
+          "status": "planned"
+        },
+        "cueCard": {
+          "file": "content/nidra_10_opposites_cue.md",
+          "status": "built"
+        }
+      }
+    },
+    {
+      "seq": "11",
+      "id": "inner-space",
+      "title": "Inner space (cidakasha) \u2014 dharana",
+      "type": "practice",
+      "practiceModule": 7,
+      "sources": [
+        "Vijnana Bhairava Tantra (void/space dharanas)",
+        "Yoga Sutras 3.1 (dharana)"
+      ],
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_11_inner-space_teaching.txt",
+          "audio": "audio/nidra_11_inner-space_teaching.m4a",
+          "durationSec": 94.9,
+          "status": "built"
+        },
+        "micro": {
+          "script": "content/nidra_11_inner-space_micro.txt",
+          "audio": "audio/nidra_11_inner-space_micro.m4a",
+          "durationSec": 103.5,
+          "status": "built"
+        },
+        "extended": {
+          "status": "planned"
+        },
+        "cueCard": {
+          "file": "content/nidra_11_inner-space_cue.md",
+          "status": "built"
+        }
+      }
+    },
+    {
+      "seq": "12",
+      "id": "witness",
+      "title": "The witness (turiya) \u2014 with AUM",
+      "type": "practice",
+      "practiceModule": 8,
+      "sources": [
+        "Mandukya Upanishad (turiya, AUM)"
+      ],
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_12_witness_teaching.txt",
+          "audio": "audio/nidra_12_witness_teaching.m4a",
+          "durationSec": 95.5,
+          "status": "built"
+        },
+        "micro": {
+          "script": "content/nidra_12_witness_micro.txt",
+          "audio": "audio/nidra_12_witness_micro.m4a",
+          "durationSec": 105.3,
+          "status": "built"
+        },
+        "extended": {
+          "status": "planned"
+        },
+        "cueCard": {
+          "file": "content/nidra_12_witness_cue.md",
+          "status": "built"
+        }
+      }
+    },
+    {
+      "seq": "13",
+      "id": "return",
+      "title": "Return \u2014 re-affirm the resolve, externalise",
+      "type": "practice",
+      "practiceModule": 9,
+      "sources": [],
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_13_return_teaching.txt",
+          "audio": "audio/nidra_13_return_teaching.m4a",
+          "durationSec": 88.4,
+          "status": "built"
+        },
+        "micro": {
+          "script": "content/nidra_13_return_micro.txt",
+          "audio": "audio/nidra_13_return_micro.m4a",
+          "durationSec": 91.0,
+          "status": "built"
+        },
+        "extended": {
+          "status": "planned"
+        },
+        "cueCard": {
+          "file": "content/nidra_13_return_cue.md",
+          "status": "built"
+        }
+      }
+    },
+    {
+      "seq": "14",
+      "id": "build-your-own",
+      "title": "Build your own \u2014 the full practice, unaided",
+      "type": "practice",
+      "practiceModule": 10,
+      "sources": [],
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_14_build-your-own_teaching.txt",
+          "audio": "audio/nidra_14_build-your-own_teaching.m4a",
+          "durationSec": 97.6,
+          "status": "built"
+        },
+        "unaided": {
+          "script": "content/nidra_14_build-your-own_unaided.txt",
+          "audio": "audio/nidra_14_build-your-own_unaided.m4a",
+          "durationSec": 499.2,
+          "status": "built"
+        },
+        "cueCard": {
+          "file": "content/nidra_14_build-your-own_cue.md",
+          "status": "built"
+        }
+      }
+    },
+    {
+      "seq": "15",
+      "id": "capstone",
+      "title": "Capstone \u2014 what it is ultimately for",
+      "type": "orientation",
+      "sources": [
+        "Upanishadic (self-knowledge)"
+      ],
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_15_capstone.txt",
+          "audio": "audio/nidra_15_capstone.m4a",
+          "durationSec": 85.7,
+          "status": "built"
+        }
+      }
     }
   ]
 }

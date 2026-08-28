@@ -1,0 +1,8 @@
+# M1 · Stillness — cue card
+
+*Ground of the practice: be still, stay awake at the edge of sleep.*
+
+1. **Lie down** — shavasana, palms up, completely still
+2. **The promise** — *"I will remain aware"*
+3. **Rest** — body heavy, awareness awake, at the edge
+4. **Return** — breath, gently up

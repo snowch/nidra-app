@@ -19,29 +19,32 @@ DESIGN.md      the locked build template every module follows
 ```
 
 ## Running order
+Legend: ✅ complete · ◑ teaching + micro + cue (extended pending)
+
 | # | Title | Type | Source | Status |
 |---|---|---|---|---|
 | 00 | Programme introduction | orientation | — | ✅ |
 | 01 | The path — nidra in the eight limbs | orientation | Yoga Sūtras 2.29 | ✅ |
 | 02 | The depths — the five sheaths | orientation | Taittirīya Up. | ✅ |
-| 03 | Setting up your practice | orientation | Haṭha | ⬜ |
-| 04 | Obstacles and care | orientation | — | ⬜ |
-| 05 | **M1 · Stillness** | practice | Māṇḍūkya; Haṭha | ◑ teaching + micro |
-| 06 | **M2 · Saṅkalpa** | practice | Chāndogya 3.14 | ⬜ |
-| 07 | **M3 · Pratyāhāra** | practice | Yoga Sūtras 2.54–55 | ◑ teaching |
-| 08 | **M4 · Nyāsa** | practice | Tantric nyāsa | ⬜ |
-| 09 | **M5 · Breath & the gap** | practice | Vijñāna Bhairava; prāṇāyāma | ⬜ |
-| 10 | **M6 · Pairs of opposites** | practice | Gītā 2.14, 6.7; VBT | ⬜ |
-| 11 | **M7 · Inner space (cidākāśa)** = dhāraṇā | practice | VBT; YS 3.1 | ⬜ |
-| 12 | **M8 · The witness (turīya)** + AUM | practice | Māṇḍūkya | ⬜ |
-| 13 | **M9 · Return** | practice | — | ⬜ |
-| 14 | **M10 · Build your own** (unaided) | practice | — | ⬜ |
-| 15 | Capstone — what it is ultimately for | orientation | Upaniṣadic | ⬜ |
+| 03 | Setting up your practice | orientation | Haṭha | ✅ |
+| 04 | Obstacles and care | orientation | — | ✅ |
+| 05 | **M1 · Stillness** | practice | Māṇḍūkya; Haṭha | ◑ |
+| 06 | **M2 · Saṅkalpa** | practice | Chāndogya 3.14 | ◑ |
+| 07 | **M3 · Pratyāhāra** | practice | Yoga Sūtras 2.54–55 | ◑ |
+| 08 | **M4 · Nyāsa** | practice | Tantric nyāsa | ◑ |
+| 09 | **M5 · Breath & the gap** | practice | Vijñāna Bhairava; prāṇāyāma | ◑ |
+| 10 | **M6 · Pairs of opposites** | practice | Gītā 2.14, 6.7; VBT | ◑ |
+| 11 | **M7 · Inner space (cidākāśa)** = dhāraṇā | practice | VBT; YS 3.1 | ◑ |
+| 12 | **M8 · The witness (turīya)** + AUM | practice | Māṇḍūkya | ◑ |
+| 13 | **M9 · Return** | practice | — | ◑ |
+| 14 | **M10 · Build your own** (full guided nidra) | practice | — | ✅ |
+| 15 | Capstone — what it is ultimately for | orientation | Upaniṣadic | ✅ |
 
-Each **practice module** ships four parts: `teaching` (hear once), `micro`
-(daily rep), `extended` (the growing full practice), and a written `cue` card
-(the memorisation aid). Guidance thins across the series — see the fading ladder
-in `DESIGN.md`.
+Each **practice module** ships a `teaching` (hear once), a `micro` (daily rep),
+and a written `cue` card (memorisation aid). The single **full guided nidra**
+(M14) is the cumulative practice through all stages; per-module `extended`
+versions are intentionally deferred (they'd near-duplicate M14). See the fading
+ladder in `DESIGN.md`.
 
 ## Rendering audio from scripts
 Requires Python + `requirements.txt` (Apple Silicon / MLX).

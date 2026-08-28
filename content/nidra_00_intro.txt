@@ -1,4 +1,4 @@
-Welcome to this practice.
+Welcome to the programme.
 
 <break time="2.0s" />
 
