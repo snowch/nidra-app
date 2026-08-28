@@ -174,8 +174,8 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_06_sankalpa_teaching.txt",
-          "audio": "audio/nidra_06_sankalpa_teaching.m4a?v=df12059e",
-          "durationSec": 96.8,
+          "audio": "audio/nidra_06_sankalpa_teaching.m4a?v=f9522725",
+          "durationSec": 128.6,
           "status": "built"
         },
         "micro": {
@@ -208,8 +208,8 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_07_pratyahara_teaching.txt",
-          "audio": "audio/nidra_07_pratyahara_teaching.m4a?v=b69bc165",
-          "durationSec": 115.0,
+          "audio": "audio/nidra_07_pratyahara_teaching.m4a?v=87890bde",
+          "durationSec": 141.5,
           "status": "built",
           "note": "adopted from the earlier standalone explainer; may get a light re-record to reference the programme"
         },
@@ -243,8 +243,8 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_08_nyasa_teaching.txt",
-          "audio": "audio/nidra_08_nyasa_teaching.m4a?v=65351d21",
-          "durationSec": 92.5,
+          "audio": "audio/nidra_08_nyasa_teaching.m4a?v=bf37f5ab",
+          "durationSec": 117.9,
           "status": "built"
         },
         "micro": {
@@ -278,8 +278,8 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_09_breath_teaching.txt",
-          "audio": "audio/nidra_09_breath_teaching.m4a?v=ae63994d",
-          "durationSec": 87.6,
+          "audio": "audio/nidra_09_breath_teaching.m4a?v=59af5abf",
+          "durationSec": 111.4,
           "status": "built"
         },
         "micro": {
@@ -313,8 +313,8 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_10_opposites_teaching.txt",
-          "audio": "audio/nidra_10_opposites_teaching.m4a?v=8173986b",
-          "durationSec": 92.6,
+          "audio": "audio/nidra_10_opposites_teaching.m4a?v=558a8596",
+          "durationSec": 116.9,
           "status": "built"
         },
         "micro": {
@@ -348,8 +348,8 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_11_inner-space_teaching.txt",
-          "audio": "audio/nidra_11_inner-space_teaching.m4a?v=6d62831a",
-          "durationSec": 94.9,
+          "audio": "audio/nidra_11_inner-space_teaching.m4a?v=98ba5ec3",
+          "durationSec": 118.2,
           "status": "built"
         },
         "micro": {
@@ -382,8 +382,8 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_12_witness_teaching.txt",
-          "audio": "audio/nidra_12_witness_teaching.m4a?v=2af15ad0",
-          "durationSec": 95.5,
+          "audio": "audio/nidra_12_witness_teaching.m4a?v=55fc8bef",
+          "durationSec": 120.4,
           "status": "built"
         },
         "micro": {
@@ -414,8 +414,8 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_13_return_teaching.txt",
-          "audio": "audio/nidra_13_return_teaching.m4a?v=f2c4083e",
-          "durationSec": 88.4,
+          "audio": "audio/nidra_13_return_teaching.m4a?v=633bb347",
+          "durationSec": 113.3,
           "status": "built"
         },
         "micro": {
@@ -446,8 +446,8 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_14_build-your-own_teaching.txt",
-          "audio": "audio/nidra_14_build-your-own_teaching.m4a?v=b6e4fbaa",
-          "durationSec": 97.6,
+          "audio": "audio/nidra_14_build-your-own_teaching.m4a?v=8e20da40",
+          "durationSec": 130.0,
           "status": "built"
         },
         "unaided": {

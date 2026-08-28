@@ -14,3 +14,5 @@
 10. **Return** — breath, body, room, move, eyes open
 
 > *Stillness · Resolve · Withdraw · Rotate · Breathe · Balance · Space · Witness · Resolve · Return*
+
+> **Ready to move on:** You move through the whole practice from memory, at your own pace, without the recording.

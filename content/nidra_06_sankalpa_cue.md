@@ -8,3 +8,5 @@
 4. **Return**
 
 > My sankalpa: ______________________________
+
+> **Ready to move on:** A single true resolve chosen; brought to mind and repeated with feeling, unforced.

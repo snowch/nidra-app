@@ -8,3 +8,5 @@
 4. **Room** — sounds, space
 5. **Move** — fingers, toes, stretch
 6. **Eyes open** — when fully present
+
+> **Ready to move on:** You return slowly and completely on your own — resolve, breath, body, room, movement — fully present.

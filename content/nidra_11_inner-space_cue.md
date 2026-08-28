@@ -7,3 +7,5 @@
 3. **Whatever appears** — colour, image — comes and goes
 4. Optional: a single **point of light**
 5. Rest in the **space itself** → **Resolve** → **Return**
+
+> **Ready to move on:** You rest in the inner space; images come and go without chasing them.

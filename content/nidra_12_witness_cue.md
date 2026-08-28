@@ -7,3 +7,5 @@
 3. Not the sounds → the hearer; not the thoughts → the watcher
 4. Optional: **AUM**, then rest in the silence after
 5. Rest as awareness → **Resolve** → **Return**
+
+> **Ready to move on:** You can turn to the one who is aware and rest as awareness, briefly, without effort.

@@ -7,3 +7,5 @@
 3. **Warm** ↔ **Cool**
 4. Feel each, release, meet its opposite
 5. **Resolve** → **Return**
+
+> **Ready to move on:** Each sensation felt fully, then released for its opposite; even, and unmoved.

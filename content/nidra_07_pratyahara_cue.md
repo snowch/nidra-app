@@ -7,3 +7,5 @@
 3. **Sensation** — let it be, don't reach
 4. **Turn inward** — senses quiet
 5. **Rest** withdrawn → **Resolve** → **Return**
+
+> **Ready to move on:** Senses quiet on their own; sounds and sensations come and go without pulling you out.
