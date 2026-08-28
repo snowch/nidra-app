@@ -5,9 +5,10 @@ const PART_META = {
   micro:    { label: 'Daily practice',    hint: 'repeat often' },
   extended: { label: 'Extended practice', hint: 'when time permits' },
   unaided:  { label: 'Full practice',     hint: 'the whole nidra' },
+  summaryCard: { label: 'Summary',        hint: 'key points' },
   cueCard:  { label: 'Cue card',          hint: 'memorisation aid' },
 };
-const PART_ORDER = ['teaching', 'micro', 'extended', 'unaided', 'cueCard'];
+const PART_ORDER = ['teaching', 'summaryCard', 'micro', 'extended', 'unaided', 'cueCard'];
 
 const journeyEl  = document.getElementById('journey');
 const progressEl = document.getElementById('progress');
@@ -162,7 +163,7 @@ function partRow(seq, title, key, part) {
   const m = PART_META[key] || { label: key, hint: '' };
   const built = part.status === 'built';
 
-  if (key === 'cueCard') {
+  if (key === 'cueCard' || key === 'summaryCard') {
     if (built && part.file) {
       return `<li class="part">
         <button class="play cue-open" data-file="${part.file}" aria-label="Open ${m.label}">▤</button>

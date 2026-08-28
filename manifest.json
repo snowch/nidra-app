@@ -38,6 +38,10 @@
           "audio": "audio/nidra_00_intro.m4a?v=59feef1d",
           "durationSec": 223.2,
           "status": "built"
+        },
+        "summaryCard": {
+          "file": "content/nidra_00_intro_summary.md",
+          "status": "built"
         }
       }
     },
@@ -54,6 +58,10 @@
           "script": "content/nidra_01_the-path.txt",
           "audio": "audio/nidra_01_the-path.m4a?v=26648a51",
           "durationSec": 101.5,
+          "status": "built"
+        },
+        "summaryCard": {
+          "file": "content/nidra_01_the-path_summary.md",
           "status": "built"
         }
       }
@@ -72,6 +80,10 @@
           "audio": "audio/nidra_02_the-depths.m4a?v=3ff7d231",
           "durationSec": 132.6,
           "status": "built"
+        },
+        "summaryCard": {
+          "file": "content/nidra_02_the-depths_summary.md",
+          "status": "built"
         }
       }
     },
@@ -89,6 +101,10 @@
           "audio": "audio/nidra_03_setting-up.m4a?v=1be6c829",
           "durationSec": 112.4,
           "status": "built"
+        },
+        "summaryCard": {
+          "file": "content/nidra_03_setting-up_summary.md",
+          "status": "built"
         }
       }
     },
@@ -103,6 +119,10 @@
           "script": "content/nidra_04_obstacles-and-care.txt",
           "audio": "audio/nidra_04_obstacles-and-care.m4a?v=058518fc",
           "durationSec": 111.7,
+          "status": "built"
+        },
+        "summaryCard": {
+          "file": "content/nidra_04_obstacles-and-care_summary.md",
           "status": "built"
         }
       }
