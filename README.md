@@ -70,5 +70,10 @@ Audio is compressed to `.m4a` (AAC ~64 kbps mono) for the web (≈6× smaller th
 the source `.wav`); the service worker caches it so practices work offline.
 
 ## Licence
-Kokoro model **Apache-2.0**, wrapper **MIT** — generated audio is free to use,
-including commercially.
+**© 2026 Chris Snow. All rights reserved.** The programme scripts (`content/`),
+recordings (`audio/`), and application are proprietary — see [`LICENSE`](LICENSE).
+No reuse, redistribution, or derivative works without written permission.
+
+Third-party tooling keeps its own licences: **kokoro-mlx** (MIT), **Kokoro-82M**
+speech model (Apache-2.0). The Apache-2.0 licence places no restriction on the
+generated audio, so the recordings are the copyright holder's to licence as above.

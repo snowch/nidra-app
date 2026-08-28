@@ -1,0 +1,33 @@
+Copyright © 2026 Chris Snow. All rights reserved.
+
+This work — the Yoga Nidra programme scripts (content/), the audio recordings
+(audio/), the application (index.html, app.js, app.css, sw.js, the manifest
+files, and icons/), the render tooling (tools/), and all accompanying text and
+documentation in this repository — is the proprietary work of the copyright
+holder.
+
+No part of this work may be reproduced, copied, distributed, publicly
+performed or displayed, transmitted, adapted, or used to create derivative
+works, in whole or in part, by any means or in any form, without the prior
+written permission of the copyright holder.
+
+Permission is granted only to view the published application for personal,
+non-commercial use. All other rights are reserved.
+
+--------------------------------------------------------------------------------
+Third-party components are NOT covered by the above notice and remain under
+their own licences:
+
+  - kokoro-mlx (build/render dependency) .......... MIT Licence
+  - Kokoro-82M speech synthesis model ............. Apache Licence 2.0
+
+The audio in audio/ was generated with the Kokoro-82M model. The Apache-2.0
+licence places no restriction on the generated output; the resulting recordings
+are the property of the copyright holder and are licensed as stated above.
+
+--------------------------------------------------------------------------------
+For permissions or enquiries, contact the copyright holder.
+
+THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. IT IS A RELAXATION
+PRACTICE, NOT MEDICAL ADVICE OR TREATMENT, AND IS NOT A SUBSTITUTE FOR SLEEP OR
+PROFESSIONAL CARE.
