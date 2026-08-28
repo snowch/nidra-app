@@ -3,7 +3,7 @@
  *   SHELL  — app files, versioned (bump to ship an app update)
  *   AUDIO  — recordings, persistent across app updates
  */
-const SHELL = 'nidra-shell-v6';
+const SHELL = 'nidra-shell-v7';
 const AUDIO = 'nidra-audio';
 const SHELL_ASSETS = [
   './',

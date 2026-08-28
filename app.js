@@ -4,7 +4,7 @@ const PART_META = {
   teaching: { label: 'Teaching',          hint: 'hear once' },
   micro:    { label: 'Daily practice',    hint: 'repeat often' },
   extended: { label: 'Extended practice', hint: 'when time permits' },
-  unaided:  { label: 'Unaided',           hint: 'run it yourself' },
+  unaided:  { label: 'Full practice',     hint: 'the whole nidra' },
   cueCard:  { label: 'Cue card',          hint: 'memorisation aid' },
 };
 const PART_ORDER = ['teaching', 'micro', 'extended', 'unaided', 'cueCard'];
@@ -17,6 +17,9 @@ const player     = document.getElementById('player');
 const offlineBox = document.getElementById('offlineBox');
 const offlineAll = document.getElementById('offlineAll');
 const offlineSt  = document.getElementById('offlineStatus');
+const cueModal   = document.getElementById('cueModal');
+const cueBody    = document.getElementById('cueBody');
+const cueClose   = document.getElementById('cueClose');
 
 const mini = {
   root:    document.getElementById('mini'),
@@ -34,7 +37,7 @@ const saveDone = () => localStorage.setItem(STORE, JSON.stringify(done));
 const hasCaches = 'caches' in window;
 
 let practisable = [];
-let offlineUrls = [];   // built audio urls, for offline caching
+let offlineUrls = [];
 let activeBtn = null;
 
 const fmt = (s) => (s && isFinite(s)) || s === 0
@@ -68,8 +71,43 @@ mini.play.onclick    = () => { if (player.src) player.paused ? player.play() : p
 mini.restart.onclick = () => { if (player.src) { player.currentTime = 0; player.play(); } };
 mini.seek.oninput    = () => { if (player.duration) player.currentTime = (mini.seek.value / 1000) * player.duration; };
 
-/* ---------- offline caching (stays inside the app; no file export) ---------- */
-const isCached    = async (url) => { try { return hasCaches && !!(await caches.match(url)); } catch { return false; } };
+/* ---------- cue card modal (renders markdown in-app) ---------- */
+function mdToHtml(md) {
+  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const inline = (s) => esc(s)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>');
+  let html = '', list = null;
+  const closeList = () => { if (list) { html += `</${list}>`; list = null; } };
+  for (const raw of md.split('\n')) {
+    const line = raw.trimEnd();
+    if (!line.trim()) { closeList(); continue; }
+    let m;
+    if ((m = line.match(/^#\s+(.*)/)))        { closeList(); html += `<h3>${inline(m[1])}</h3>`; }
+    else if ((m = line.match(/^>\s?(.*)/)))    { closeList(); html += `<blockquote>${inline(m[1])}</blockquote>`; }
+    else if ((m = line.match(/^\d+\.\s+(.*)/))){ if (list !== 'ol') { closeList(); html += '<ol>'; list = 'ol'; } html += `<li>${inline(m[1])}</li>`; }
+    else if ((m = line.match(/^[-*]\s+(.*)/))) { if (list !== 'ul') { closeList(); html += '<ul>'; list = 'ul'; } html += `<li>${inline(m[1])}</li>`; }
+    else                                       { closeList(); html += `<p>${inline(line)}</p>`; }
+  }
+  closeList();
+  return html;
+}
+async function openCue(file) {
+  try {
+    const res = await fetch(file);
+    cueBody.innerHTML = mdToHtml(await res.text());
+  } catch (e) {
+    cueBody.innerHTML = '<p>Could not load the cue card.</p>';
+  }
+  cueModal.hidden = false;
+}
+function closeCue() { cueModal.hidden = true; }
+cueClose.addEventListener('click', closeCue);
+cueModal.addEventListener('click', (e) => { if (e.target === cueModal) closeCue(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCue(); });
+
+/* ---------- offline caching (stays inside the app) ---------- */
+const isCached     = async (url) => { try { return hasCaches && !!(await caches.match(url)); } catch { return false; } };
 const ensureCached = async (url) => { try { await fetch(url); } catch (e) { console.warn('cache', e); } };
 
 async function saveForOffline() {
@@ -87,12 +125,8 @@ async function refreshOfflineUI() {
   offlineBox.hidden = false;
   let cached = 0;
   for (const url of offlineUrls) if (await isCached(url)) cached++;
-  if (cached === offlineUrls.length) {
-    offlineAll.textContent = '✓ Available offline';
-    offlineAll.disabled = true;
-  } else {
-    offlineSt.textContent = `${offlineUrls.length} recordings`;
-  }
+  if (cached === offlineUrls.length) { offlineAll.textContent = '✓ Available offline'; offlineAll.disabled = true; }
+  else offlineSt.textContent = `${offlineUrls.length} recordings`;
 }
 
 /* ---------- progress ---------- */
@@ -125,10 +159,20 @@ const plannedRow = (m, glyph) => `<li class="part planned"><span class="play">${
 function partRow(seq, title, key, part) {
   const m = PART_META[key] || { label: key, hint: '' };
   const built = part.status === 'built';
-  const id = `${seq}:${key}`;
+
+  if (key === 'cueCard') {
+    if (built && part.file) {
+      return `<li class="part">
+        <button class="play cue-open" data-file="${part.file}" aria-label="Open ${m.label}">▤</button>
+        <div class="part-main"><div class="part-label">${m.label}</div>
+        <div class="part-meta">${m.hint}</div></div></li>`;
+    }
+    return plannedRow(m, '▤');
+  }
 
   if (part.audio) {
     if (!built) return plannedRow(m, '▶');
+    const id = `${seq}:${key}`;
     practisable.push(id);
     offlineUrls.push(part.audio);
     const on = done[id] ? 'on' : '';
@@ -139,12 +183,7 @@ function partRow(seq, title, key, part) {
       <button class="check ${on}" data-id="${id}" title="Mark practised">${done[id] ? '✓' : ''}</button>
     </li>`;
   }
-  if (key === 'cueCard' && built && part.file) {
-    return `<li class="part"><span class="play">▤</span>
-      <div class="part-main"><div class="part-label"><a href="${part.file}">${m.label}</a></div>
-      <div class="part-meta">${m.hint}</div></div></li>`;
-  }
-  return plannedRow(m, key === 'cueCard' ? '▤' : '▶');
+  return plannedRow(m, '▶');
 }
 
 function card(item) {
@@ -183,6 +222,8 @@ async function init() {
       b.addEventListener('click', () => startTrack(b)));
     journeyEl.querySelectorAll('.check').forEach((c) =>
       c.addEventListener('click', () => toggleDone(c)));
+    journeyEl.querySelectorAll('.cue-open').forEach((b) =>
+      b.addEventListener('click', () => openCue(b.dataset.file)));
     offlineAll.addEventListener('click', saveForOffline);
     updateProgress();
     refreshCards();

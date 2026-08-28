@@ -140,6 +140,42 @@ span.play { cursor: default; }
 .foot .muted { color: var(--faint); font-size: .78rem; }
 a { color: var(--gold-soft); }
 
+/* ---------- cue card modal ---------- */
+.modal {
+  position: fixed; inset: 0; z-index: 60;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; background: rgba(10, 8, 6, .7);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+}
+.modal[hidden] { display: none; }
+.cue-sheet {
+  position: relative; width: 100%; max-width: 420px;
+  max-height: 82vh; overflow-y: auto;
+  background: var(--bg-elev); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 26px 24px 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+}
+.cue-close {
+  position: absolute; top: 12px; right: 12px;
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid var(--line); background: var(--bg-elev2);
+  color: var(--muted); font-size: .9rem; cursor: pointer;
+}
+.cue-sheet h3 {
+  font-family: var(--serif); font-weight: 500; font-size: 1.25rem;
+  color: var(--gold); margin: 0 0 12px; padding-right: 28px;
+}
+.cue-sheet p { color: var(--muted); margin: 0 0 14px; }
+.cue-sheet em { color: var(--gold-soft); font-style: italic; }
+.cue-sheet strong { color: var(--text); font-weight: 600; }
+.cue-sheet ol, .cue-sheet ul { margin: 0 0 8px; padding-left: 1.4em; }
+.cue-sheet li { margin: 9px 0; line-height: 1.5; }
+.cue-sheet blockquote {
+  margin: 16px 0 0; padding: 12px 14px;
+  border-left: 2px solid var(--gold); background: var(--bg-elev2);
+  border-radius: 0 8px 8px 0; color: var(--gold-soft); font-size: .92rem;
+}
+
 /* ---------- now-playing mini player ---------- */
 .mini {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
