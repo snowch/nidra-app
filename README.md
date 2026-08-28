@@ -9,11 +9,12 @@ Sūtras, tantric tradition), not a modern protocol.
 
 ## Repository layout
 ```
+index.html     the PWA (with app.css, app.js, sw.js, manifest.webmanifest, icons/)
 content/       narration scripts (.txt, with <break time="Xs"/> pauses)
-audio/         rendered narration (.wav, 24 kHz mono)
+audio/         narration — .m4a (web-facing) + .wav (source renders)
 tools/         render pipeline (pp.py = practice voice, intro.py = teaching voice)
 legacy/        the original standalone pratyāhāra meditation that started it
-manifest.json  machine-readable index (feeds the PWA) — see paths/voices/items
+manifest.json  machine-readable index the app reads — see paths/voices/items
 DESIGN.md      the locked build template every module follows
 ```
 
@@ -53,15 +54,18 @@ Both trim Kokoro's padding so `<break time="Xs">` pauses land at their authored
 length. Output `.wav` is written beside the input script; move it into `audio/`.
 
 ## Deployment (GitHub Pages)
-Served from `main` at the repository **root** — live at
-<https://snowch.github.io/nidra-app/>. With no `index.html` yet, Pages renders
-this README as the landing page.
+The PWA is served from `main` at the repository **root** — live at
+<https://snowch.github.io/nidra-app/>. `index.html` is the app; **no Pages
+settings change is needed** (it's already root).
 
-When the PWA is built, switch the Pages source to the **`/docs`** folder
-(Settings → Pages → Build and deployment → Branch `main`, Folder `/docs`).
-Two reasons: it keeps the app separate from `content/`, `audio/`, and `tools/`,
-and it avoids a name clash between this repo's data index (`manifest.json`) and
-the web-app manifest a PWA needs. The public URL stays the same either way.
+Why root, not `/docs`: the audio lives in `/audio`, and Pages serving from
+`/docs` cannot reach files above that folder. Serving from root keeps the audio
+reachable. The potential `manifest.json` name clash is sidestepped by naming the
+web-app manifest **`manifest.webmanifest`** — the repo's data index stays
+`manifest.json`.
+
+Audio is compressed to `.m4a` (AAC ~64 kbps mono) for the web (≈6× smaller than
+the source `.wav`); the service worker caches it so practices work offline.
 
 ## Licence
 Kokoro model **Apache-2.0**, wrapper **MIT** — generated audio is free to use,
