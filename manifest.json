@@ -52,8 +52,8 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_01_the-path.txt",
-          "audio": "audio/nidra_01_the-path.m4a?v=bec54113",
-          "durationSec": 182.7,
+          "audio": "audio/nidra_01_the-path.m4a?v=26648a51",
+          "durationSec": 101.5,
           "status": "built"
         }
       }
