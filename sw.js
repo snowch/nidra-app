@@ -1,6 +1,11 @@
-/* Yoga Nidra PWA service worker — offline-capable practice */
-const VERSION = 'nidra-v4';
-const SHELL = [
+/* Yoga Nidra PWA service worker — offline-capable practice.
+ * Two caches so updating the app never wipes your saved-offline audio:
+ *   SHELL  — app files, versioned (bump to ship an app update)
+ *   AUDIO  — recordings, persistent across app updates
+ */
+const SHELL = 'nidra-shell-v5';
+const AUDIO = 'nidra-audio';
+const SHELL_ASSETS = [
   './',
   './index.html',
   './app.css',
@@ -13,13 +18,14 @@ const SHELL = [
 ];
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(SHELL).then((c) => c.addAll(SHELL_ASSETS)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (e) => {
+  const keep = [SHELL, AUDIO];
   e.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== VERSION).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => !keep.includes(k)).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
@@ -28,12 +34,11 @@ self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
-  const isAudio = /\.(m4a|mp3|wav|ogg)$/i.test(url.pathname);
 
-  if (isAudio) {
-    // cache-first for audio: once practised, works fully offline
+  if (/\.(m4a|mp3|wav|ogg)$/i.test(url.pathname)) {
+    // audio: cache-first in the persistent audio cache -> works fully offline
     e.respondWith(
-      caches.open(VERSION).then((cache) =>
+      caches.open(AUDIO).then((cache) =>
         cache.match(req).then((hit) => hit || fetch(req).then((res) => {
           if (res.ok) cache.put(req, res.clone());
           return res;
@@ -43,12 +48,11 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  // stale-while-revalidate for shell + manifest
+  // shell: stale-while-revalidate so app updates roll in without losing offline audio
   e.respondWith(
-    caches.open(VERSION).then((cache) =>
+    caches.open(SHELL).then((cache) =>
       cache.match(req).then((hit) => {
-        const net = fetch(req).then((res) => { if (res.ok) cache.put(req, res.clone()); return res; })
-          .catch(() => hit);
+        const net = fetch(req).then((res) => { if (res.ok) cache.put(req, res.clone()); return res; }).catch(() => hit);
         return hit || net;
       })
     )

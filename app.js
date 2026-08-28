@@ -34,7 +34,7 @@ const saveDone = () => localStorage.setItem(STORE, JSON.stringify(done));
 const hasCaches = 'caches' in window;
 
 let practisable = [];
-let offlineTargets = [];   // { url, btn }
+let offlineUrls = [];   // built audio urls, for offline caching
 let activeBtn = null;
 
 const fmt = (s) => (s && isFinite(s)) || s === 0
@@ -68,41 +68,31 @@ mini.play.onclick    = () => { if (player.src) player.paused ? player.play() : p
 mini.restart.onclick = () => { if (player.src) { player.currentTime = 0; player.play(); } };
 mini.seek.oninput    = () => { if (player.duration) player.currentTime = (mini.seek.value / 1000) * player.duration; };
 
-/* ---------- offline / download ---------- */
-const isCached = async (url) => { try { return hasCaches && !!(await caches.match(url)); } catch { return false; } };
+/* ---------- offline caching (stays inside the app; no file export) ---------- */
+const isCached    = async (url) => { try { return hasCaches && !!(await caches.match(url)); } catch { return false; } };
 const ensureCached = async (url) => { try { await fetch(url); } catch (e) { console.warn('cache', e); } };
-function markOffline(btn) { btn.classList.add('saved'); btn.title = 'Available offline'; }
 
-async function downloadTrack(url, name, btn) {
-  try {
-    const res = await fetch(url);            // service worker caches this for offline use
-    const blob = await res.blob();
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = name;
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
-    markOffline(btn);
-  } catch (e) { console.warn('download', e); }
-}
-
-async function saveAllOffline() {
+async function saveForOffline() {
   offlineAll.disabled = true;
   let n = 0;
-  for (const t of offlineTargets) {
-    await ensureCached(t.url); markOffline(t.btn);
-    offlineSt.textContent = `saving ${++n} / ${offlineTargets.length}…`;
+  for (const url of offlineUrls) {
+    await ensureCached(url);
+    offlineSt.textContent = `saving ${++n} / ${offlineUrls.length}…`;
   }
-  offlineAll.textContent = '✓ Saved for offline';
+  offlineAll.textContent = '✓ Available offline';
   offlineSt.textContent = '';
 }
 async function refreshOfflineUI() {
-  if (!hasCaches || !offlineTargets.length) { offlineBox.hidden = true; return; }
+  if (!hasCaches || !offlineUrls.length) { offlineBox.hidden = true; return; }
   offlineBox.hidden = false;
   let cached = 0;
-  for (const t of offlineTargets) if (await isCached(t.url)) { markOffline(t.btn); cached++; }
-  if (cached === offlineTargets.length) { offlineAll.textContent = '✓ Saved for offline'; offlineAll.disabled = true; }
-  else offlineSt.textContent = `${offlineTargets.length} recordings`;
+  for (const url of offlineUrls) if (await isCached(url)) cached++;
+  if (cached === offlineUrls.length) {
+    offlineAll.textContent = '✓ Available offline';
+    offlineAll.disabled = true;
+  } else {
+    offlineSt.textContent = `${offlineUrls.length} recordings`;
+  }
 }
 
 /* ---------- progress ---------- */
@@ -140,13 +130,12 @@ function partRow(seq, title, key, part) {
   if (part.audio) {
     if (!built) return plannedRow(m, '▶');
     practisable.push(id);
+    offlineUrls.push(part.audio);
     const on = done[id] ? 'on' : '';
-    const name = part.audio.split('/').pop();
     return `<li class="part">
       <button class="play" data-src="${part.audio}" data-title="${title}" data-part="${m.label}" aria-label="Play ${m.label}">▶</button>
       <div class="part-main"><div class="part-label">${m.label}</div>
         <div class="part-meta">${m.hint}${part.durationSec ? ' · ' + fmt(part.durationSec) : ''}</div></div>
-      <button class="dl" data-url="${part.audio}" data-name="${name}" aria-label="Download ${m.label}" title="Download for offline">⤓</button>
       <button class="check ${on}" data-id="${id}" title="Mark practised">${done[id] ? '✓' : ''}</button>
     </li>`;
   }
@@ -188,16 +177,13 @@ async function init() {
     const res = await fetch('manifest.json', { cache: 'no-cache' });
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
-    practisable = [];
+    practisable = []; offlineUrls = [];
     journeyEl.innerHTML = data.items.map(card).join('');
     journeyEl.querySelectorAll('.play[data-src]').forEach((b) =>
       b.addEventListener('click', () => startTrack(b)));
     journeyEl.querySelectorAll('.check').forEach((c) =>
       c.addEventListener('click', () => toggleDone(c)));
-    offlineTargets = [...journeyEl.querySelectorAll('.dl')].map((b) => ({ url: b.dataset.url, btn: b }));
-    journeyEl.querySelectorAll('.dl').forEach((b) =>
-      b.addEventListener('click', () => downloadTrack(b.dataset.url, b.dataset.name, b)));
-    offlineAll.addEventListener('click', saveAllOffline);
+    offlineAll.addEventListener('click', saveForOffline);
     updateProgress();
     refreshCards();
     refreshOfflineUI();
