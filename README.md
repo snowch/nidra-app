@@ -25,7 +25,7 @@ Legend: ✅ complete — every module has teaching · micro · extended · cue
 |---|---|---|---|---|
 | 00 | Programme introduction | orientation | — | ✅ |
 | 01 | The path — nidra in the eight limbs | orientation | Yoga Sūtras 2.29 | ✅ |
-| 02 | The depths — the five sheaths | orientation | Taittirīya Up. | ✅ |
+| 02 | The depths — the layers within | orientation | Taittirīya Up. | ✅ |
 | 03 | Setting up your practice | orientation | Haṭha | ✅ |
 | 04 | Obstacles and care | orientation | — | ✅ |
 | 05 | **M1 · Stillness** | practice | Māṇḍūkya; Haṭha | ✅ |

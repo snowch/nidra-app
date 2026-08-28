@@ -61,7 +61,7 @@
     {
       "seq": "02",
       "id": "the-depths",
-      "title": "The depths \u2014 the five sheaths",
+      "title": "The depths \u2014 the layers within",
       "type": "orientation",
       "sources": [
         "Taittiriya Upanishad (pancha kosha)"
@@ -69,8 +69,8 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_02_the-depths.txt",
-          "audio": "audio/nidra_02_the-depths.m4a?v=86da3ac5",
-          "durationSec": 140.4,
+          "audio": "audio/nidra_02_the-depths.m4a?v=3ff7d231",
+          "durationSec": 132.6,
           "status": "built"
         }
       }
