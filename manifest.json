@@ -493,6 +493,12 @@
           "durationSec": 130.0,
           "status": "built"
         },
+        "extended": {
+          "script": "content/nidra_14_build-your-own_extended.txt",
+          "audio": "audio/nidra_14_build-your-own_extended.m4a?v=b62bc503",
+          "durationSec": 1680.0,
+          "status": "built"
+        },
         "unaided": {
           "script": "content/nidra_14_build-your-own_unaided.txt",
           "audio": "audio/nidra_14_build-your-own_unaided.m4a?v=f3eb448b",

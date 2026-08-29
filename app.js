@@ -160,7 +160,10 @@ const plannedRow = (m, glyph) => `<li class="part planned"><span class="play">${
 const sectionHeader = (label) => `<div class="section">${label}</div>`;
 
 function partRow(seq, title, key, part) {
-  const m = PART_META[key] || { label: key, hint: '' };
+  let m = PART_META[key] || { label: key, hint: '' };
+  // M10 has two full nidras — relabel so long vs short is unmistakable
+  if (seq === '14' && key === 'extended') m = { label: 'Full nidra — traditional', hint: 'the deep, ~28-min practice' };
+  if (seq === '14' && key === 'unaided')  m = { label: 'Full nidra — everyday',    hint: 'the shorter whole practice' };
   const built = part.status === 'built';
 
   if (key === 'cueCard' || key === 'summaryCard') {
