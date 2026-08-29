@@ -2,6 +2,7 @@
   "name": "Yoga Nidra — a self-directed journey",
   "short_name": "Yoga Nidra",
   "description": "Learn to perform Yoga Nidra on yourself, from memory — grounded in the ancient texts.",
+  "id": "/nidra-app/",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
