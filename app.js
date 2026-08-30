@@ -159,6 +159,27 @@ const plannedRow = (m, glyph) => `<li class="part planned"><span class="play">${
 
 const sectionHeader = (label) => `<div class="section">${label}</div>`;
 
+function orientationTile(items) {
+  const rows = items.map((it) => {
+    const t = it.parts.teaching, s = it.parts.summaryCard;
+    const built = t && t.status === 'built' && t.audio;
+    let play, meta;
+    if (built) {
+      offlineUrls.push(t.audio);
+      play = `<button class="play" data-src="${t.audio}" data-title="${it.title}" data-part="Teaching" aria-label="Play ${it.title}">▶</button>`;
+      meta = `hear once${t.durationSec ? ' · ' + fmt(t.durationSec) : ''}`;
+    } else { play = `<span class="play">▶</span>`; meta = 'coming soon'; }
+    const summary = (s && s.status === 'built' && s.file)
+      ? `<button class="mini-summary cue-open" data-file="${s.file}" title="Summary" aria-label="Summary of ${it.title}">▤</button>` : '';
+    return `<li class="part">${play}<div class="part-main"><div class="part-label">${it.title}</div><div class="part-meta">${meta}</div></div>${summary}</li>`;
+  }).join('');
+  return `<article class="card orientation">
+    <div class="card-head"><div class="seq">✦</div><div class="card-title">
+      <div class="badges"><span class="badge">Orientation · listen once</span></div>
+      <h2>The teachings</h2></div></div>
+    <ul class="parts">${rows}</ul></article>`;
+}
+
 function partRow(seq, title, key, part) {
   let m = PART_META[key] || { label: key, hint: '' };
   // M10 has two full nidras — relabel so long vs short is unmistakable
@@ -227,15 +248,16 @@ async function init() {
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
     practisable = []; offlineUrls = [];
-    let prevType = null;
-    journeyEl.innerHTML = data.items.map((item, i) => {
-      let head = '';
-      if (i === 0) head = sectionHeader('Orientation');
-      else if (item.type === 'practice' && prevType !== 'practice') head = sectionHeader('The practice');
-      else if (item.type === 'orientation' && prevType === 'practice') head = sectionHeader('In closing');
-      prevType = item.type;
-      return head + card(item);
-    }).join('');
+    const items = data.items;
+    const firstP = items.findIndex((it) => it.type === 'practice');
+    let lastP = -1; items.forEach((it, ix) => { if (it.type === 'practice') lastP = ix; });
+    const lead = items.filter((it, ix) => it.type === 'orientation' && ix < firstP);
+    const practice = items.filter((it) => it.type === 'practice');
+    const trail = items.filter((it, ix) => it.type === 'orientation' && ix > lastP);
+    journeyEl.innerHTML =
+      sectionHeader('Orientation') + orientationTile(lead) +
+      sectionHeader('The practice') + practice.map(card).join('') +
+      (trail.length ? sectionHeader('In closing') + trail.map(card).join('') : '');
     journeyEl.querySelectorAll('.play[data-src]').forEach((b) =>
       b.addEventListener('click', () => startTrack(b)));
     journeyEl.querySelectorAll('.check').forEach((c) =>
