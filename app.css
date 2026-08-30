@@ -93,7 +93,12 @@ body {
   margin: 14px 0;
 }
 .card.orientation { background: linear-gradient(var(--bg-elev), var(--bg)); }
-.card-head { display: flex; gap: 14px; align-items: flex-start; }
+.card-head { display: flex; gap: 14px; align-items: center; cursor: pointer; }
+.card-head .card-title { align-self: flex-start; }
+.chev { flex: 0 0 auto; color: var(--faint); font-size: .9rem; margin-left: auto; align-self: center; }
+.card.collapsed { padding-bottom: 16px; }
+.card.collapsed .card-body { display: none; }
+.card-body { margin-top: 2px; }
 .seq {
   flex: 0 0 auto; width: 38px; height: 38px; border-radius: 50%;
   display: grid; place-items: center;

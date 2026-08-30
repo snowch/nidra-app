@@ -35,6 +35,9 @@ const mini = {
 const STORE = 'nidra-progress-v1';
 const done  = JSON.parse(localStorage.getItem(STORE) || '{}');
 const saveDone = () => localStorage.setItem(STORE, JSON.stringify(done));
+const OPEN_STORE = 'nidra-open-v1';
+const openState = JSON.parse(localStorage.getItem(OPEN_STORE) || '{}');
+const saveOpen = () => localStorage.setItem(OPEN_STORE, JSON.stringify(openState));
 const hasCaches = 'caches' in window;
 
 let practisable = [];
@@ -173,11 +176,22 @@ function orientationTile(items) {
       ? `<button class="mini-summary cue-open" data-file="${s.file}" title="Summary" aria-label="Summary of ${it.title}">▤</button>` : '';
     return `<li class="part">${play}<div class="part-main"><div class="part-label">${it.title}</div><div class="part-meta">${meta}</div></div>${summary}</li>`;
   }).join('');
-  return `<article class="card orientation">
-    <div class="card-head"><div class="seq">✦</div><div class="card-title">
+  const open = !!openState['orient'];
+  return `<article class="card orientation ${open ? '' : 'collapsed'}" data-id="orient">
+    <div class="card-head" data-toggle="orient"><div class="seq">✦</div><div class="card-title">
       <div class="badges"><span class="badge">Orientation · listen once</span></div>
-      <h2>The teachings</h2></div></div>
-    <ul class="parts">${rows}</ul></article>`;
+      <h2>The teachings</h2></div><span class="chev">${open ? '▾' : '▸'}</span></div>
+    <div class="card-body"><ul class="parts">${rows}</ul></div></article>`;
+}
+
+function toggleCard(id) {
+  openState[id] = !openState[id]; saveOpen();
+  const c = journeyEl.querySelector(`.card[data-id="${id}"]`);
+  if (c) { c.classList.toggle('collapsed', !openState[id]); const ch = c.querySelector('.chev'); if (ch) ch.textContent = openState[id] ? '▾' : '▸'; }
+}
+function moduleDone(item) {
+  const keys = ['teaching', 'micro', 'extended', 'unaided'].filter((k) => item.parts[k] && item.parts[k].status === 'built' && item.parts[k].audio);
+  return keys.length > 0 && keys.every((k) => done[`${item.seq}:${k}`]);
 }
 
 function partRow(seq, title, key, part) {
@@ -228,17 +242,18 @@ function card(item) {
     .filter((k) => item.parts[k])
     .map((k) => partRow(item.seq, item.title, k, item.parts[k])).join('');
 
-  return `<article class="card ${item.type}">
-    <div class="card-head">
+  const open = !!openState[item.id];
+  return `<article class="card ${item.type} ${open ? '' : 'collapsed'}" data-id="${item.id}">
+    <div class="card-head" data-toggle="${item.id}">
       <div class="seq">${item.seq}</div>
       <div class="card-title">
         <div class="badges">${badges}</div>
         <h2>${item.title}</h2>
         ${sources}
       </div>
+      <span class="chev">${open ? '▾' : '▸'}</span>
     </div>
-    ${prereqs}
-    <ul class="parts">${parts}</ul>
+    <div class="card-body">${prereqs}<ul class="parts">${parts}</ul></div>
   </article>`;
 }
 
@@ -254,10 +269,16 @@ async function init() {
     const lead = items.filter((it, ix) => it.type === 'orientation' && ix < firstP);
     const practice = items.filter((it) => it.type === 'practice');
     const trail = items.filter((it, ix) => it.type === 'orientation' && ix > lastP);
+    // collapse defaults: orientation tile open; the module you're on open; rest collapsed
+    if (!('orient' in openState)) openState['orient'] = true;
+    const current = practice.find((it) => !moduleDone(it));
+    if (current) openState[current.id] = true;
     journeyEl.innerHTML =
       sectionHeader('Orientation') + orientationTile(lead) +
       sectionHeader('The practice') + practice.map(card).join('') +
       (trail.length ? sectionHeader('In closing') + trail.map(card).join('') : '');
+    journeyEl.querySelectorAll('.card-head[data-toggle]').forEach((h) =>
+      h.addEventListener('click', () => toggleCard(h.dataset.toggle)));
     journeyEl.querySelectorAll('.play[data-src]').forEach((b) =>
       b.addEventListener('click', () => startTrack(b)));
     journeyEl.querySelectorAll('.check').forEach((c) =>
