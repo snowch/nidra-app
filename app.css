@@ -205,6 +205,46 @@ a { color: var(--gold-soft); }
   border-radius: 0 8px 8px 0; color: var(--gold-soft); font-size: .92rem;
 }
 
+/* ---------- toolbar ---------- */
+.toolbar { max-width: 640px; margin: 8px auto 0; padding: 0 16px; display: flex; gap: 10px; justify-content: center; }
+.tool { background: transparent; border: 1px solid var(--line); color: var(--muted); border-radius: 99px; padding: 8px 16px; font-size: .82rem; cursor: pointer; }
+.tool:hover { background: var(--bg-elev); }
+
+/* ---------- Sankalpa banner ---------- */
+#skBanner:empty { display: none; }
+.sk-banner { display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: left; margin: 4px 0 8px; padding: 12px 16px; background: linear-gradient(180deg, var(--bg-elev), var(--bg-elev2)); border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: 12px; cursor: pointer; }
+.sk-banner-label { font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-soft); }
+.sk-banner-text { font-family: var(--serif); font-style: italic; font-size: 1.02rem; color: var(--text); }
+
+/* ---------- journal (inside the modal) ---------- */
+.jr-sec { margin: 0 0 22px; }
+.jr-h { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 10px; }
+.jr-guide { color: var(--faint); font-size: .82rem; margin: 8px 0 0 !important; }
+.jr-sankalpa { margin: 0 !important; }
+.jr-sub { color: var(--faint); font-size: .78rem; margin-top: 8px; }
+.jr-link, .jr-cancel { background: none; border: none; color: var(--gold-soft); font-size: inherit; cursor: pointer; padding: 0; text-decoration: underline; }
+.jr-input { width: 100%; resize: vertical; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-family: var(--sans); font-size: .9rem; line-height: 1.5; }
+.jr-input:focus { outline: none; border-color: var(--gold-soft); }
+.jr-opts { display: flex; gap: 8px; margin-bottom: 10px; }
+.jr-opt { flex: 1 1 0; padding: 10px 6px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--muted); font-size: .82rem; cursor: pointer; }
+.jr-opt:hover { background: var(--bg-elev2); }
+.jr-opt.on { border-color: transparent; color: #14100c; background: linear-gradient(180deg, var(--gold-soft), var(--gold)); font-weight: 600; }
+.jr-actions { display: flex; gap: 10px; align-items: center; justify-content: flex-end; margin-top: 12px; }
+.jr-cancel { text-decoration: none; padding: 10px 4px; color: var(--muted); }
+.jr-save { padding: 10px 18px; border-radius: 10px; border: none; background: linear-gradient(180deg, var(--gold-soft), var(--gold)); color: #14100c; font-size: .88rem; font-weight: 600; cursor: pointer; }
+.jr-list { list-style: none; margin: 4px 0 0 !important; padding: 0 !important; }
+.jr-item { padding: 10px 0; border-top: 1px solid var(--line); }
+.jr-item:first-child { border-top: none; }
+.jr-item-h { display: flex; align-items: center; gap: 8px; }
+.jr-badge { font-size: .66rem; padding: 2px 9px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); }
+.jr-badge.awake { color: #14100c; background: linear-gradient(180deg, var(--gold-soft), var(--gold)); border-color: transparent; }
+.jr-badge.drifted { color: var(--gold-soft); }
+.jr-when { margin-left: auto; color: var(--faint); font-size: .76rem; }
+.jr-del { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg-elev2); color: var(--faint); font-size: .72rem; cursor: pointer; }
+.jr-del:hover { color: var(--gold); }
+.jr-note-txt { color: var(--muted); font-size: .86rem; margin-top: 6px; }
+.jr-priv { color: var(--faint) !important; font-size: .74rem !important; margin: 6px 0 0 !important; }
+
 /* ---------- now-playing mini player ---------- */
 .mini {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;

@@ -57,6 +57,12 @@ A glanceable single page: the stage names in order, each with 2–4 trigger word
 ## Scripting gotchas
 - **No lone-word first segment.** Kokoro hallucinates a phantom onset when the very first `<break>`-delimited segment is a short standalone utterance ("Welcome." → "you're welcome"; "The depths." → "It adapts"). Open every script with a **full phrase** (≥4 words) or the two-sentence `Module N. Title.` pattern, which renders clean. Verify a new opening with an STT pass before shipping.
 
+## Practice journal + Sankalpa
+A light, device-only journal (toolbar "✎ Practice journal"; store `nidra-journal-v1`):
+- **Sankalpa kept constant.** The tradition asks the resolve stay *unchanged* over months. The app stores it once, shows it as a slim banner reminder at the top of the journey, and frames editing as something to do with care. This is the one traditionally-grounded piece — the ancient texts don't mandate a written log otherwise, so the rest is offered as a value-add, not dressed up as scripture.
+- **Per-practice notes.** Optional dated entry with a *stayed aware / drifted off* marker and free text (what arose, how deep). Individually deletable; all user text HTML-escaped.
+- **Privacy.** Never uploaded; lives only in `localStorage`. (Nidra practice is holistic, so the log is one journal, not per-module checkboxes as in the AT app.)
+
 ## Production standards
 - All speech silence-trimmed via `trim_silence` (breaks hit their authored length).
 - Every track opens with a ~1.5s lead-in and closes with a ~1.5s tail-out (`LEAD_IN`/`TAIL_OUT`).

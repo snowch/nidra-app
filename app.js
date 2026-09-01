@@ -38,6 +38,11 @@ const saveDone = () => localStorage.setItem(STORE, JSON.stringify(done));
 const OPEN_STORE = 'nidra-open-v1';
 const openState = JSON.parse(localStorage.getItem(OPEN_STORE) || '{}');
 const saveOpen = () => localStorage.setItem(OPEN_STORE, JSON.stringify(openState));
+const JRNL_STORE = 'nidra-journal-v1';
+const journal = JSON.parse(localStorage.getItem(JRNL_STORE) || '{}');
+journal.log = Array.isArray(journal.log) ? journal.log : [];   // {t, note, awake:'awake'|'drifted'|''}
+if (journal.sankalpa && typeof journal.sankalpa !== 'object') journal.sankalpa = null;   // {text, setAt}
+const saveJournal = () => localStorage.setItem(JRNL_STORE, JSON.stringify(journal));
 const hasCaches = 'caches' in window;
 
 let practisable = [];
@@ -109,6 +114,92 @@ function closeCue() { cueModal.hidden = true; }
 cueClose.addEventListener('click', closeCue);
 cueModal.addEventListener('click', (e) => { if (e.target === cueModal) closeCue(); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCue(); });
+
+/* ---------- practice journal + Sankalpa (kept only on this device) ---------- */
+const escH = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const AWAKE_LABEL = { awake: 'Stayed aware', drifted: 'Drifted off' };
+function fmtDate(t) { return new Date(t).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }); }
+function fmtWhen(t) {
+  const d = new Date(t), now = new Date(), y = new Date(); y.setDate(now.getDate() - 1);
+  const hh = String(d.getHours()).padStart(2, '0'), mm = String(d.getMinutes()).padStart(2, '0');
+  if (d.toDateString() === now.toDateString()) return `Today ${hh}:${mm}`;
+  if (d.toDateString() === y.toDateString()) return `Yesterday ${hh}:${mm}`;
+  return `${d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })} ${hh}:${mm}`;
+}
+
+let jEditSk = false;
+function sankalpaSection(edit) {
+  const sk = journal.sankalpa;
+  if (edit || !sk) {
+    return `<div class="jr-sec"><div class="jr-h">Your Sankalpa</div>` +
+      `<p class="jr-guide">A Sankalpa is a short resolve, stated in the present tense, as if already true. The tradition asks you keep the <em>same</em> resolve, unchanged, over months — so choose with care.</p>` +
+      `<textarea class="jr-input" id="skInput" rows="2" maxlength="200" placeholder="e.g. I am at peace with myself">${sk ? escH(sk.text) : ''}</textarea>` +
+      `<div class="jr-actions">${sk ? '<button class="jr-cancel" id="skCancel">Cancel</button>' : ''}<button class="jr-save" id="skSave">Save resolve</button></div></div>`;
+  }
+  return `<div class="jr-sec"><div class="jr-h">Your Sankalpa</div>` +
+    `<blockquote class="jr-sankalpa">${escH(sk.text)}</blockquote>` +
+    `<div class="jr-sub">Held since ${fmtDate(sk.setAt)} · <button class="jr-link" id="skEdit">edit</button></div>` +
+    `<p class="jr-guide">Repeat it, in the same words, at the start and again at the end of every practice.</p></div>`;
+}
+function logSection() {
+  return `<div class="jr-sec"><div class="jr-h">Log a practice</div>` +
+    `<div class="jr-opts">` +
+      Object.keys(AWAKE_LABEL).map((k) => `<button class="jr-opt" data-a="${k}">${AWAKE_LABEL[k]}</button>`).join('') +
+    `</div>` +
+    `<textarea class="jr-input" id="jrNote" rows="2" maxlength="1000" placeholder="What arose? Images, feelings, how deep you went (optional)"></textarea>` +
+    `<div class="jr-actions"><button class="jr-save" id="jrSave">Add entry</button></div></div>`;
+}
+function historySection() {
+  if (!journal.log.length) return '';
+  const items = [...journal.log].sort((a, b) => b.t - a.t).map((e) =>
+    `<li class="jr-item"><div class="jr-item-h">` +
+      (e.awake ? `<span class="jr-badge ${e.awake}">${AWAKE_LABEL[e.awake] || e.awake}</span>` : '') +
+      `<span class="jr-when">${fmtWhen(e.t)}</span>` +
+      `<button class="jr-del" data-t="${e.t}" aria-label="Delete entry">✕</button></div>` +
+      (e.note ? `<div class="jr-note-txt">${escH(e.note)}</div>` : '') + `</li>`).join('');
+  return `<div class="jr-sec"><div class="jr-h">Your journal</div><ul class="jr-list">${items}</ul></div>`;
+}
+function openJournal() {
+  cueBody.innerHTML = `<h3>Practice journal</h3>` + sankalpaSection(jEditSk) + logSection() + historySection() +
+    `<p class="jr-priv">Your Sankalpa and journal are kept only on this device — nothing is uploaded. Clearing the app’s site data erases them.</p>`;
+  cueModal.hidden = false;
+  wireJournal();
+}
+function wireJournal() {
+  const skSave = document.getElementById('skSave');
+  if (skSave) skSave.onclick = () => {
+    const v = (document.getElementById('skInput').value || '').trim().slice(0, 200);
+    if (!v) return; journal.sankalpa = { text: v, setAt: Date.now() }; saveJournal(); jEditSk = false; openJournal(); renderSankalpaBanner();
+  };
+  const skCancel = document.getElementById('skCancel'); if (skCancel) skCancel.onclick = () => { jEditSk = false; openJournal(); };
+  const skEdit = document.getElementById('skEdit'); if (skEdit) skEdit.onclick = () => { jEditSk = true; openJournal(); };
+  let awake = null;
+  cueBody.querySelectorAll('.jr-opt').forEach((b) => b.onclick = () => {
+    const was = b.classList.contains('on');
+    cueBody.querySelectorAll('.jr-opt').forEach((x) => x.classList.remove('on'));
+    if (!was) { b.classList.add('on'); awake = b.dataset.a; } else awake = null;
+  });
+  const jrSave = document.getElementById('jrSave');
+  if (jrSave) jrSave.onclick = () => {
+    const note = (document.getElementById('jrNote').value || '').trim().slice(0, 1000);
+    if (!note && !awake) return;
+    journal.log.push({ t: Date.now(), note, awake: awake || '' }); saveJournal(); jEditSk = false; openJournal();
+  };
+  cueBody.querySelectorAll('.jr-del').forEach((b) => b.onclick = () => {
+    const t = +b.dataset.t; journal.log = journal.log.filter((e) => e.t !== t); saveJournal(); openJournal();
+  });
+}
+function sankalpaBannerHtml() {
+  const sk = journal.sankalpa; if (!sk) return '';
+  return `<button class="sk-banner" id="skBannerBtn"><span class="sk-banner-label">Your Sankalpa</span><span class="sk-banner-text">${escH(sk.text)}</span></button>`;
+}
+function renderSankalpaBanner() {
+  const el = document.getElementById('skBanner'); if (!el) return;
+  el.innerHTML = sankalpaBannerHtml();
+  const b = document.getElementById('skBannerBtn'); if (b) b.onclick = openJournal;
+}
+const journalBtn = document.getElementById('journalBtn');
+if (journalBtn) journalBtn.onclick = () => { jEditSk = false; openJournal(); };
 
 /* ---------- offline caching (stays inside the app) ---------- */
 const isCached     = async (url) => { try { return hasCaches && !!(await caches.match(url)); } catch { return false; } };
@@ -274,6 +365,7 @@ async function init() {
     const current = practice.find((it) => !moduleDone(it));
     if (current) openState[current.id] = true;
     journeyEl.innerHTML =
+      `<div id="skBanner"></div>` +
       sectionHeader('Orientation') + orientationTile(lead) +
       sectionHeader('The practice') + practice.map(card).join('') +
       (trail.length ? sectionHeader('In closing') + trail.map(card).join('') : '');
@@ -286,6 +378,7 @@ async function init() {
     journeyEl.querySelectorAll('.cue-open').forEach((b) =>
       b.addEventListener('click', () => openCue(b.dataset.file)));
     offlineAll.addEventListener('click', saveForOffline);
+    renderSankalpaBanner();
     updateProgress();
     refreshCards();
     refreshOfflineUI();
