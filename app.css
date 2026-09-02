@@ -233,6 +233,8 @@ a { color: var(--gold-soft); }
 .jr-link, .jr-cancel { background: none; border: none; color: var(--gold-soft); font-size: inherit; cursor: pointer; padding: 0; text-decoration: underline; }
 .jr-input { width: 100%; resize: vertical; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-family: var(--sans); font-size: .9rem; line-height: 1.5; }
 .jr-input:focus { outline: none; border-color: var(--gold-soft); }
+.jr-starter { display: inline-block; margin: 8px 0 0; padding: 7px 12px; border-radius: 99px; border: 1px solid rgba(202,160,102,.34); background: rgba(202,160,102,.09); color: var(--gold-soft); font-size: .8rem; cursor: pointer; }
+.jr-starter:hover { background: rgba(202,160,102,.18); }
 .jr-opts { display: flex; gap: 8px; margin-bottom: 10px; }
 .jr-opt { flex: 1 1 0; padding: 10px 6px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--muted); font-size: .82rem; cursor: pointer; }
 .jr-opt:hover { background: var(--bg-elev2); }

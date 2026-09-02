@@ -132,7 +132,9 @@ function sankalpaSection(edit) {
   if (edit || !sk) {
     return `<div class="jr-sec"><div class="jr-h">Your Sankalpa</div>` +
       `<p class="jr-guide">A Sankalpa is a short resolve, stated in the present tense, as if already true. The tradition asks you keep the <em>same</em> resolve, unchanged, over months — so choose with care.</p>` +
-      `<textarea class="jr-input" id="skInput" rows="2" maxlength="200" placeholder="e.g. I am at peace with myself">${sk ? escH(sk.text) : ''}</textarea>` +
+      `<p class="jr-guide">Not sure yet? Don't let choosing hold you up — begin with a simple resolve of being, and let a truer one surface over time.</p>` +
+      `<textarea class="jr-input" id="skInput" rows="2" maxlength="200" placeholder="e.g. I am at peace, just as I am">${sk ? escH(sk.text) : ''}</textarea>` +
+      `<button class="jr-starter" id="skStarter" type="button">Use “I am at peace, just as I am”</button>` +
       `<div class="jr-actions">${sk ? '<button class="jr-cancel" id="skCancel">Cancel</button>' : ''}<button class="jr-save" id="skSave">Save resolve</button></div></div>`;
   }
   return `<div class="jr-sec"><div class="jr-h">Your Sankalpa</div>` +
@@ -172,6 +174,8 @@ function wireJournal() {
   };
   const skCancel = document.getElementById('skCancel'); if (skCancel) skCancel.onclick = () => { jEditSk = false; openJournal(); };
   const skEdit = document.getElementById('skEdit'); if (skEdit) skEdit.onclick = () => { jEditSk = true; openJournal(); };
+  const skStarter = document.getElementById('skStarter');
+  if (skStarter) skStarter.onclick = () => { const ta = document.getElementById('skInput'); if (ta) { ta.value = 'I am at peace, just as I am'; ta.focus(); } };
   let awake = null;
   cueBody.querySelectorAll('.jr-opt').forEach((b) => b.onclick = () => {
     const was = b.classList.contains('on');
