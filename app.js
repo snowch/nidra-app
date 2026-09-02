@@ -2,13 +2,12 @@
 
 const PART_META = {
   teaching: { label: 'Teaching',          hint: 'hear once' },
-  micro:    { label: 'Daily practice',    hint: 'repeat often' },
-  extended: { label: 'Extended practice', hint: 'when time permits' },
+  extended: { label: 'Daily practice',    hint: 'a few minutes · return to it often' },
   unaided:  { label: 'Full practice',     hint: 'the whole nidra' },
   summaryCard: { label: 'Summary',        hint: 'key points' },
   cueCard:  { label: 'Cue card',          hint: 'memorisation aid' },
 };
-const PART_ORDER = ['teaching', 'summaryCard', 'micro', 'extended', 'unaided', 'cueCard'];
+const PART_ORDER = ['teaching', 'summaryCard', 'extended', 'unaided', 'cueCard'];
 
 const journeyEl  = document.getElementById('journey');
 const progressEl = document.getElementById('progress');
@@ -281,7 +280,7 @@ function toggleCard(id) {
   if (c) { c.classList.toggle('collapsed', !openState[id]); const ch = c.querySelector('.chev'); if (ch) ch.textContent = openState[id] ? '▾' : '▸'; }
 }
 function moduleDone(item) {
-  const keys = ['teaching', 'micro', 'extended', 'unaided'].filter((k) => item.parts[k] && item.parts[k].status === 'built' && item.parts[k].audio);
+  const keys = ['teaching', 'extended', 'unaided'].filter((k) => item.parts[k] && item.parts[k].status === 'built' && item.parts[k].audio);
   return keys.length > 0 && keys.every((k) => done[`${item.seq}:${k}`]);
 }
 
