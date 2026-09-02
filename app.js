@@ -47,6 +47,7 @@ const hasCaches = 'caches' in window;
 let practisable = [];
 let offlineUrls = [];
 let activeBtn = null;
+let DATA = null;
 
 const fmt = (s) => (s && isFinite(s)) || s === 0
   ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}` : '0:00';
@@ -233,7 +234,15 @@ function toggleDone(el) {
   done[id] = !done[id];
   el.classList.toggle('on', !!done[id]);
   el.textContent = done[id] ? '✓' : '';
-  saveDone(); updateProgress(); refreshCards();
+  saveDone(); updateProgress(); refreshCards(); refreshCumulative();
+}
+// Re-render the top cumulative card in place when progress changes (it grows/unlocks with done state).
+function refreshCumulative() {
+  if (!DATA) return;
+  const w = document.getElementById('cumWrap'); if (!w) return;
+  const practice = DATA.items.filter((it) => it.type === 'practice');
+  w.innerHTML = cumulativeSection(DATA, practice);
+  w.querySelectorAll('.play[data-src]').forEach((b) => b.addEventListener('click', () => startTrack(b)));
 }
 function updateProgress() {
   const total = practisable.length;
@@ -347,8 +356,22 @@ function card(item) {
       </div>
       <span class="chev">${open ? '▾' : '▸'}</span>
     </div>
-    <div class="card-body">${prereqs}<ul class="parts">${parts}</ul></div>
+    <div class="card-body">${prereqs}<ul class="parts">${parts}</ul>${isPractice ? flowRowHtml(item) : ''}</div>
   </article>`;
+}
+// Below the daily practice: this module's cumulative flow (through this stage), so the flow isn't lost.
+function flowRowHtml(item) {
+  const cum = (DATA && DATA.cumulative) || []; if (!cum.length) return '';
+  const p = item.practiceModule || 0; if (p < 2 || p > 8) return '';   // stages that build the flow
+  const maxM = cum[cum.length - 1].module;
+  const m = cum.find((c) => c.module === Math.min(p, maxM)); if (!m) return '';
+  offlineUrls.push(m.audio);
+  const whole = m.module >= maxM;
+  return `<div class="flow-row"><span class="flow-label">Flow practice · everything so far</span>` +
+    `<ul class="parts"><li class="part">` +
+    `<button class="play" data-src="${m.audio}" data-title="${item.title}" data-part="flow practice" aria-label="Play flow practice">▶</button>` +
+    `<div class="part-main"><div class="part-label">${whole ? 'The whole practice, flowing' : 'Flow through this stage'}</div>` +
+    `<div class="part-meta">one unbroken nidra · ${fmt(m.durationSec)}</div></div></li></ul></div>`;
 }
 
 // The cumulative practice: one unbroken flow through everything learned so far.
@@ -397,7 +420,8 @@ async function init() {
   try {
     const res = await fetch('manifest.json', { cache: 'no-cache' });
     if (!res.ok) throw new Error(res.status);
-    const data = await res.json();
+    DATA = await res.json();
+    const data = DATA;
     practisable = []; offlineUrls = [];
     const items = data.items;
     const firstP = items.findIndex((it) => it.type === 'practice');
@@ -412,7 +436,7 @@ async function init() {
     journeyEl.innerHTML =
       `<div id="skBanner"></div>` +
       sectionHeader('Orientation') + orientationTile(lead) +
-      cumulativeSection(data, practice) +
+      `<div id="cumWrap">${cumulativeSection(data, practice)}</div>` +
       sectionHeader('The practice') + practice.map(card).join('') +
       (trail.length ? sectionHeader('In closing') + trail.map(card).join('') : '');
     journeyEl.querySelectorAll('.card-head[data-toggle]').forEach((h) =>

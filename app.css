@@ -223,6 +223,10 @@ a { color: var(--gold-soft); }
 .cumulative-note { color: var(--muted); font-size: .86rem; margin: 2px 0 4px; }
 .cumulative-card.locked { opacity: .72; border-left-color: var(--faint); }
 .cumulative-card.locked .seq { color: var(--faint); }
+.flow-row { margin: 10px 0 2px; padding: 10px 12px; background: linear-gradient(var(--bg-elev), var(--bg-elev2)); border: 1px solid var(--line); border-left: 3px solid var(--gold-soft); border-radius: 10px; }
+.flow-label { display: block; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 2px; }
+.flow-row .parts { margin: 4px 0 0 !important; }
+.flow-row .part { border-top: none; padding: 6px 0 2px; }
 
 /* ---------- journal (inside the modal) ---------- */
 .jr-sec { margin: 0 0 22px; }

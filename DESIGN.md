@@ -24,9 +24,11 @@ SETTLE  →  RESOLVE  →  CORE  →  REST  →  RETURN
 
 **Canonical CORE order:** pratyāhāra (3) → nyāsa (4) → breath (5) → opposites (6) → inner space (7) → witness (8).
 
-### Micro vs Extended (resolves the "practices get too long" problem)
-- **Micro** (~2–4 min, for frequent daily reps): `SETTLE → RESOLVE(brief) → only the NEW element → RETURN`. Drills one skill.
-- **Extended** (~3–4 min, when time permits): `SETTLE → RESOLVE → the SAME element, explored longer and more spaciously → REST → RETURN`. A deeper solo sit on that one element — not cumulative (that would near-duplicate across modules). The cumulative *whole* lives once, in the M14 full nidra.
+### Daily practice + Flow practice
+- **Daily practice** (one per module, ~3–4 min): `SETTLE → RESOLVE → that module's element, explored → REST → RETURN`. A solo sit on the one element. (The old "micro" was a near-duplicate shorter version and was removed.)
+- **Flow practice** (the cumulative): one unbroken nidra through *everything learned so far*, so the flow isn't lost when practising stages in isolation. Built from reusable stage cores (`content/cumulative/`, `tools/build_cumulative.py`) into pre-rendered milestones 1–8 (stillness → witness, ~3.5 → ~20 min). Surfaced two ways:
+  - the top **"Flow it together"** card (your furthest milestone; a locked placeholder until the first stage is marked practised; refreshed in place by `refreshCumulative` when progress changes);
+  - a **per-module flow row** below the daily practice on modules 2–8 (`flowRowHtml`), playing that module's flow. Modules 1 (single stage) and 9–10 (return/build-your-own) don't get one.
 
 ## Saṅkalpa bookend (Decision 2)
 - Chosen **once** in Module 2 (with guidance on crafting it: single, positive, present-tense).
