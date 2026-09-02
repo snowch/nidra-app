@@ -221,6 +221,8 @@ a { color: var(--gold-soft); }
 .cumulative-card .card-head.static { cursor: default; }
 .cumulative-card .seq { color: var(--gold); font-size: 1.3rem; }
 .cumulative-note { color: var(--muted); font-size: .86rem; margin: 2px 0 4px; }
+.cumulative-card.locked { opacity: .72; border-left-color: var(--faint); }
+.cumulative-card.locked .seq { color: var(--faint); }
 
 /* ---------- journal (inside the modal) ---------- */
 .jr-sec { margin: 0 0 22px; }

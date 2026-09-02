@@ -352,9 +352,22 @@ function card(item) {
 function cumulativeSection(data, practice) {
   const cum = data.cumulative || [];
   if (!cum.length) return '';
-  const reached = practice.filter(moduleDone).map((it) => it.practiceModule || 0);
+  // Unlock on the furthest module whose practice you've marked done (a single tick, not teaching too).
+  const reached = practice.filter((it) => done[`${it.seq}:extended`]).map((it) => it.practiceModule || 0);
   const furthest = reached.length ? Math.max(...reached) : 0;
-  if (furthest < 1) return '';
+  const firstStage = practice[0] ? practice[0].title : 'Stillness';
+  if (furthest < 1) {
+    // Visible locked placeholder, so it's clear the practice exists and how it appears.
+    return sectionHeader('Put it together') +
+      `<article class="card practice cumulative-card locked" data-id="cumulative">
+        <div class="card-head static"><div class="seq">∞</div><div class="card-title">
+          <div class="badges"><span class="badge">Whole practice · locked</span></div>
+          <h2>Flow it together</h2></div></div>
+        <div class="card-body">
+          <p class="cumulative-note">One unbroken practice through everything you have learned — the way a full nidra is done. It appears here, and grows, as you mark each stage practised. Begin with ${escH(firstStage)}.</p>
+        </div>
+      </article>`;
+  }
   const avail = cum.filter((c) => c.module <= furthest);
   const cur = avail.length ? avail[avail.length - 1] : cum[0];
   offlineUrls.push(cur.audio);
@@ -395,8 +408,8 @@ async function init() {
     journeyEl.innerHTML =
       `<div id="skBanner"></div>` +
       sectionHeader('Orientation') + orientationTile(lead) +
-      sectionHeader('The practice') + practice.map(card).join('') +
       cumulativeSection(data, practice) +
+      sectionHeader('The practice') + practice.map(card).join('') +
       (trail.length ? sectionHeader('In closing') + trail.map(card).join('') : '');
     journeyEl.querySelectorAll('.card-head[data-toggle]').forEach((h) =>
       h.addEventListener('click', () => toggleCard(h.dataset.toggle)));
