@@ -359,7 +359,7 @@ function cumulativeSection(data, practice) {
   const cur = avail.length ? avail[avail.length - 1] : cum[0];
   offlineUrls.push(cur.audio);
   const stageTitle = (practice.find((it) => it.id === cur.through) || {}).title || cur.through;
-  const capped = furthest > cum[cum.length - 1].module;
+  const complete = cur.module >= cum[cum.length - 1].module;
   return sectionHeader('Put it together') +
     `<article class="card practice cumulative-card" data-id="cumulative">
       <div class="card-head static"><div class="seq">∞</div><div class="card-title">
@@ -370,7 +370,7 @@ function cumulativeSection(data, practice) {
         <ul class="parts"><li class="part">
           <button class="play" data-src="${cur.audio}" data-title="Cumulative practice" data-part="through ${stageTitle}" aria-label="Play cumulative practice">▶</button>
           <div class="part-main"><div class="part-label">Through ${stageTitle}</div>
-          <div class="part-meta">flowing · ${fmt(cur.durationSec)}${capped ? ' · more stages to come' : ''}</div></div>
+          <div class="part-meta">flowing · ${fmt(cur.durationSec)}${complete ? ' · the whole practice' : ' · grows as you learn more'}</div></div>
         </li></ul>
       </div>
     </article>`;

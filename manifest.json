@@ -29,20 +29,50 @@
     {
       "module": 1,
       "through": "stillness",
-      "audio": "audio/cumulative/cumulative_1.m4a?v=3f412392",
+      "audio": "audio/cumulative/cumulative_1.m4a?v=c6e5d185",
       "durationSec": 209.7
     },
     {
       "module": 2,
       "through": "sankalpa",
-      "audio": "audio/cumulative/cumulative_2.m4a?v=a6fbfce5",
+      "audio": "audio/cumulative/cumulative_2.m4a?v=b4b2b746",
       "durationSec": 302.3
     },
     {
       "module": 3,
       "through": "pratyahara",
-      "audio": "audio/cumulative/cumulative_3.m4a?v=a2e58c0e",
+      "audio": "audio/cumulative/cumulative_3.m4a?v=50cca493",
       "durationSec": 405.2
+    },
+    {
+      "module": 4,
+      "through": "nyasa",
+      "audio": "audio/cumulative/cumulative_4.m4a?v=b94fb3f0",
+      "durationSec": 624.2
+    },
+    {
+      "module": 5,
+      "through": "breath",
+      "audio": "audio/cumulative/cumulative_5.m4a?v=858233fe",
+      "durationSec": 754.2
+    },
+    {
+      "module": 6,
+      "through": "opposites",
+      "audio": "audio/cumulative/cumulative_6.m4a?v=2de783f4",
+      "durationSec": 893.1
+    },
+    {
+      "module": 7,
+      "through": "inner-space",
+      "audio": "audio/cumulative/cumulative_7.m4a?v=4156e42b",
+      "durationSec": 1038.8
+    },
+    {
+      "module": 8,
+      "through": "witness",
+      "audio": "audio/cumulative/cumulative_8.m4a?v=ef08e49a",
+      "durationSec": 1196.1
     }
   ],
   "items": [
