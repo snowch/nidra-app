@@ -25,6 +25,26 @@
     "inner-space",
     "witness"
   ],
+  "cumulative": [
+    {
+      "module": 1,
+      "through": "stillness",
+      "audio": "audio/cumulative/cumulative_1.m4a?v=3f412392",
+      "durationSec": 209.7
+    },
+    {
+      "module": 2,
+      "through": "sankalpa",
+      "audio": "audio/cumulative/cumulative_2.m4a?v=a6fbfce5",
+      "durationSec": 302.3
+    },
+    {
+      "module": 3,
+      "through": "pratyahara",
+      "audio": "audio/cumulative/cumulative_3.m4a?v=a2e58c0e",
+      "durationSec": 405.2
+    }
+  ],
   "items": [
     {
       "seq": "00",

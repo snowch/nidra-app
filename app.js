@@ -347,6 +347,35 @@ function card(item) {
   </article>`;
 }
 
+// The cumulative practice: one unbroken flow through everything learned so far.
+// Shows the milestone matching the furthest module you've marked practised; grows as you progress.
+function cumulativeSection(data, practice) {
+  const cum = data.cumulative || [];
+  if (!cum.length) return '';
+  const reached = practice.filter(moduleDone).map((it) => it.practiceModule || 0);
+  const furthest = reached.length ? Math.max(...reached) : 0;
+  if (furthest < 1) return '';
+  const avail = cum.filter((c) => c.module <= furthest);
+  const cur = avail.length ? avail[avail.length - 1] : cum[0];
+  offlineUrls.push(cur.audio);
+  const stageTitle = (practice.find((it) => it.id === cur.through) || {}).title || cur.through;
+  const capped = furthest > cum[cum.length - 1].module;
+  return sectionHeader('Put it together') +
+    `<article class="card practice cumulative-card" data-id="cumulative">
+      <div class="card-head static"><div class="seq">∞</div><div class="card-title">
+        <div class="badges"><span class="badge practice">Whole practice</span></div>
+        <h2>Flow it together</h2></div></div>
+      <div class="card-body">
+        <p class="cumulative-note">One unbroken practice through everything you have learned so far — the way a full nidra is done. It grows as you progress.</p>
+        <ul class="parts"><li class="part">
+          <button class="play" data-src="${cur.audio}" data-title="Cumulative practice" data-part="through ${stageTitle}" aria-label="Play cumulative practice">▶</button>
+          <div class="part-main"><div class="part-label">Through ${stageTitle}</div>
+          <div class="part-meta">flowing · ${fmt(cur.durationSec)}${capped ? ' · more stages to come' : ''}</div></div>
+        </li></ul>
+      </div>
+    </article>`;
+}
+
 async function init() {
   try {
     const res = await fetch('manifest.json', { cache: 'no-cache' });
@@ -367,6 +396,7 @@ async function init() {
       `<div id="skBanner"></div>` +
       sectionHeader('Orientation') + orientationTile(lead) +
       sectionHeader('The practice') + practice.map(card).join('') +
+      cumulativeSection(data, practice) +
       (trail.length ? sectionHeader('In closing') + trail.map(card).join('') : '');
     journeyEl.querySelectorAll('.card-head[data-toggle]').forEach((h) =>
       h.addEventListener('click', () => toggleCard(h.dataset.toggle)));

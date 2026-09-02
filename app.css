@@ -216,6 +216,12 @@ a { color: var(--gold-soft); }
 .sk-banner-label { font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-soft); }
 .sk-banner-text { font-family: var(--serif); font-style: italic; font-size: 1.02rem; color: var(--text); }
 
+/* ---------- cumulative practice card ---------- */
+.cumulative-card { background: linear-gradient(var(--bg-elev), var(--bg-elev2)); border-left: 3px solid var(--gold); }
+.cumulative-card .card-head.static { cursor: default; }
+.cumulative-card .seq { color: var(--gold); font-size: 1.3rem; }
+.cumulative-note { color: var(--muted); font-size: .86rem; margin: 2px 0 4px; }
+
 /* ---------- journal (inside the modal) ---------- */
 .jr-sec { margin: 0 0 22px; }
 .jr-h { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 10px; }
