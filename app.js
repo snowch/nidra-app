@@ -471,6 +471,14 @@ async function init() {
 }
 
 if ('serviceWorker' in navigator) {
+  let refreshing = false;
+  const hadController = !!navigator.serviceWorker.controller;   // false on first-ever install → don't prompt
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (refreshing || !hadController) return;
+    const bar = document.getElementById('updateBar'); if (bar) bar.hidden = false;   // a freshly-deployed version has taken over
+  });
+  const rf = document.getElementById('updateRefresh');
+  if (rf) rf.onclick = () => { refreshing = true; location.reload(); };
   window.addEventListener('load', () =>
     navigator.serviceWorker.register('sw.js').catch((e) => console.warn('SW', e)));
 }
