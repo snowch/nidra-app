@@ -227,6 +227,8 @@ a { color: var(--gold-soft); }
 .flow-label { display: block; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 2px; }
 .flow-row .parts { margin: 4px 0 0 !important; }
 .flow-row .part { border-top: none; padding: 6px 0 2px; }
+.sk-set-btn { width: 100%; margin-top: 10px; padding: 11px; border-radius: 10px; border: 1px solid rgba(202,160,102,.4); background: rgba(202,160,102,.12); color: var(--gold); font-size: .88rem; cursor: pointer; }
+.sk-set-btn:hover { background: rgba(202,160,102,.2); }
 
 /* ---------- journal (inside the modal) ---------- */
 .jr-sec { margin: 0 0 22px; }

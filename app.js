@@ -171,7 +171,7 @@ function wireJournal() {
   const skSave = document.getElementById('skSave');
   if (skSave) skSave.onclick = () => {
     const v = (document.getElementById('skInput').value || '').trim().slice(0, 200);
-    if (!v) return; journal.sankalpa = { text: v, setAt: Date.now() }; saveJournal(); jEditSk = false; openJournal(); renderSankalpaBanner();
+    if (!v) return; journal.sankalpa = { text: v, setAt: Date.now() }; saveJournal(); jEditSk = false; openJournal(); renderSankalpaBanner(); refreshSkEntry();
   };
   const skCancel = document.getElementById('skCancel'); if (skCancel) skCancel.onclick = () => { jEditSk = false; openJournal(); };
   const skEdit = document.getElementById('skEdit'); if (skEdit) skEdit.onclick = () => { jEditSk = true; openJournal(); };
@@ -201,6 +201,11 @@ function renderSankalpaBanner() {
   const el = document.getElementById('skBanner'); if (!el) return;
   el.innerHTML = sankalpaBannerHtml();
   const b = document.getElementById('skBannerBtn'); if (b) b.onclick = openJournal;
+}
+// Keep the Sankalpa module's "set it" button label in sync after saving.
+function refreshSkEntry() {
+  const b = document.querySelector('.sk-set-btn'); if (!b) return;
+  b.innerHTML = journal.sankalpa ? `Your Sankalpa: “${escH(journal.sankalpa.text)}” · edit` : '✎ Set your Sankalpa';
 }
 const journalBtn = document.getElementById('journalBtn');
 if (journalBtn) journalBtn.onclick = () => { jEditSk = false; openJournal(); };
@@ -344,6 +349,12 @@ function card(item) {
   const parts = PART_ORDER
     .filter((k) => item.parts[k])
     .map((k) => partRow(item.seq, item.title, k, item.parts[k])).join('');
+  // The Sankalpa module gets a direct "set it" entry — you choose it right where you learn it.
+  const skEntry = item.id === 'sankalpa'
+    ? (journal.sankalpa
+        ? `<button class="sk-set-btn" data-sk="1">Your Sankalpa: “${escH(journal.sankalpa.text)}” · edit</button>`
+        : `<button class="sk-set-btn" data-sk="1">✎ Set your Sankalpa</button>`)
+    : '';
 
   const open = !!openState[item.id];
   return `<article class="card ${item.type} ${open ? '' : 'collapsed'}" data-id="${item.id}">
@@ -356,7 +367,7 @@ function card(item) {
       </div>
       <span class="chev">${open ? '▾' : '▸'}</span>
     </div>
-    <div class="card-body">${prereqs}<ul class="parts">${parts}</ul>${isPractice ? flowRowHtml(item) : ''}</div>
+    <div class="card-body">${prereqs}<ul class="parts">${parts}</ul>${skEntry}${isPractice ? flowRowHtml(item) : ''}</div>
   </article>`;
 }
 // Below the daily practice: this module's cumulative flow (through this stage), so the flow isn't lost.
@@ -447,6 +458,8 @@ async function init() {
       c.addEventListener('click', () => toggleDone(c)));
     journeyEl.querySelectorAll('.cue-open').forEach((b) =>
       b.addEventListener('click', () => openCue(b.dataset.file)));
+    journeyEl.querySelectorAll('.sk-set-btn').forEach((b) =>
+      b.addEventListener('click', () => { jEditSk = true; openJournal(); }));
     offlineAll.addEventListener('click', saveForOffline);
     renderSankalpaBanner();
     updateProgress();
