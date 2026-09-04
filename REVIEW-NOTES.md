@@ -1,7 +1,8 @@
-# Nidra script — V2 review & decisions (deferred; execute later)
+# Nidra script — V2 review & decisions
 
-External review of the full-nidra arc, plus the decisions to apply. **Not yet
-implemented** — this is the plan for a V2 pass.
+External review of the full-nidra arc, plus the decisions applied. **IMPLEMENTED
+(2026-09-04)** across the full nidra, the everyday version, the cumulative cores
+(milestones 1–8 rebuilt), the seven module practices, and the cue cards.
 
 ## Scope — the same content lives in 3 places, apply consistently + re-render each
 - **Module practices** — `nidra_08_nyasa_extended`, `nidra_09_breath_extended`,
