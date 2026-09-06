@@ -12,4 +12,8 @@
 4. Optional: **AUM**, then rest in the silence after
 5. Rest as awareness → **Resolve** → **Return**
 
+> **If it's not working —** If “who is aware?” becomes a thought, let the question dissolve — don't answer it in words; just lean back into the awareness already here. When it slips, that noticing is it, again.
+
+> **Going deeper —** There is no separate witness to find, standing apart — there is only awareness, aware of itself. Rest as that, needing nothing.
+
 > **Ready to move on:** You can turn to the one who is aware and rest as awareness, briefly, without effort.

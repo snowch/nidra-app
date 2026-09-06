@@ -12,4 +12,8 @@
 4. **The gap** — the stillness after the out-breath; rest there
 5. **Resolve** → **Return**
 
+> **If it's not working —** If the count feels effortful or you keep losing it, that's fine — begin again, or drop it and just watch. Don't control the breath; let it be shallow or ragged if it is.
+
+> **Going deeper —** The gap after the out-breath isn't made — it is already there. Rest in it, and notice that awareness continues, unbroken, even when the breath pauses.
+
 > **Ready to move on:** The breath breathes itself; you rest in the gap without forcing it.

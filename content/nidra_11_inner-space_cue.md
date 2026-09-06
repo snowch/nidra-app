@@ -12,4 +12,8 @@
 4. Optional: a single **point of light**
 5. Rest in the **space itself** → **Resolve** → **Return**
 
+> **If it's not working —** If nothing appears, or the mind races — both are fine. You are watching the space, not the show. Rest the gaze softly; don't hunt for images, or try to still them.
+
+> **Going deeper —** You are not the images that come and go — you are the space they appear in. Let even the watching soften into simply being that space.
+
 > **Ready to move on:** You rest in the inner space; images come and go without chasing them.

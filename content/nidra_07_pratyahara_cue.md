@@ -12,4 +12,8 @@
 4. **Turn inward** — senses quiet
 5. **Rest** withdrawn → **Resolve** → **Return**
 
+> **If it's not working —** Don't try to silence the sounds — that fights them, and they win. Let them come and go; only stop following them. When one pulls you, gently return inward. It quiets over days, not in one sitting.
+
+> **Going deeper —** There is nothing to shut out. Sound arises within awareness, which is already still. Rest as the hearing itself — neither chasing the sound, nor resisting it.
+
 > **Ready to move on:** Senses quiet on their own; sounds and sensations come and go without pulling you out.

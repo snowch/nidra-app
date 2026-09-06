@@ -11,4 +11,8 @@
 3. **Whole body at once** — still
 4. **Resolve** → **Return**
 
+> **If it's not working —** If you can't “feel” a part, don't strain — just hearing its name and moving on is enough; awareness travels even when sensation is faint. Keep the pace moving, so the mind can't stop to analyse.
+
+> **Going deeper —** You are not inspecting the body part by part — you are one awareness, briefly lighting each place, then resting as the whole.
+
 > **Ready to move on:** Awareness flows through the body on its own, without searching or losing your place.

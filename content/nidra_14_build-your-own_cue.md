@@ -19,4 +19,8 @@
 
 > *Stillness · Resolve · Withdraw · Rotate · Breathe · Balance · Space · Witness · Resolve · Return*
 
+> **If it's not working —** If you lose the thread, don't restart — pick up at the next stage from memory; the order matters more than completeness. Keep a light hand on the timing.
+
+> **Going deeper —** The recording is scaffolding — the practice is already yours. The aim is not to recall the steps, but to move as awareness through them.
+
 > **Ready to move on:** You move through the whole practice from memory, at your own pace, without the recording.

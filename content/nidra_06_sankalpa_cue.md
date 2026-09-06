@@ -13,4 +13,8 @@
 
 > My sankalpa: ______________________________
 
+> **If it's not working —** Can't find the “perfect” resolve, or it feels hollow. Don't wait for perfect — begin with a simple one (“I am at peace, just as I am”) and keep it. The power is in repetition, not the wording.
+
+> **Going deeper —** You are not asking for a future — you are affirming what is already true at the depth of you, and letting it surface.
+
 > **Ready to move on:** A single true resolve chosen; brought to mind and repeated with feeling, unforced.

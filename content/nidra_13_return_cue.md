@@ -13,4 +13,8 @@
 5. **Move** — fingers, toes, stretch
 6. **Eyes open** — when fully present
 
+> **If it's not working —** Don't rush up — grogginess comes from returning too fast. If you feel heavy or spaced, take longer over the breath and the small movements before you sit.
+
+> **Going deeper —** Carry the witness with you — the stillness is not left behind on the floor; it is the ground you stand up into.
+
 > **Ready to move on:** You return slowly and completely on your own — resolve, breath, body, room, movement — fully present.
