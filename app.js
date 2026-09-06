@@ -108,12 +108,19 @@ async function openCue(file) {
   } catch (e) {
     cueBody.innerHTML = '<p>Could not load the cue card.</p>';
   }
-  cueModal.hidden = false;
+  showCueModal();
 }
+// Push a history entry when the sheet opens so the device Back button closes it
+// (instead of navigating away to a blank page). Manual dismiss goes through
+// history.back() too, so the two paths converge on one popstate handler.
+let modalPushed = false;
+function showCueModal() { cueModal.hidden = false; if (!modalPushed) { modalPushed = true; history.pushState({ sheet: true }, ''); } }
 function closeCue() { cueModal.hidden = true; }
-cueClose.addEventListener('click', closeCue);
-cueModal.addEventListener('click', (e) => { if (e.target === cueModal) closeCue(); });
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCue(); });
+function dismissCue() { if (modalPushed) history.back(); else closeCue(); }
+window.addEventListener('popstate', () => { modalPushed = false; if (!cueModal.hidden) closeCue(); });
+cueClose.addEventListener('click', dismissCue);
+cueModal.addEventListener('click', (e) => { if (e.target === cueModal) dismissCue(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !cueModal.hidden) dismissCue(); });
 
 /* ---------- practice journal + Sankalpa (kept only on this device) ---------- */
 const escH = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -164,7 +171,7 @@ function historySection() {
 function openJournal() {
   cueBody.innerHTML = `<h3>Practice journal</h3>` + sankalpaSection(jEditSk) + logSection() + historySection() +
     `<p class="jr-priv">Your Sankalpa and journal are kept only on this device — nothing is uploaded. Clearing the app’s site data erases them.</p>`;
-  cueModal.hidden = false;
+  showCueModal();
   wireJournal();
 }
 function wireJournal() {
