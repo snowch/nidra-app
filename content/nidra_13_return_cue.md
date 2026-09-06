@@ -2,6 +2,8 @@
 
 *Come back slowly. Resolve first, then externalise.*
 
+**Why —** Re-affirms the resolve at its deepest, then brings you back, safely, and unhurried.
+
 > **Before you begin:** Lying in shavasana (see Setting up); Stillness (M1); your saṅkalpa (M2).
 
 1. **Resolve** — one final time, ×3 (mind still deep)

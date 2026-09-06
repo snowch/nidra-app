@@ -2,6 +2,8 @@
 
 *Withdraw the senses. Not shutting out — no longer reaching towards.*
 
+**Why —** Draws attention off the world and inward, opening the way to the deeper stages.
+
 > **Before you begin:** Lying in shavasana (see Setting up); Stillness (M1); a saṅkalpa chosen (M2).
 
 1. **Settle** → **Resolve** (×3)

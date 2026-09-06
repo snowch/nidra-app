@@ -2,6 +2,8 @@
 
 *Let the breath breathe itself. Rest in the still gap.*
 
+**Why —** Steadies and quiets the mind by resting it on the breath, and the still gap.
+
 > **Before you begin:** Lying in shavasana (see Setting up); Stillness (M1); your saṅkalpa (M2).
 
 1. **Settle** → **Resolve** (×3)

@@ -2,6 +2,8 @@
 
 *The complete Yoga Nidra, from memory. Ten steps.*
 
+**Why —** The complete arc, run from memory — the goal of the whole programme.
+
 > **Before you begin:** Lying in shavasana (see Setting up); all elements learned (M1–M9).
 
 1. **Stillness** — lie down, still, awake

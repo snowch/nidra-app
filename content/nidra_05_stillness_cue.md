@@ -2,6 +2,8 @@
 
 *Ground of the practice: be still, stay awake at the edge of sleep.*
 
+**Why —** Establishes the still, alert threshold that every later stage rests on.
+
 > **Before you begin:** Orientation teachings heard; lying in shavasana.
 
 1. **Lie down** — shavasana, palms up, completely still

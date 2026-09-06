@@ -2,6 +2,8 @@
 
 *Rotate awareness through the body. Hear the part, rest, move on. No moving.*
 
+**Why —** Relaxes the whole body and gathers scattered attention into one flowing awareness.
+
 > **Before you begin:** Lying in shavasana (see Setting up); Stillness (M1); your saṅkalpa (M2).
 
 1. **Settle** → **Resolve** (×3)

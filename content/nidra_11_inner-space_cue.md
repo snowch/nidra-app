@@ -2,6 +2,8 @@
 
 *Rest in the dark space behind the eyes; watch what arises, let it dissolve.*
 
+**Why —** Watch the mind's images as passing phenomena — you are the space, not the contents.
+
 > **Before you begin:** Lying in shavasana (see Setting up); Stillness (M1); your saṅkalpa (M2).
 
 1. **Settle** → **Resolve** (×3)

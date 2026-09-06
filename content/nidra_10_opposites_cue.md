@@ -2,6 +2,8 @@
 
 *Feel each fully; be moved by neither. Equanimity (Gita).*
 
+**Why —** Trains equanimity — meeting strong contrasts without preferring, or resisting, either.
+
 > **Before you begin:** Lying in shavasana (see Setting up); Stillness (M1); your saṅkalpa (M2).
 
 1. **Settle** → **Resolve** (×3)

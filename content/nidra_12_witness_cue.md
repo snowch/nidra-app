@@ -2,6 +2,8 @@
 
 *Turn from what is watched to the one who watches. Rest as awareness.*
 
+**Why —** Rest as awareness itself (turiya) — the still centre the whole practice points to.
+
 > **Before you begin:** Lying in shavasana (see Setting up); Stillness (M1); your saṅkalpa (M2).
 
 1. **Settle** → **Resolve** (×3)
