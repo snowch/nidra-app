@@ -39,7 +39,7 @@ const openState = JSON.parse(localStorage.getItem(OPEN_STORE) || '{}');
 const saveOpen = () => localStorage.setItem(OPEN_STORE, JSON.stringify(openState));
 const JRNL_STORE = 'nidra-journal-v1';
 const journal = JSON.parse(localStorage.getItem(JRNL_STORE) || '{}');
-journal.log = Array.isArray(journal.log) ? journal.log : [];   // {t, note, awake:'awake'|'drifted'|''}
+journal.log = Array.isArray(journal.log) ? journal.log : [];   // {t, note, awake:'awake'|'drifted'|'asleep'|''}
 if (journal.sankalpa && typeof journal.sankalpa !== 'object') journal.sankalpa = null;   // {text, setAt}
 const saveJournal = () => localStorage.setItem(JRNL_STORE, JSON.stringify(journal));
 const hasCaches = 'caches' in window;
@@ -124,7 +124,7 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !cueModa
 
 /* ---------- practice journal + Sankalpa (kept only on this device) ---------- */
 const escH = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const AWAKE_LABEL = { awake: 'Stayed aware', drifted: 'Drifted off' };
+const AWAKE_LABEL = { awake: 'Stayed aware', drifted: 'Drifted', asleep: 'Fell asleep' };
 function fmtDate(t) { return new Date(t).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }); }
 function fmtWhen(t) {
   const d = new Date(t), now = new Date(), y = new Date(); y.setDate(now.getDate() - 1);

@@ -260,6 +260,7 @@ a { color: var(--gold-soft); }
 .jr-badge { font-size: .66rem; padding: 2px 9px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); }
 .jr-badge.awake { color: #14100c; background: linear-gradient(180deg, var(--gold-soft), var(--gold)); border-color: transparent; }
 .jr-badge.drifted { color: var(--gold-soft); }
+.jr-badge.asleep { color: var(--faint); }
 .jr-when { margin-left: auto; color: var(--faint); font-size: .76rem; }
 .jr-del { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg-elev2); color: var(--faint); font-size: .72rem; cursor: pointer; }
 .jr-del:hover { color: var(--gold); }
