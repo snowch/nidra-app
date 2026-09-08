@@ -196,7 +196,13 @@ let modalPushed = false;
 function showCueModal() { cueModal.hidden = false; if (!modalPushed) { modalPushed = true; history.pushState({ sheet: true }, ''); } }
 function closeCue() { cueModal.hidden = true; }
 function dismissCue() { if (modalPushed) history.back(); else closeCue(); }
-window.addEventListener('popstate', () => { modalPushed = false; if (!cueModal.hidden) closeCue(); });
+window.addEventListener('popstate', () => {
+  if (!cueModal.hidden) { modalPushed = false; closeCue(); return; }   // a sheet is open → Back closes it
+  // Back on the main journey: re-seed so we stay in the app instead of navigating to a blank page.
+  history.pushState({ root: true }, '');
+});
+// Seed one history entry at load so the first Back press on the journey is caught above, not sent to a blank page.
+history.pushState({ root: true }, '');
 cueClose.addEventListener('click', dismissCue);
 cueModal.addEventListener('click', (e) => { if (e.target === cueModal) dismissCue(); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !cueModal.hidden) dismissCue(); });
