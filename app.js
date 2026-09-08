@@ -158,6 +158,12 @@ function stopSession() {
   clearTimeout(session.timer); clearInterval(session.ticker); try { player.pause(); } catch (e) {}
   session = null; mini.root.classList.remove('session'); mini.root.hidden = true;
 }
+function stopTrack() {   // stop single-track playback (orientation / cumulative) and dismiss the mini-player
+  if (activeBtn) setBtnState(activeBtn, false);
+  activeBtn = null;
+  try { player.pause(); } catch (e) {}
+  mini.root.hidden = true;
+}
 
 /* ---------- cue card modal (renders markdown in-app) ---------- */
 function mdToHtml(md) {
@@ -198,8 +204,9 @@ function closeCue() { cueModal.hidden = true; }
 function dismissCue() { if (modalPushed) history.back(); else closeCue(); }
 window.addEventListener('popstate', () => {
   if (!cueModal.hidden) { modalPushed = false; closeCue(); return; }   // a sheet is open → Back closes it
-  // Back on the main journey: re-seed so we stay in the app instead of navigating to a blank page.
-  history.pushState({ root: true }, '');
+  history.pushState({ root: true }, '');                               // stay in the app, never a blank page
+  if (session) stopSession();                                         // …then Back stops a playing session…
+  else if (activeBtn) stopTrack();                                    // …or a single track
 });
 // Seed one history entry at load so the first Back press on the journey is caught above, not sent to a blank page.
 history.pushState({ root: true }, '');
