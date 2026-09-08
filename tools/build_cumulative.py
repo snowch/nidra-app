@@ -28,6 +28,7 @@ STAGES = [
 ]
 JOIN = '\n\n<break time="4.0s" />\n\n'
 TARGET_RMS, PEAK_CAP, THR = 3200.0, 29000.0, 200.0
+WANT = set(int(x) for x in sys.argv[1:]) if len(sys.argv) > 1 else None  # optional: only build these milestones
 
 def read(name):
     return open(os.path.join(CDIR, name)).read().strip()
@@ -53,6 +54,8 @@ for i, (mod, sid, fn) in enumerate(STAGES):
     cores = [s for s in STAGES[1:i+1]]
     if not all(core_exists(c[2]) for c in cores):
         break  # stop at the first milestone whose cores aren't authored yet
+    if WANT and mod not in WANT:
+        continue
     has_sankalpa = any(c[0] == 2 for c in cores) or mod >= 2
     close_txt = read('_close_resolve.txt' if has_sankalpa else '_close_plain.txt')
     parts = [open_txt] + [read(c[2]) for c in cores if c[2]] + [close_txt]
