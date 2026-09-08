@@ -423,14 +423,14 @@
       "parts": {
         "teaching": {
           "script": "content/nidra_12_witness_teaching.txt",
-          "audio": "audio/nidra_12_witness_teaching.m4a?v=1e405674",
-          "durationSec": 120.4,
+          "audio": "audio/nidra_12_witness_teaching.m4a?v=c7af9312",
+          "durationSec": 152.9,
           "status": "built"
         },
         "extended": {
           "script": "content/nidra_12_witness_extended.txt",
-          "audio": "audio/nidra_12_witness_extended.m4a?v=5aa2549f",
-          "durationSec": 248.1,
+          "audio": "audio/nidra_12_witness_extended.m4a?v=f5e82eb5",
+          "durationSec": 246.5,
           "status": "built"
         },
         "cueCard": {
@@ -491,11 +491,11 @@
         },
         "extended": {
           "script": "content/nidra_14_build-your-own_extended.txt",
-          "audio": "audio/nidra_14_build-your-own_extended.m4a?v=6f0908a2",
-          "durationSec": 1629.8,
+          "audio": "audio/nidra_14_build-your-own_extended.m4a?v=14055c56",
+          "durationSec": 1628.3,
           "sleepScript": "content/nidra_14_build-your-own_extended_sleep.txt",
-          "sleepAudio": "audio/nidra_14_build-your-own_extended_sleep.m4a?v=e2a4399b",
-          "sleepDurationSec": 1586.9,
+          "sleepAudio": "audio/nidra_14_build-your-own_extended_sleep.m4a?v=4034ac0a",
+          "sleepDurationSec": 1585.4,
           "status": "built"
         },
         "unaided": {
