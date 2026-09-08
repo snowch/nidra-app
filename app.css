@@ -306,3 +306,12 @@ a { color: var(--gold-soft); }
 
 .mini-summary { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--line); background: transparent; color: var(--gold-soft); font-size: .85rem; cursor: pointer; display: grid; place-items: center; }
 .mini-summary:hover { background: var(--bg-elev2); }
+
+/* practice pace control (journal modal) */
+.jr-pace { margin: 16px 0 6px; }
+.jr-h { font-size: .95rem; margin: 0 0 4px; color: var(--ink); }
+.jr-hint { color: var(--faint); font-size: .8rem; margin: 0 0 9px; line-height: 1.45; }
+.pace-row { display: flex; gap: 8px; }
+.pace-opt { flex: 1 1 0; padding: 9px 8px; border-radius: 10px; border: 1px solid #4a3a27; background: var(--bg-elev2); color: var(--ink); font-size: .85rem; cursor: pointer; transition: background .15s; }
+.pace-opt:hover { background: #2f2519; }
+.pace-opt.on { background: var(--gold); color: #1a130a; border-color: var(--gold); }

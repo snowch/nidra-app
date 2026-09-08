@@ -58,27 +58,106 @@ function setBtnState(btn, playing) {
   btn.textContent = playing ? '❚❚' : (btn.dataset.idle || '▶');
 }
 function startTrack(btn) {
+  stopSession();
   if (activeBtn === btn) { player.paused ? player.play() : player.pause(); return; }
   if (activeBtn) setBtnState(activeBtn, false);
   activeBtn = btn;
   player.src = btn.dataset.src;
   player.play().catch((e) => console.warn('play failed', e));
   mini.title.textContent = `${btn.dataset.title} · ${btn.dataset.part}`;
-  mini.root.hidden = false;
+  mini.root.hidden = false; mini.root.classList.remove('session');
   mini.seek.value = 0; mini.cur.textContent = '0:00'; mini.dur.textContent = '0:00';
 }
-player.onplay  = () => { if (activeBtn) setBtnState(activeBtn, true);  mini.play.textContent = '❚❚'; };
-player.onpause = () => { if (activeBtn) setBtnState(activeBtn, false); mini.play.textContent = '▶'; };
-player.onended = () => { if (activeBtn) setBtnState(activeBtn, false); mini.play.textContent = '▶'; };
-player.onloadedmetadata = () => { mini.dur.textContent = fmt(player.duration); };
+player.onplay  = () => { if (!session && activeBtn) setBtnState(activeBtn, true);  mini.play.textContent = '❚❚'; };
+player.onpause = () => { if (!session && activeBtn) setBtnState(activeBtn, false); if (!session) mini.play.textContent = '▶'; };
+player.onended = () => { if (session) { if (!session.paused) stepSession(); } else { if (activeBtn) setBtnState(activeBtn, false); mini.play.textContent = '▶'; } };
+player.onloadedmetadata = () => { if (!session) mini.dur.textContent = fmt(player.duration); };
 player.ontimeupdate = () => {
-  if (!player.duration) return;
+  if (session || !player.duration) return;
   mini.seek.value = Math.round((player.currentTime / player.duration) * 1000);
   mini.cur.textContent = fmt(player.currentTime);
 };
-mini.play.onclick    = () => { if (player.src) player.paused ? player.play() : player.pause(); };
-mini.restart.onclick = () => { if (player.src) { player.currentTime = 0; player.play(); } };
-mini.seek.oninput    = () => { if (player.duration) player.currentTime = (mini.seek.value / 1000) * player.duration; };
+mini.play.onclick    = () => { if (session) toggleSession(); else if (player.src) player.paused ? player.play() : player.pause(); };
+mini.restart.onclick = () => { if (session) seekSession(0); else if (player.src) { player.currentTime = 0; player.play(); } };
+mini.seek.oninput    = () => {
+  if (session) { session.seeking = true; mini.cur.textContent = fmt((mini.seek.value / 1000) * session.total); }
+  else if (player.duration) player.currentTime = (mini.seek.value / 1000) * player.duration;
+};
+mini.seek.onchange   = () => { if (session) { seekSession((mini.seek.value / 1000) * session.total); session.seeking = false; } };
+
+/* ---------- session engine: stepped playback for the full nidras ----------
+ * A session is a list of steps: { clip, dur } (a rendered audio clip) or
+ * { pause, kind } (a wall-clock gap). Rest pauses scale with the pace setting;
+ * resolve pauses are sized from the saved sankalpa; breath-holds never scale. */
+let session = null;   // { steps, i, timer, ticker, paused, total, elapsed, lastTick, sleep, seeking }
+const PACE_STORE = 'nidra_pace_v1';
+let paceScale = parseFloat(localStorage.getItem(PACE_STORE) || '1') || 1;
+const savePace = (v) => { paceScale = v; localStorage.setItem(PACE_STORE, String(v)); };
+function resolveDur() {
+  const sk = journal.sankalpa;
+  const w = sk && sk.text ? sk.text.trim().split(/\s+/).filter(Boolean).length : 0;
+  if (!w) return 24;                                   // no sankalpa set → the baked default
+  return Math.min(60, Math.max(18, Math.round(w * 3 * 0.6 + 7)));   // 3 reps, ~0.6s/word, + a settling beat
+}
+function stepPause(s) {
+  if (s.kind === 'resolve') return resolveDur();
+  if (s.kind === 'breath')  return s.pause;            // deep breath-count holds are never scaled
+  return Math.max(2, Math.round(s.pause * paceScale));
+}
+const clipDur = (id) => (DATA.sessionClips[id] && DATA.sessionClips[id].durationSec) || 2;
+const stepDur = (s) => (s.pause != null ? stepPause(s) : clipDur(s.clip));
+function sessionTotal(id) { return (DATA.sessions[id] || []).reduce((a, s) => a + stepDur(s), 0); }
+function sessionTick() {
+  if (!session) return;
+  if (!session.paused) { const now = performance.now(); session.elapsed = Math.min(session.total, session.elapsed + (now - session.lastTick) / 1000); }
+  session.lastTick = performance.now();
+  if (session.seeking) return;
+  mini.seek.value = session.total ? Math.round((session.elapsed / session.total) * 1000) : 0;
+  mini.cur.textContent = fmt(session.elapsed); mini.dur.textContent = fmt(session.total);
+}
+function seekSession(t) {
+  if (!session) return;
+  let acc = 0, idx = session.steps.length - 1;
+  for (let i = 0; i < session.steps.length; i++) { const d = stepDur(session.steps[i]); if (acc + d > t) { idx = i; break; } acc += d; }
+  clearTimeout(session.timer); try { player.pause(); } catch (e) {}
+  session.i = idx; session.elapsed = acc; session.paused = false; session.lastTick = performance.now();
+  mini.play.textContent = '❚❚';
+  mini.seek.value = session.total ? Math.round((acc / session.total) * 1000) : 0; mini.cur.textContent = fmt(acc);
+  stepSession();
+}
+function runSession(id, title, sleep) {
+  const steps = DATA.sessions && DATA.sessions[id];
+  if (!steps) { console.warn('no session', id); return; }
+  stopSession();
+  if (activeBtn) { setBtnState(activeBtn, false); activeBtn = null; }
+  const total = steps.reduce((a, s) => a + stepDur(s), 0);
+  session = { steps, i: 0, timer: null, ticker: null, paused: false, total, elapsed: 0, lastTick: performance.now(), sleep: !!sleep, seeking: false };
+  mini.root.hidden = false; mini.root.classList.add('session'); mini.play.textContent = '❚❚';
+  mini.title.textContent = title; mini.seek.value = 0; mini.cur.textContent = '0:00'; mini.dur.textContent = fmt(total);
+  session.ticker = setInterval(sessionTick, 250);
+  stepSession();
+}
+function stepSession() {
+  if (!session) return;
+  if (session.i >= session.steps.length) { stopSession(); return; }
+  const s = session.steps[session.i++];
+  if (s.pause != null) { session.timer = setTimeout(() => { if (session && !session.paused) stepSession(); }, stepPause(s) * 1000); }
+  else { player.src = DATA.sessionClips[s.clip].audio; player.play().catch(() => {}); }
+}
+function toggleSession() {
+  if (!session) return;
+  if (session.paused) {
+    session.paused = false; session.lastTick = performance.now(); mini.play.textContent = '❚❚';
+    if (player.src && player.paused && player.currentTime > 0 && !player.ended) player.play(); else stepSession();
+  } else {
+    session.paused = true; mini.play.textContent = '▶'; clearTimeout(session.timer); if (!player.paused) player.pause();
+  }
+}
+function stopSession() {
+  if (!session) return;
+  clearTimeout(session.timer); clearInterval(session.ticker); try { player.pause(); } catch (e) {}
+  session = null; mini.root.classList.remove('session'); mini.root.hidden = true;
+}
 
 /* ---------- cue card modal (renders markdown in-app) ---------- */
 function mdToHtml(md) {
@@ -168,8 +247,16 @@ function historySection() {
       (e.note ? `<div class="jr-note-txt">${escH(e.note)}</div>` : '') + `</li>`).join('');
   return `<div class="jr-sec"><div class="jr-h">Your journal</div><ul class="jr-list">${items}</ul></div>`;
 }
+function paceSection() {
+  const opts = [['Slower', 1.25], ['Standard', 1], ['Shorter', 0.8]];
+  return `<div class="jr-pace"><h4 class="jr-h">Practice pace</h4>` +
+    `<p class="jr-hint">Length of the silent rests in the full nidra. Your resolve pause is timed to your Sankalpa automatically.</p>` +
+    `<div class="pace-row">` +
+    opts.map(([lbl, v]) => `<button class="pace-opt${Math.abs(paceScale - v) < 0.01 ? ' on' : ''}" data-pace="${v}" type="button">${lbl}</button>`).join('') +
+    `</div></div>`;
+}
 function openJournal() {
-  cueBody.innerHTML = `<h3>Practice journal</h3>` + sankalpaSection(jEditSk) + logSection() + historySection() +
+  cueBody.innerHTML = `<h3>Practice journal</h3>` + sankalpaSection(jEditSk) + paceSection() + logSection() + historySection() +
     `<p class="jr-priv">Your Sankalpa and journal are kept only on this device — nothing is uploaded. Clearing the app’s site data erases them.</p>`;
   showCueModal();
   wireJournal();
@@ -184,6 +271,10 @@ function wireJournal() {
   const skEdit = document.getElementById('skEdit'); if (skEdit) skEdit.onclick = () => { jEditSk = true; openJournal(); };
   const skStarter = document.getElementById('skStarter');
   if (skStarter) skStarter.onclick = () => { const ta = document.getElementById('skInput'); if (ta) { ta.value = 'I am at peace, just as I am'; ta.focus(); } };
+  cueBody.querySelectorAll('.pace-opt').forEach((b) => b.onclick = () => {
+    savePace(parseFloat(b.dataset.pace));
+    cueBody.querySelectorAll('.pace-opt').forEach((x) => x.classList.toggle('on', x === b));
+  });
   let awake = null;
   cueBody.querySelectorAll('.jr-opt').forEach((b) => b.onclick = () => {
     const was = b.classList.contains('on');
@@ -326,21 +417,28 @@ function partRow(seq, title, key, part) {
     return plannedRow(m, '▤');
   }
 
-  if (part.audio) {
+  if (part.audio || part.session) {
     if (!built) return plannedRow(m, '▶');
     const id = `${seq}:${key}`;
     practisable.push(id);
-    offlineUrls.push(part.audio);
+    const useSession = part.session && DATA.sessions && DATA.sessions[part.session];
+    const cacheSession = (sid) => (DATA.sessions[sid] || []).forEach((st) => { if (st.clip && DATA.sessionClips[st.clip]) offlineUrls.push(DATA.sessionClips[st.clip].audio); });
+    if (useSession) cacheSession(part.session); else if (part.audio) offlineUrls.push(part.audio);
+    const mainAttr = useSession ? `data-session="${part.session}"` : `data-src="${part.audio}"`;
+    const dur = useSession ? sessionTotal(part.session) : part.durationSec;
     const on = done[id] ? 'on' : '';
-    let sleepBtn = '';
-    if (part.sleepAudio) {
-      offlineUrls.push(part.sleepAudio);
-      sleepBtn = `<button class="play sleep" data-idle="☾" data-src="${part.sleepAudio}" data-title="${title}" data-part="${m.label} · to fall asleep" title="Play to fall asleep — no wake-up" aria-label="Play ${m.label} to fall asleep, with no wake-up">☾</button>`;
+    const sleepSession = part.sleepSession && DATA.sessions && DATA.sessions[part.sleepSession];
+    let sleepBtn = '', hasSleep = false;
+    if (sleepSession || part.sleepAudio) {
+      hasSleep = true;
+      if (sleepSession) cacheSession(part.sleepSession); else offlineUrls.push(part.sleepAudio);
+      const sAttr = sleepSession ? `data-session="${part.sleepSession}"` : `data-src="${part.sleepAudio}"`;
+      sleepBtn = `<button class="play sleep" data-idle="☾" ${sAttr} data-title="${title}" data-part="${m.label} · to fall asleep" title="Play to fall asleep — no wake-up" aria-label="Play ${m.label} to fall asleep, with no wake-up">☾</button>`;
     }
     return `<li class="part">
-      <button class="play" data-idle="▶" data-src="${part.audio}" data-title="${title}" data-part="${m.label}" aria-label="Play ${m.label}">▶</button>
+      <button class="play" data-idle="▶" ${mainAttr} data-title="${title}" data-part="${m.label}" aria-label="Play ${m.label}">▶</button>
       <div class="part-main"><div class="part-label">${m.label}</div>
-        <div class="part-meta">${m.hint}${part.durationSec ? ' · ' + fmt(part.durationSec) : ''}${part.sleepAudio ? ' · ☾ fall-asleep version' : ''}</div></div>
+        <div class="part-meta">${m.hint}${dur ? ' · ' + fmt(dur) : ''}${hasSleep ? ' · ☾ fall-asleep version' : ''}</div></div>
       ${sleepBtn}
       <button class="check ${on}" data-id="${id}" title="Mark practised">${done[id] ? '✓' : ''}</button>
     </li>`;
@@ -467,6 +565,8 @@ async function init() {
       h.addEventListener('click', () => toggleCard(h.dataset.toggle)));
     journeyEl.querySelectorAll('.play[data-src]').forEach((b) =>
       b.addEventListener('click', () => startTrack(b)));
+    journeyEl.querySelectorAll('.play[data-session]').forEach((b) =>
+      b.addEventListener('click', () => runSession(b.dataset.session, `${b.dataset.title} · ${b.dataset.part}`, b.classList.contains('sleep'))));
     journeyEl.querySelectorAll('.check').forEach((c) =>
       c.addEventListener('click', () => toggleDone(c)));
     journeyEl.querySelectorAll('.cue-open').forEach((b) =>
