@@ -150,6 +150,9 @@ body {
 .play:active { transform: scale(.94); }
 .play.playing { background: var(--gold); color: #1a130a; border-color: var(--gold); }
 .play[disabled] { opacity: .35; cursor: default; }
+.play.sleep { width: 34px; height: 34px; font-size: .95rem; color: #9aa3bd; border-color: #3f3a44; }
+.play.sleep:hover { background: #241f2e; }
+.play.sleep.playing { background: var(--gold); color: #1a130a; border-color: var(--gold); }
 
 .check {
   flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%;

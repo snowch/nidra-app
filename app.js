@@ -55,7 +55,7 @@ const fmt = (s) => (s && isFinite(s)) || s === 0
 /* ---------- audio + mini-player ---------- */
 function setBtnState(btn, playing) {
   btn.classList.toggle('playing', playing);
-  btn.textContent = playing ? '❚❚' : '▶';
+  btn.textContent = playing ? '❚❚' : (btn.dataset.idle || '▶');
 }
 function startTrack(btn) {
   if (activeBtn === btn) { player.paused ? player.play() : player.pause(); return; }
@@ -332,10 +332,16 @@ function partRow(seq, title, key, part) {
     practisable.push(id);
     offlineUrls.push(part.audio);
     const on = done[id] ? 'on' : '';
+    let sleepBtn = '';
+    if (part.sleepAudio) {
+      offlineUrls.push(part.sleepAudio);
+      sleepBtn = `<button class="play sleep" data-idle="☾" data-src="${part.sleepAudio}" data-title="${title}" data-part="${m.label} · to fall asleep" title="Play to fall asleep — no wake-up" aria-label="Play ${m.label} to fall asleep, with no wake-up">☾</button>`;
+    }
     return `<li class="part">
-      <button class="play" data-src="${part.audio}" data-title="${title}" data-part="${m.label}" aria-label="Play ${m.label}">▶</button>
+      <button class="play" data-idle="▶" data-src="${part.audio}" data-title="${title}" data-part="${m.label}" aria-label="Play ${m.label}">▶</button>
       <div class="part-main"><div class="part-label">${m.label}</div>
-        <div class="part-meta">${m.hint}${part.durationSec ? ' · ' + fmt(part.durationSec) : ''}</div></div>
+        <div class="part-meta">${m.hint}${part.durationSec ? ' · ' + fmt(part.durationSec) : ''}${part.sleepAudio ? ' · ☾ fall-asleep version' : ''}</div></div>
+      ${sleepBtn}
       <button class="check ${on}" data-id="${id}" title="Mark practised">${done[id] ? '✓' : ''}</button>
     </li>`;
   }
