@@ -16,15 +16,16 @@ ADIR = os.path.join(ROOT, 'audio', 'cumulative')
 os.makedirs(ADIR, exist_ok=True)
 
 # (module, id, core filename or None for stages carried by _open/close)
+# Sankalpa is now learned last (its own module), so the cumulative flow is
+# sans-sankalpa: the woven technique-sequence with a plain close.
 STAGES = [
     (1, 'stillness',   None),
-    (2, 'sankalpa',    'sankalpa.txt'),
-    (3, 'pratyahara',  'pratyahara.txt'),
-    (4, 'nyasa',       'nyasa.txt'),
-    (5, 'breath',      'breath.txt'),
-    (6, 'opposites',   'opposites.txt'),
-    (7, 'inner-space', 'inner-space.txt'),
-    (8, 'witness',     'witness.txt'),
+    (2, 'pratyahara',  'pratyahara.txt'),
+    (3, 'nyasa',       'nyasa.txt'),
+    (4, 'breath',      'breath.txt'),
+    (5, 'opposites',   'opposites.txt'),
+    (6, 'inner-space', 'inner-space.txt'),
+    (7, 'witness',     'witness.txt'),
 ]
 JOIN = '\n\n<break time="4.0s" />\n\n'
 TARGET_RMS, PEAK_CAP, THR = 3200.0, 29000.0, 200.0
@@ -56,8 +57,7 @@ for i, (mod, sid, fn) in enumerate(STAGES):
         break  # stop at the first milestone whose cores aren't authored yet
     if WANT and mod not in WANT:
         continue
-    has_sankalpa = any(c[0] == 2 for c in cores) or mod >= 2
-    close_txt = read('_close_resolve.txt' if has_sankalpa else '_close_plain.txt')
+    close_txt = read('_close_plain.txt')   # sans-sankalpa flow → always the plain return
     parts = [open_txt] + [read(c[2]) for c in cores if c[2]] + [close_txt]
     script = JOIN.join(parts)
     stem = f'cumulative_{mod}'

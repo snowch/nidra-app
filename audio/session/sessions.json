@@ -163,6 +163,22 @@
     "6b1cacceeb": {
       "audio": "audio/session/clip_6b1cacceeb.m4a?v=6b1cacceeb",
       "durationSec": 41.3
+    },
+    "a27331fce5": {
+      "audio": "audio/session/clip_a27331fce5.m4a?v=a27331fce5",
+      "durationSec": 161.7
+    },
+    "c8126507e9": {
+      "audio": "audio/session/clip_c8126507e9.m4a?v=c8126507e9",
+      "durationSec": 230.0
+    },
+    "78cacf1dac": {
+      "audio": "audio/session/clip_78cacf1dac.m4a?v=78cacf1dac",
+      "durationSec": 81.3
+    },
+    "20216e5beb": {
+      "audio": "audio/session/clip_20216e5beb.m4a?v=20216e5beb",
+      "durationSec": 32.0
     }
   },
   "sessions": {
@@ -776,6 +792,566 @@
       {
         "clip": "6b1cacceeb",
         "dur": 41.3
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "e1608fba3f",
+        "dur": 22.1
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "1bdffbeefb",
+        "dur": 6.7
+      },
+      {
+        "pause": 15.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "204eb54835",
+        "dur": 2.5
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      }
+    ],
+    "14:extended_plain": [
+      {
+        "clip": "2f83e2bd9c",
+        "dur": 90.3
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "a41e6000c0",
+        "dur": 18.1
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "469c5c3935",
+        "dur": 47.7
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "91db75f38e",
+        "dur": 28.6
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "06c14eed2f",
+        "dur": 228.0
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "20d9411c02",
+        "dur": 6.0
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "23a386305d",
+        "dur": 57.1
+      },
+      {
+        "pause": 120.0,
+        "kind": "breath"
+      },
+      {
+        "clip": "2e76d377c4",
+        "dur": 7.2
+      },
+      {
+        "pause": 120.0,
+        "kind": "breath"
+      },
+      {
+        "clip": "7187e040e0",
+        "dur": 50.9
+      },
+      {
+        "pause": 18.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "353e798ae6",
+        "dur": 16.0
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "f60af29d21",
+        "dur": 13.7
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "35dd6fc808",
+        "dur": 1.8
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "c0ae09f92b",
+        "dur": 13.4
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "1409bf4870",
+        "dur": 8.3
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "d8a5429ed6",
+        "dur": 2.2
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "42912eca1c",
+        "dur": 15.7
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "197bbf8c84",
+        "dur": 14.1
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "22f3b963c4",
+        "dur": 2.5
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "62863576dd",
+        "dur": 12.3
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "23ea8967fb",
+        "dur": 16.3
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "dbec1f1e09",
+        "dur": 21.8
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "de7f90879f",
+        "dur": 15.8
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "c1bb82f0a5",
+        "dur": 6.8
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "37a51a6136",
+        "dur": 44.4
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "e3af3cba2f",
+        "dur": 30.2
+      },
+      {
+        "pause": 30.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "c6d8e6b493",
+        "dur": 4.4
+      },
+      {
+        "pause": 25.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "50a87bf4fd",
+        "dur": 1.4
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "a27331fce5",
+        "dur": 161.7
+      }
+    ],
+    "14:unaided_plain": [
+      {
+        "clip": "c8126507e9",
+        "dur": 230.0
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "97dff06443",
+        "dur": 167.7
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "50a87bf4fd",
+        "dur": 1.4
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "78cacf1dac",
+        "dur": 81.3
+      }
+    ],
+    "14:extended_plain_sleep": [
+      {
+        "clip": "2f83e2bd9c",
+        "dur": 90.3
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "a41e6000c0",
+        "dur": 18.1
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "469c5c3935",
+        "dur": 47.7
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "91db75f38e",
+        "dur": 28.6
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "06c14eed2f",
+        "dur": 228.0
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "20d9411c02",
+        "dur": 6.0
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "23a386305d",
+        "dur": 57.1
+      },
+      {
+        "pause": 120.0,
+        "kind": "breath"
+      },
+      {
+        "clip": "2e76d377c4",
+        "dur": 7.2
+      },
+      {
+        "pause": 120.0,
+        "kind": "breath"
+      },
+      {
+        "clip": "7187e040e0",
+        "dur": 50.9
+      },
+      {
+        "pause": 18.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "353e798ae6",
+        "dur": 16.0
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "f60af29d21",
+        "dur": 13.7
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "35dd6fc808",
+        "dur": 1.8
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "c0ae09f92b",
+        "dur": 13.4
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "1409bf4870",
+        "dur": 8.3
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "d8a5429ed6",
+        "dur": 2.2
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "42912eca1c",
+        "dur": 15.7
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "197bbf8c84",
+        "dur": 14.1
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "22f3b963c4",
+        "dur": 2.5
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "62863576dd",
+        "dur": 12.3
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "23ea8967fb",
+        "dur": 16.3
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "dbec1f1e09",
+        "dur": 21.8
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "de7f90879f",
+        "dur": 15.8
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "c1bb82f0a5",
+        "dur": 6.8
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "37a51a6136",
+        "dur": 44.4
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "e3af3cba2f",
+        "dur": 30.2
+      },
+      {
+        "pause": 30.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "c6d8e6b493",
+        "dur": 4.4
+      },
+      {
+        "pause": 25.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "50a87bf4fd",
+        "dur": 1.4
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "20216e5beb",
+        "dur": 32.0
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "e1608fba3f",
+        "dur": 22.1
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "1bdffbeefb",
+        "dur": 6.7
+      },
+      {
+        "pause": 15.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "204eb54835",
+        "dur": 2.5
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      }
+    ],
+    "14:unaided_plain_sleep": [
+      {
+        "clip": "c8126507e9",
+        "dur": 230.0
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "97dff06443",
+        "dur": 167.7
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "50a87bf4fd",
+        "dur": 1.4
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "20216e5beb",
+        "dur": 32.0
       },
       {
         "pause": 10.0,

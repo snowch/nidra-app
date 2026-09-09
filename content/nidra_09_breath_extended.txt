@@ -2,10 +2,6 @@ Settle down, and become still...
 
 <break time="4.0s" />
 
-Repeat your resolve, silently, three times...
-
-<break time="24.0s" />
-
 Bring your attention to the breath... and do not change it... simply let the body breathe itself, and watch...
 
 <break time="5.0s" />
@@ -53,9 +49,5 @@ Breathing in... breathing out... and the stillness, in between...
 Let the breath fade into the background...
 
 <break time="4.0s" />
-
-repeat your resolve, once more...
-
-<break time="5.0s" />
 
 and gently return.

@@ -2,10 +2,6 @@ Settle down, and become still...
 
 <break time="4.0s" />
 
-Repeat your resolve, silently, three times...
-
-<break time="24.0s" />
-
 Through this whole practice, something has been quietly aware... aware of the body... of the breath... of the images, and the silence... Now, gently, turn towards that awareness, itself...
 
 <break time="6.0s" />
@@ -45,9 +41,5 @@ Rest, as awareness itself...
 And slowly, gently, let a little movement return... to the breath... to the body...
 
 <break time="5.0s" />
-
-repeat your resolve, one final time...
-
-<break time="6.0s" />
 
 and when you are ready, let your eyes open.

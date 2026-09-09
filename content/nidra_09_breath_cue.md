@@ -1,16 +1,16 @@
-# M5 · Breath & the gap — cue card
+# M4 · Breath & the gap — cue card
 
 *Let the breath breathe itself. Rest in the still gap.*
 
 **Why —** Steadies and quiets the mind by resting it on the breath, and the still gap.
 
-> **Before you begin:** Lying in shavasana (see Setting up); Stillness (M1); your saṅkalpa (M2).
+> **Before you begin:** Lying in shavasana (see Setting up); Stillness (M1).
 
-1. **Settle** → **Resolve** (×3)
+1. **Settle**
 2. **Watch** — breath in… breath out (don't control)
 3. **Count down** slowly (e.g. from 11), at your own pace; then let it go
 4. **The gap** — the stillness after the out-breath; rest there
-5. **Resolve** → **Return**
+5. **Return**
 
 > **If it's not working —** If the count feels effortful or you keep losing it, that's fine — begin again, or drop it and just watch. Don't control the breath; let it be shallow or ragged if it is.
 

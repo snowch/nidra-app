@@ -409,15 +409,13 @@ function toggleCard(id) {
   if (c) { c.classList.toggle('collapsed', !openState[id]); const ch = c.querySelector('.chev'); if (ch) ch.textContent = openState[id] ? '▾' : '▸'; }
 }
 function moduleDone(item) {
-  const keys = ['teaching', 'extended', 'unaided'].filter((k) => item.parts[k] && item.parts[k].status === 'built' && item.parts[k].audio);
+  const keys = ['teaching', 'extended', 'unaided'].filter((k) => { const p = item.parts[k]; return p && p.status === 'built' && (p.audio || p.session); });
   return keys.length > 0 && keys.every((k) => done[`${item.seq}:${k}`]);
 }
 
 function partRow(seq, title, key, part) {
   let m = PART_META[key] || { label: key, hint: '' };
-  // M10 has two full nidras — relabel so long vs short is unmistakable
-  if (seq === '14' && key === 'extended') m = { label: 'Full nidra — traditional', hint: 'the deep, ~28-min practice' };
-  if (seq === '14' && key === 'unaided')  m = { label: 'Full nidra — everyday',    hint: 'the shorter whole practice' };
+  if (part.label) m = { label: part.label, hint: part.hint || '' };   // manifest can name a part directly
   const built = part.status === 'built';
 
   if (key === 'cueCard' || key === 'summaryCard') {
@@ -497,7 +495,7 @@ function card(item) {
 // Below the daily practice: this module's cumulative flow (through this stage), so the flow isn't lost.
 function flowRowHtml(item) {
   const cum = (DATA && DATA.cumulative) || []; if (!cum.length) return '';
-  const p = item.practiceModule || 0; if (p < 2 || p > 8) return '';   // stages that build the flow
+  const p = item.practiceModule || 0; if (p < 2 || p > 7) return '';   // stages that build the flow (Pratyahara…Witness)
   const maxM = cum[cum.length - 1].module;
   const m = cum.find((c) => c.module === Math.min(p, maxM)); if (!m) return '';
   offlineUrls.push(m.audio);

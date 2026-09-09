@@ -1,4 +1,4 @@
-# M2 · Sankalpa — cue card
+# M10 · Sankalpa — cue card
 
 *Plant the one resolve. Same words every time. Positive, present-tense, already true.*
 

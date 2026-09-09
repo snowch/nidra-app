@@ -1,16 +1,16 @@
-# M7 · Inner space (chidakasha) — cue card
+# M6 · Inner space (chidakasha) — cue card
 
 *Rest in the dark space behind the eyes; watch what arises, let it dissolve.*
 
 **Why —** Watch the mind's images as passing phenomena — you are the space, not the contents.
 
-> **Before you begin:** Lying in shavasana (see Setting up); Stillness (M1); your saṅkalpa (M2).
+> **Before you begin:** Lying in shavasana (see Setting up); Stillness (M1).
 
-1. **Settle** → **Resolve** (×3)
+1. **Settle**
 2. **Gaze** into the inner sky — darkness
 3. **Whatever appears** — colour, image — comes and goes
 4. Optional: a single **point of light**
-5. Rest in the **space itself** → **Resolve** → **Return**
+5. Rest in the **space itself** → **Return**
 
 > **If it's not working —** If nothing appears, or the mind races — both are fine. You are watching the space, not the show. Rest the gaze softly; don't hunt for images, or try to still them.
 

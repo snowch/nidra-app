@@ -2,10 +2,6 @@ Settle down, and let the body become still...
 
 <break time="4.0s" />
 
-Repeat your resolve, silently, three times...
-
-<break time="24.0s" />
-
 Now we begin to withdraw the senses, gently, one by one...
 
 <break time="4.0s" />
@@ -41,9 +37,5 @@ Rest...
 And slowly, let the senses open again... hearing the sounds of the room... feeling the body...
 
 <break time="4.0s" />
-
-repeat your resolve, once more...
-
-<break time="5.0s" />
 
 and gently return, opening your eyes.

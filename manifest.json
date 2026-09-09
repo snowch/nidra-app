@@ -29,50 +29,44 @@
     {
       "module": 1,
       "through": "stillness",
-      "audio": "audio/cumulative/cumulative_1.m4a?v=1bb21666",
+      "audio": "audio/cumulative/cumulative_1.m4a?v=36ff1265",
       "durationSec": 264.9
     },
     {
       "module": 2,
-      "through": "sankalpa",
-      "audio": "audio/cumulative/cumulative_2.m4a?v=b795b6ec",
-      "durationSec": 395.0
+      "through": "pratyahara",
+      "audio": "audio/cumulative/cumulative_2.m4a?v=cf9445cc",
+      "durationSec": 367.8
     },
     {
       "module": 3,
-      "through": "pratyahara",
-      "audio": "audio/cumulative/cumulative_3.m4a?v=cf50ffe2",
-      "durationSec": 498.0
+      "through": "nyasa",
+      "audio": "audio/cumulative/cumulative_3.m4a?v=b7f0043b",
+      "durationSec": 613.7
     },
     {
       "module": 4,
-      "through": "nyasa",
-      "audio": "audio/cumulative/cumulative_4.m4a?v=2ea59f29",
-      "durationSec": 744.0
+      "through": "breath",
+      "audio": "audio/cumulative/cumulative_4.m4a?v=25316eb7",
+      "durationSec": 826.4
     },
     {
       "module": 5,
-      "through": "breath",
-      "audio": "audio/cumulative/cumulative_5.m4a?v=0081a848",
-      "durationSec": 956.6
+      "through": "opposites",
+      "audio": "audio/cumulative/cumulative_5.m4a?v=03312b05",
+      "durationSec": 1053.0
     },
     {
       "module": 6,
-      "through": "opposites",
-      "audio": "audio/cumulative/cumulative_6.m4a?v=23a5ae4a",
-      "durationSec": 1183.2
+      "through": "inner-space",
+      "audio": "audio/cumulative/cumulative_6.m4a?v=3d6fa766",
+      "durationSec": 1192.7
     },
     {
       "module": 7,
-      "through": "inner-space",
-      "audio": "audio/cumulative/cumulative_7.m4a?v=e48df318",
-      "durationSec": 1322.9
-    },
-    {
-      "module": 8,
       "through": "witness",
-      "audio": "audio/cumulative/cumulative_8.m4a?v=49c72594",
-      "durationSec": 1515.5
+      "audio": "audio/cumulative/cumulative_7.m4a?v=b68af01d",
+      "durationSec": 1385.4
     }
   ],
   "items": [
@@ -211,43 +205,11 @@
       ]
     },
     {
-      "seq": "06",
-      "id": "sankalpa",
-      "title": "Sankalpa — the resolve",
-      "type": "practice",
-      "practiceModule": 2,
-      "sources": [
-        "Chandogya Upanishad 3.14"
-      ],
-      "parts": {
-        "teaching": {
-          "script": "content/nidra_06_sankalpa_teaching.txt",
-          "audio": "audio/nidra_06_sankalpa_teaching.m4a?v=0aaa8007",
-          "durationSec": 148.1,
-          "status": "built"
-        },
-        "extended": {
-          "script": "content/nidra_06_sankalpa_extended.txt",
-          "audio": "audio/nidra_06_sankalpa_extended.m4a?v=6a59ac40",
-          "durationSec": 217.6,
-          "status": "built"
-        },
-        "cueCard": {
-          "file": "content/nidra_06_sankalpa_cue.md",
-          "status": "built"
-        }
-      },
-      "prerequisites": [
-        "Lie down in shavasana (see 'Setting up')",
-        "Able to settle into Stillness (M1)"
-      ]
-    },
-    {
       "seq": "07",
       "id": "pratyahara",
       "title": "Pratyahara — withdrawing the senses",
       "type": "practice",
-      "practiceModule": 3,
+      "practiceModule": 2,
       "sources": [
         "Yoga Sutras 2.54-55"
       ],
@@ -261,8 +223,8 @@
         },
         "extended": {
           "script": "content/nidra_07_pratyahara_extended.txt",
-          "audio": "audio/nidra_07_pratyahara_extended.m4a?v=33e75944",
-          "durationSec": 210.8,
+          "audio": "audio/nidra_07_pratyahara_extended.m4a?v=eb97a41c",
+          "durationSec": 174.8,
           "status": "built"
         },
         "cueCard": {
@@ -281,7 +243,7 @@
       "id": "nyasa",
       "title": "Nyasa — rotating awareness through the body",
       "type": "practice",
-      "practiceModule": 4,
+      "practiceModule": 3,
       "sources": [
         "Tantric nyasa"
       ],
@@ -294,8 +256,8 @@
         },
         "extended": {
           "script": "content/nidra_08_nyasa_extended.txt",
-          "audio": "audio/nidra_08_nyasa_extended.m4a?v=2888f83f",
-          "durationSec": 287.8,
+          "audio": "audio/nidra_08_nyasa_extended.m4a?v=d931ff7e",
+          "durationSec": 249.8,
           "status": "built"
         },
         "cueCard": {
@@ -314,7 +276,7 @@
       "id": "breath",
       "title": "Breath and the gap",
       "type": "practice",
-      "practiceModule": 5,
+      "practiceModule": 4,
       "sources": [
         "Vijnana Bhairava Tantra",
         "Patanjali (pranayama)"
@@ -328,8 +290,8 @@
         },
         "extended": {
           "script": "content/nidra_09_breath_extended.txt",
-          "audio": "audio/nidra_09_breath_extended.m4a?v=3bd97856",
-          "durationSec": 287.6,
+          "audio": "audio/nidra_09_breath_extended.m4a?v=28c16f68",
+          "durationSec": 251.6,
           "status": "built"
         },
         "cueCard": {
@@ -348,7 +310,7 @@
       "id": "opposites",
       "title": "Pairs of opposites",
       "type": "practice",
-      "practiceModule": 6,
+      "practiceModule": 5,
       "sources": [
         "Bhagavad Gita 2.14, 6.7",
         "Vijnana Bhairava Tantra"
@@ -362,8 +324,8 @@
         },
         "extended": {
           "script": "content/nidra_10_opposites_extended.txt",
-          "audio": "audio/nidra_10_opposites_extended.m4a?v=ed433185",
-          "durationSec": 283.5,
+          "audio": "audio/nidra_10_opposites_extended.m4a?v=04bad487",
+          "durationSec": 245.5,
           "status": "built"
         },
         "cueCard": {
@@ -382,7 +344,7 @@
       "id": "inner-space",
       "title": "Inner space (cidakasha) — dharana",
       "type": "practice",
-      "practiceModule": 7,
+      "practiceModule": 6,
       "sources": [
         "Vijnana Bhairava Tantra (void/space dharanas)",
         "Yoga Sutras 3.1 (dharana)"
@@ -396,8 +358,8 @@
         },
         "extended": {
           "script": "content/nidra_11_inner-space_extended.txt",
-          "audio": "audio/nidra_11_inner-space_extended.m4a?v=bcce47ea",
-          "durationSec": 213.9,
+          "audio": "audio/nidra_11_inner-space_extended.m4a?v=228ebf21",
+          "durationSec": 177.9,
           "status": "built"
         },
         "cueCard": {
@@ -414,9 +376,9 @@
     {
       "seq": "12",
       "id": "witness",
-      "title": "The witness (turiya) — with AUM",
+      "title": "The witness (turiya)",
       "type": "practice",
-      "practiceModule": 8,
+      "practiceModule": 7,
       "sources": [
         "Mandukya Upanishad (turiya, AUM)"
       ],
@@ -429,8 +391,8 @@
         },
         "extended": {
           "script": "content/nidra_12_witness_extended.txt",
-          "audio": "audio/nidra_12_witness_extended.m4a?v=1a5686df",
-          "durationSec": 255.6,
+          "audio": "audio/nidra_12_witness_extended.m4a?v=e92072f5",
+          "durationSec": 217.4,
           "status": "built"
         },
         "cueCard": {
@@ -447,9 +409,9 @@
     {
       "seq": "13",
       "id": "return",
-      "title": "Return — re-affirm the resolve, externalise",
+      "title": "Return — coming back, unhurried",
       "type": "practice",
-      "practiceModule": 9,
+      "practiceModule": 8,
       "sources": [],
       "parts": {
         "teaching": {
@@ -460,8 +422,8 @@
         },
         "extended": {
           "script": "content/nidra_13_return_extended.txt",
-          "audio": "audio/nidra_13_return_extended.m4a?v=b5126dda",
-          "durationSec": 224.1,
+          "audio": "audio/nidra_13_return_extended.m4a?v=f0efedda",
+          "durationSec": 172.9,
           "status": "built"
         },
         "cueCard": {
@@ -478,9 +440,9 @@
     {
       "seq": "14",
       "id": "build-your-own",
-      "title": "Build your own — the full practice, unaided",
+      "title": "The practice — the whole flow, unaided",
       "type": "practice",
-      "practiceModule": 10,
+      "practiceModule": 9,
       "sources": [],
       "parts": {
         "teaching": {
@@ -490,26 +452,18 @@
           "status": "built"
         },
         "extended": {
-          "script": "content/nidra_14_build-your-own_extended.txt",
-          "audio": "audio/nidra_14_build-your-own_extended.m4a?v=14055c56",
-          "durationSec": 1628.3,
-          "sleepScript": "content/nidra_14_build-your-own_extended_sleep.txt",
-          "sleepAudio": "audio/nidra_14_build-your-own_extended_sleep.m4a?v=4034ac0a",
-          "sleepDurationSec": 1585.4,
+          "session": "14:extended_plain",
+          "sleepSession": "14:extended_plain_sleep",
           "status": "built",
-          "session": "14:extended",
-          "sleepSession": "14:extended_sleep"
+          "label": "The practice — traditional",
+          "hint": "the whole flow, woven into one"
         },
         "unaided": {
-          "script": "content/nidra_14_build-your-own_unaided.txt",
-          "audio": "audio/nidra_14_build-your-own_unaided.m4a?v=41343aa8",
-          "durationSec": 608.8,
-          "sleepScript": "content/nidra_14_build-your-own_unaided_sleep.txt",
-          "sleepAudio": "audio/nidra_14_build-your-own_unaided_sleep.m4a?v=7846d4c4",
-          "sleepDurationSec": 646.4,
+          "session": "14:unaided_plain",
+          "sleepSession": "14:unaided_plain_sleep",
           "status": "built",
-          "session": "14:unaided",
-          "sleepSession": "14:unaided_sleep"
+          "label": "The practice — everyday",
+          "hint": "the shorter whole flow"
         },
         "cueCard": {
           "file": "content/nidra_14_build-your-own_cue.md",
@@ -518,7 +472,47 @@
       },
       "prerequisites": [
         "Lie down in shavasana (see 'Setting up')",
-        "All elements learned — Modules 1 to 9"
+        "All the stages learned — Modules 1 to 8"
+      ]
+    },
+    {
+      "seq": "06",
+      "id": "sankalpa",
+      "title": "Sankalpa — the resolve",
+      "type": "practice",
+      "practiceModule": 10,
+      "sources": [
+        "Chandogya Upanishad 3.14"
+      ],
+      "parts": {
+        "teaching": {
+          "script": "content/nidra_06_sankalpa_teaching.txt",
+          "audio": "audio/nidra_06_sankalpa_teaching.m4a?v=0aaa8007",
+          "durationSec": 148.1,
+          "status": "built"
+        },
+        "extended": {
+          "session": "14:extended",
+          "sleepSession": "14:extended_sleep",
+          "status": "built",
+          "label": "Full nidra — traditional, with your Sankalpa",
+          "hint": "your resolve, folded in · ~28 min"
+        },
+        "cueCard": {
+          "file": "content/nidra_06_sankalpa_cue.md",
+          "status": "built"
+        },
+        "unaided": {
+          "session": "14:unaided",
+          "sleepSession": "14:unaided_sleep",
+          "status": "built",
+          "label": "Full nidra — everyday, with your Sankalpa",
+          "hint": "your resolve, folded in"
+        }
+      },
+      "prerequisites": [
+        "Fluent in the whole flow (Module 9)",
+        "A resolve you are ready to plant"
       ]
     },
     {
@@ -703,6 +697,22 @@
     "6b1cacceeb": {
       "audio": "audio/session/clip_6b1cacceeb.m4a?v=6b1cacceeb",
       "durationSec": 41.3
+    },
+    "a27331fce5": {
+      "audio": "audio/session/clip_a27331fce5.m4a?v=a27331fce5",
+      "durationSec": 161.7
+    },
+    "c8126507e9": {
+      "audio": "audio/session/clip_c8126507e9.m4a?v=c8126507e9",
+      "durationSec": 230.0
+    },
+    "78cacf1dac": {
+      "audio": "audio/session/clip_78cacf1dac.m4a?v=78cacf1dac",
+      "durationSec": 81.3
+    },
+    "20216e5beb": {
+      "audio": "audio/session/clip_20216e5beb.m4a?v=20216e5beb",
+      "durationSec": 32.0
     }
   },
   "sessions": {
@@ -1316,6 +1326,566 @@
       {
         "clip": "6b1cacceeb",
         "dur": 41.3
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "e1608fba3f",
+        "dur": 22.1
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "1bdffbeefb",
+        "dur": 6.7
+      },
+      {
+        "pause": 15.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "204eb54835",
+        "dur": 2.5
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      }
+    ],
+    "14:extended_plain": [
+      {
+        "clip": "2f83e2bd9c",
+        "dur": 90.3
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "a41e6000c0",
+        "dur": 18.1
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "469c5c3935",
+        "dur": 47.7
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "91db75f38e",
+        "dur": 28.6
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "06c14eed2f",
+        "dur": 228.0
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "20d9411c02",
+        "dur": 6.0
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "23a386305d",
+        "dur": 57.1
+      },
+      {
+        "pause": 120.0,
+        "kind": "breath"
+      },
+      {
+        "clip": "2e76d377c4",
+        "dur": 7.2
+      },
+      {
+        "pause": 120.0,
+        "kind": "breath"
+      },
+      {
+        "clip": "7187e040e0",
+        "dur": 50.9
+      },
+      {
+        "pause": 18.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "353e798ae6",
+        "dur": 16.0
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "f60af29d21",
+        "dur": 13.7
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "35dd6fc808",
+        "dur": 1.8
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "c0ae09f92b",
+        "dur": 13.4
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "1409bf4870",
+        "dur": 8.3
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "d8a5429ed6",
+        "dur": 2.2
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "42912eca1c",
+        "dur": 15.7
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "197bbf8c84",
+        "dur": 14.1
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "22f3b963c4",
+        "dur": 2.5
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "62863576dd",
+        "dur": 12.3
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "23ea8967fb",
+        "dur": 16.3
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "dbec1f1e09",
+        "dur": 21.8
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "de7f90879f",
+        "dur": 15.8
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "c1bb82f0a5",
+        "dur": 6.8
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "37a51a6136",
+        "dur": 44.4
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "e3af3cba2f",
+        "dur": 30.2
+      },
+      {
+        "pause": 30.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "c6d8e6b493",
+        "dur": 4.4
+      },
+      {
+        "pause": 25.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "50a87bf4fd",
+        "dur": 1.4
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "a27331fce5",
+        "dur": 161.7
+      }
+    ],
+    "14:unaided_plain": [
+      {
+        "clip": "c8126507e9",
+        "dur": 230.0
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "97dff06443",
+        "dur": 167.7
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "50a87bf4fd",
+        "dur": 1.4
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "78cacf1dac",
+        "dur": 81.3
+      }
+    ],
+    "14:extended_plain_sleep": [
+      {
+        "clip": "2f83e2bd9c",
+        "dur": 90.3
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "a41e6000c0",
+        "dur": 18.1
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "469c5c3935",
+        "dur": 47.7
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "91db75f38e",
+        "dur": 28.6
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "06c14eed2f",
+        "dur": 228.0
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "20d9411c02",
+        "dur": 6.0
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "23a386305d",
+        "dur": 57.1
+      },
+      {
+        "pause": 120.0,
+        "kind": "breath"
+      },
+      {
+        "clip": "2e76d377c4",
+        "dur": 7.2
+      },
+      {
+        "pause": 120.0,
+        "kind": "breath"
+      },
+      {
+        "clip": "7187e040e0",
+        "dur": 50.9
+      },
+      {
+        "pause": 18.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "353e798ae6",
+        "dur": 16.0
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "f60af29d21",
+        "dur": 13.7
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "35dd6fc808",
+        "dur": 1.8
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "c0ae09f92b",
+        "dur": 13.4
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "1409bf4870",
+        "dur": 8.3
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "d8a5429ed6",
+        "dur": 2.2
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "42912eca1c",
+        "dur": 15.7
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "197bbf8c84",
+        "dur": 14.1
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "22f3b963c4",
+        "dur": 2.5
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "62863576dd",
+        "dur": 12.3
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "23ea8967fb",
+        "dur": 16.3
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "dbec1f1e09",
+        "dur": 21.8
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "de7f90879f",
+        "dur": 15.8
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "c1bb82f0a5",
+        "dur": 6.8
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "37a51a6136",
+        "dur": 44.4
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "e3af3cba2f",
+        "dur": 30.2
+      },
+      {
+        "pause": 30.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "c6d8e6b493",
+        "dur": 4.4
+      },
+      {
+        "pause": 25.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "50a87bf4fd",
+        "dur": 1.4
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "20216e5beb",
+        "dur": 32.0
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "e1608fba3f",
+        "dur": 22.1
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "1bdffbeefb",
+        "dur": 6.7
+      },
+      {
+        "pause": 15.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "204eb54835",
+        "dur": 2.5
+      },
+      {
+        "pause": 20.0,
+        "kind": "rest"
+      }
+    ],
+    "14:unaided_plain_sleep": [
+      {
+        "clip": "c8126507e9",
+        "dur": 230.0
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "97dff06443",
+        "dur": 167.7
+      },
+      {
+        "pause": 12.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "50a87bf4fd",
+        "dur": 1.4
+      },
+      {
+        "pause": 10.0,
+        "kind": "rest"
+      },
+      {
+        "clip": "20216e5beb",
+        "dur": 32.0
       },
       {
         "pause": 10.0,

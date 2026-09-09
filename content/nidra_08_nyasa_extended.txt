@@ -2,10 +2,6 @@ Lie still, and let the whole body settle...
 
 <break time="4.0s" />
 
-Repeat your resolve, silently, three times...
-
-<break time="24.0s" />
-
 Now move your awareness through the body. Simply hear each part... take your attention there... and let it go. Nothing to do. Nothing to move...
 
 <break time="5.0s" />
@@ -45,9 +41,5 @@ Let the separate parts fade... and feel the whole body, all at once... complete.
 Feel the whole body, filled with a quiet, flowing awareness...
 
 <break time="20.0s" />
-
-And when you are ready... repeat your resolve, once more...
-
-<break time="5.0s" />
 
 begin to move, gently... and let your eyes open.

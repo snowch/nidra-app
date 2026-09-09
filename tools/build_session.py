@@ -18,10 +18,14 @@ TARGET_RMS, PEAK_CAP, THR = 3200.0, 29000.0, 200.0
 BREAK_RE = r'<break\s+time=["\']([\d.]+)s["\']\s*/?>'
 
 RECS = {
-    '14:extended':       'nidra_14_build-your-own_extended.txt',
+    '14:extended':       'nidra_14_build-your-own_extended.txt',        # with sankalpa (M10)
     '14:unaided':        'nidra_14_build-your-own_unaided.txt',
     '14:extended_sleep': 'nidra_14_build-your-own_extended_sleep.txt',
     '14:unaided_sleep':  'nidra_14_build-your-own_unaided_sleep.txt',
+    '14:extended_plain':       'nidra_14_build-your-own_extended_plain.txt',        # sans sankalpa (M9)
+    '14:unaided_plain':        'nidra_14_build-your-own_unaided_plain.txt',
+    '14:extended_plain_sleep': 'nidra_14_build-your-own_extended_plain_sleep.txt',
+    '14:unaided_plain_sleep':  'nidra_14_build-your-own_unaided_plain_sleep.txt',
 }
 
 
