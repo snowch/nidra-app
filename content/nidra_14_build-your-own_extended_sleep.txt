@@ -124,11 +124,11 @@ And up, into the face, and the head. The jaw... the lips... the tip of the nose.
 
 Let the separate parts fade... and feel the whole body, all at once... complete... resting... and heavy... and still...
 
-<break time="20.0s" />
+<break time="12.0s" />
 
 Feel the whole body, filled with a quiet, flowing awareness...
 
-<break time="20.0s" />
+<break time="12.0s" />
 
 Let your attention rest, gently, upon the breath... breathing itself, without any effort of yours...
 
@@ -144,11 +144,11 @@ and flowing out...
 
 To steady the mind, count the breaths, backwards, from twenty-seven. Breathing in, and out, twenty-seven... in, and out, twenty-six... in, and out, twenty-five... and so on, slowly, in your own time. If you lose the count, simply begin again...
 
-<break time="120.0s" />
+<break time="90.0s" />
 
 Continue... following each breath, with the count... all the way down, to one...
 
-<break time="120.0s" />
+<break time="90.0s" />
 
 Let the counting go...
 

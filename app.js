@@ -96,8 +96,8 @@ const savePace = (v) => { paceScale = v; localStorage.setItem(PACE_STORE, String
 function resolveDur() {
   const sk = journal.sankalpa;
   const w = sk && sk.text ? sk.text.trim().split(/\s+/).filter(Boolean).length : 0;
-  if (!w) return 24;                                   // no sankalpa set → the baked default
-  return Math.min(60, Math.max(18, Math.round(w * 3 * 0.6 + 7)));   // 3 reps, ~0.6s/word, + a settling beat
+  const base = w ? Math.min(36, Math.max(12, Math.round(w * 1.4 + 5))) : 16;   // ~3 unhurried reps
+  return Math.max(8, Math.round(base * paceScale));                            // respects the pace control
 }
 function stepPause(s) {
   if (s.kind === 'resolve') return resolveDur();

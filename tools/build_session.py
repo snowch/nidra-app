@@ -58,7 +58,7 @@ def segment(text):
         elif v >= THRESHOLD:
             flush()
             kind = ('resolve' if 'three times' in last.lower()
-                    else 'breath' if v >= 100 else 'rest')
+                    else 'breath' if v >= 80 else 'rest')
             steps.append(('pause', v, kind))
         else:
             buf.append((k, v))
