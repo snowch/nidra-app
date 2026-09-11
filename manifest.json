@@ -41,32 +41,32 @@
     {
       "module": 3,
       "through": "nyasa",
-      "audio": "audio/cumulative/cumulative_3.m4a?v=b7f0043b",
-      "durationSec": 613.7
+      "audio": "audio/cumulative/cumulative_3.m4a?v=e15f2438",
+      "durationSec": 597.8
     },
     {
       "module": 4,
       "through": "breath",
-      "audio": "audio/cumulative/cumulative_4.m4a?v=25316eb7",
-      "durationSec": 826.4
+      "audio": "audio/cumulative/cumulative_4.m4a?v=7febc7cc",
+      "durationSec": 785.3
     },
     {
       "module": 5,
       "through": "opposites",
-      "audio": "audio/cumulative/cumulative_5.m4a?v=03312b05",
-      "durationSec": 1053.0
+      "audio": "audio/cumulative/cumulative_5.m4a?v=e4754293",
+      "durationSec": 1012.0
     },
     {
       "module": 6,
       "through": "inner-space",
-      "audio": "audio/cumulative/cumulative_6.m4a?v=3d6fa766",
-      "durationSec": 1192.7
+      "audio": "audio/cumulative/cumulative_6.m4a?v=4c4081ca",
+      "durationSec": 1151.8
     },
     {
       "module": 7,
       "through": "witness",
-      "audio": "audio/cumulative/cumulative_7.m4a?v=b68af01d",
-      "durationSec": 1385.4
+      "audio": "audio/cumulative/cumulative_7.m4a?v=005cda9d",
+      "durationSec": 1328.4
     }
   ],
   "items": [
@@ -256,8 +256,8 @@
         },
         "extended": {
           "script": "content/nidra_08_nyasa_extended.txt",
-          "audio": "audio/nidra_08_nyasa_extended.m4a?v=d931ff7e",
-          "durationSec": 249.8,
+          "audio": "audio/nidra_08_nyasa_extended.m4a?v=e4ab3939",
+          "durationSec": 233.8,
           "status": "built"
         },
         "cueCard": {
@@ -290,8 +290,8 @@
         },
         "extended": {
           "script": "content/nidra_09_breath_extended.txt",
-          "audio": "audio/nidra_09_breath_extended.m4a?v=28c16f68",
-          "durationSec": 251.6,
+          "audio": "audio/nidra_09_breath_extended.m4a?v=9f543bec",
+          "durationSec": 226.6,
           "status": "built"
         },
         "cueCard": {
@@ -391,8 +391,8 @@
         },
         "extended": {
           "script": "content/nidra_12_witness_extended.txt",
-          "audio": "audio/nidra_12_witness_extended.m4a?v=e92072f5",
-          "durationSec": 217.4,
+          "audio": "audio/nidra_12_witness_extended.m4a?v=952fb006",
+          "durationSec": 201.4,
           "status": "built"
         },
         "cueCard": {
@@ -734,7 +734,7 @@
         "dur": 22.1
       },
       {
-        "pause": 24.0,
+        "pause": 15.0,
         "kind": "resolve"
       },
       {
@@ -782,7 +782,7 @@
         "dur": 57.1
       },
       {
-        "pause": 90.0,
+        "pause": 75.0,
         "kind": "breath"
       },
       {
@@ -790,7 +790,7 @@
         "dur": 7.2
       },
       {
-        "pause": 90.0,
+        "pause": 75.0,
         "kind": "breath"
       },
       {
@@ -798,7 +798,7 @@
         "dur": 50.9
       },
       {
-        "pause": 18.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {
@@ -902,7 +902,7 @@
         "dur": 15.8
       },
       {
-        "pause": 20.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {
@@ -910,7 +910,7 @@
         "dur": 6.8
       },
       {
-        "pause": 20.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {
@@ -926,7 +926,7 @@
         "dur": 30.2
       },
       {
-        "pause": 30.0,
+        "pause": 22.0,
         "kind": "rest"
       },
       {
@@ -934,7 +934,7 @@
         "dur": 4.4
       },
       {
-        "pause": 25.0,
+        "pause": 15.0,
         "kind": "rest"
       },
       {
@@ -942,7 +942,7 @@
         "dur": 1.4
       },
       {
-        "pause": 20.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {
@@ -950,7 +950,7 @@
         "dur": 16.0
       },
       {
-        "pause": 24.0,
+        "pause": 15.0,
         "kind": "resolve"
       },
       {
@@ -964,7 +964,7 @@
         "dur": 97.6
       },
       {
-        "pause": 24.0,
+        "pause": 15.0,
         "kind": "resolve"
       },
       {
@@ -988,7 +988,7 @@
         "dur": 12.2
       },
       {
-        "pause": 24.0,
+        "pause": 15.0,
         "kind": "resolve"
       },
       {
@@ -1018,7 +1018,7 @@
         "dur": 22.1
       },
       {
-        "pause": 24.0,
+        "pause": 15.0,
         "kind": "resolve"
       },
       {
@@ -1066,7 +1066,7 @@
         "dur": 57.1
       },
       {
-        "pause": 90.0,
+        "pause": 75.0,
         "kind": "breath"
       },
       {
@@ -1074,7 +1074,7 @@
         "dur": 7.2
       },
       {
-        "pause": 90.0,
+        "pause": 75.0,
         "kind": "breath"
       },
       {
@@ -1082,7 +1082,7 @@
         "dur": 50.9
       },
       {
-        "pause": 18.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {
@@ -1186,7 +1186,7 @@
         "dur": 15.8
       },
       {
-        "pause": 20.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {
@@ -1194,7 +1194,7 @@
         "dur": 6.8
       },
       {
-        "pause": 20.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {
@@ -1210,7 +1210,7 @@
         "dur": 30.2
       },
       {
-        "pause": 30.0,
+        "pause": 22.0,
         "kind": "rest"
       },
       {
@@ -1218,7 +1218,7 @@
         "dur": 4.4
       },
       {
-        "pause": 25.0,
+        "pause": 15.0,
         "kind": "rest"
       },
       {
@@ -1226,7 +1226,7 @@
         "dur": 1.4
       },
       {
-        "pause": 20.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {
@@ -1234,7 +1234,7 @@
         "dur": 16.0
       },
       {
-        "pause": 24.0,
+        "pause": 15.0,
         "kind": "resolve"
       },
       {
@@ -1276,7 +1276,7 @@
         "dur": 97.6
       },
       {
-        "pause": 24.0,
+        "pause": 15.0,
         "kind": "resolve"
       },
       {
@@ -1300,7 +1300,7 @@
         "dur": 12.2
       },
       {
-        "pause": 24.0,
+        "pause": 15.0,
         "kind": "resolve"
       },
       {
@@ -1390,7 +1390,7 @@
         "dur": 57.1
       },
       {
-        "pause": 90.0,
+        "pause": 75.0,
         "kind": "breath"
       },
       {
@@ -1398,7 +1398,7 @@
         "dur": 7.2
       },
       {
-        "pause": 90.0,
+        "pause": 75.0,
         "kind": "breath"
       },
       {
@@ -1406,7 +1406,7 @@
         "dur": 50.9
       },
       {
-        "pause": 18.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {
@@ -1510,7 +1510,7 @@
         "dur": 15.8
       },
       {
-        "pause": 20.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {
@@ -1518,7 +1518,7 @@
         "dur": 6.8
       },
       {
-        "pause": 20.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {
@@ -1534,7 +1534,7 @@
         "dur": 30.2
       },
       {
-        "pause": 30.0,
+        "pause": 22.0,
         "kind": "rest"
       },
       {
@@ -1542,7 +1542,7 @@
         "dur": 4.4
       },
       {
-        "pause": 25.0,
+        "pause": 15.0,
         "kind": "rest"
       },
       {
@@ -1550,7 +1550,7 @@
         "dur": 1.4
       },
       {
-        "pause": 20.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {
@@ -1634,7 +1634,7 @@
         "dur": 57.1
       },
       {
-        "pause": 90.0,
+        "pause": 75.0,
         "kind": "breath"
       },
       {
@@ -1642,7 +1642,7 @@
         "dur": 7.2
       },
       {
-        "pause": 90.0,
+        "pause": 75.0,
         "kind": "breath"
       },
       {
@@ -1650,7 +1650,7 @@
         "dur": 50.9
       },
       {
-        "pause": 18.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {
@@ -1754,7 +1754,7 @@
         "dur": 15.8
       },
       {
-        "pause": 20.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {
@@ -1762,7 +1762,7 @@
         "dur": 6.8
       },
       {
-        "pause": 20.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {
@@ -1778,7 +1778,7 @@
         "dur": 30.2
       },
       {
-        "pause": 30.0,
+        "pause": 22.0,
         "kind": "rest"
       },
       {
@@ -1786,7 +1786,7 @@
         "dur": 4.4
       },
       {
-        "pause": 25.0,
+        "pause": 15.0,
         "kind": "rest"
       },
       {
@@ -1794,7 +1794,7 @@
         "dur": 1.4
       },
       {
-        "pause": 20.0,
+        "pause": 12.0,
         "kind": "rest"
       },
       {

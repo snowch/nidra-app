@@ -20,7 +20,7 @@ Feel where the breath moves in the body... perhaps the gentle rise, and fall, of
 
 To steady the mind, count the breaths, backwards, from eleven... breathing in, and out, eleven... in, and out, ten... and so on, slowly, in your own time. If you lose the count, simply begin again...
 
-<break time="100.0s" />
+<break time="75s" />
 
 Let the counting go...
 

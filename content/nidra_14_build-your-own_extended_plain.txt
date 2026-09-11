@@ -132,11 +132,11 @@ and flowing out...
 
 To steady the mind, count the breaths, backwards, from twenty-seven. Breathing in, and out, twenty-seven... in, and out, twenty-six... in, and out, twenty-five... and so on, slowly, in your own time. If you lose the count, simply begin again...
 
-<break time="90.0s" />
+<break time="75s" />
 
 Continue... following each breath, with the count... all the way down, to one...
 
-<break time="90.0s" />
+<break time="75s" />
 
 Let the counting go...
 
@@ -156,7 +156,7 @@ Perhaps there is a moment of quiet there...
 
 Rest, gently, in that stillness... and let each new breath arrive, on its own...
 
-<break time="18.0s" />
+<break time="12s" />
 
 We come, now, to the play of opposites. Feel the whole body becoming heavy... very heavy... heavy as stone... sinking down, into the surface beneath you...
 
@@ -212,11 +212,11 @@ Simply rest there, gazing softly into the darkness... without searching for anyt
 
 Whatever appears in the space... a colour... a shape... a drifting image... let it come, and let it go... You are the space, in which it all arises...
 
-<break time="20.0s" />
+<break time="12s" />
 
 Rest, in the inner space... vast... dark... silent... and still...
 
-<break time="20.0s" />
+<break time="12s" />
 
 And now, gently, turn towards the one who is aware of it all...
 
@@ -240,15 +240,15 @@ Let ohm arise silently within...
 
 and then rest, in the silence that follows the sound... That silence is your own, deepest nature...
 
-<break time="30.0s" />
+<break time="22s" />
 
 Rest, simply, as the one who is aware...
 
-<break time="25.0s" />
+<break time="15s" />
 
 Rest...
 
-<break time="20.0s" />
+<break time="12s" />
 
 And now, slowly, and with care, we begin the return... there is no hurry at all...
 
