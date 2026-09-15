@@ -58,38 +58,33 @@ function setBtnState(btn, playing) {
   btn.textContent = playing ? '❚❚' : (btn.dataset.idle || '▶');
 }
 function startTrack(btn) {
-  stopSession();
+  freeBlob();
   if (activeBtn === btn) { player.paused ? player.play() : player.pause(); return; }
   if (activeBtn) setBtnState(activeBtn, false);
   activeBtn = btn;
   player.src = btn.dataset.src;
   player.play().catch((e) => console.warn('play failed', e));
   mini.title.textContent = `${btn.dataset.title} · ${btn.dataset.part}`;
+  setMediaSession(btn.dataset.title);
   mini.root.hidden = false; mini.root.classList.remove('session');
   mini.seek.value = 0; mini.cur.textContent = '0:00'; mini.dur.textContent = '0:00';
 }
-player.onplay  = () => { if (!session && activeBtn) setBtnState(activeBtn, true);  mini.play.textContent = '❚❚'; };
-player.onpause = () => { if (!session && activeBtn) setBtnState(activeBtn, false); if (!session) mini.play.textContent = '▶'; };
-player.onended = () => { if (session) { if (!session.paused) stepSession(); } else { if (activeBtn) setBtnState(activeBtn, false); mini.play.textContent = '▶'; } };
-player.onloadedmetadata = () => { if (!session) mini.dur.textContent = fmt(player.duration); };
+player.onplay  = () => { if (activeBtn) setBtnState(activeBtn, true);  mini.play.textContent = '❚❚'; if (activeBtn && !activeBtn.classList.contains('sleep')) acquireWake(); };
+player.onpause = () => { if (activeBtn) setBtnState(activeBtn, false); mini.play.textContent = '▶'; releaseWake(); };
+player.onended = () => { if (activeBtn) setBtnState(activeBtn, false); mini.play.textContent = '▶'; releaseWake(); };
+player.onloadedmetadata = () => { mini.dur.textContent = fmt(player.duration); };
 player.ontimeupdate = () => {
-  if (session || !player.duration) return;
+  if (!player.duration) return;
   mini.seek.value = Math.round((player.currentTime / player.duration) * 1000);
   mini.cur.textContent = fmt(player.currentTime);
 };
-mini.play.onclick    = () => { if (session) toggleSession(); else if (player.src) player.paused ? player.play() : player.pause(); };
-mini.restart.onclick = () => { if (session) seekSession(0); else if (player.src) { player.currentTime = 0; player.play(); } };
-mini.seek.oninput    = () => {
-  if (session) { session.seeking = true; mini.cur.textContent = fmt((mini.seek.value / 1000) * session.total); }
-  else if (player.duration) player.currentTime = (mini.seek.value / 1000) * player.duration;
-};
-mini.seek.onchange   = () => { if (session) { seekSession((mini.seek.value / 1000) * session.total); session.seeking = false; } };
+mini.play.onclick    = () => { if (player.src) player.paused ? player.play() : player.pause(); };
+mini.restart.onclick = () => { if (player.src) { player.currentTime = 0; player.play(); } };
+mini.seek.oninput    = () => { if (player.duration) player.currentTime = (mini.seek.value / 1000) * player.duration; };
 
-/* ---------- session engine: stepped playback for the full nidras ----------
- * A session is a list of steps: { clip, dur } (a rendered audio clip) or
- * { pause, kind } (a wall-clock gap). Rest pauses scale with the pace setting;
- * resolve pauses are sized from the saved sankalpa; breath-holds never scale. */
-let session = null;   // { steps, i, timer, ticker, paused, total, elapsed, lastTick, sleep, seeking }
+/* ---------- pause sizing (used by the JIT assembler + row durations) ----------
+ * Rest pauses scale with the pace setting; resolve pauses are sized from the
+ * saved sankalpa; breath-count holds never scale. */
 const PACE_STORE = 'nidra_pace_v1';
 let paceScale = parseFloat(localStorage.getItem(PACE_STORE) || '1') || 1;
 const savePace = (v) => { paceScale = v; localStorage.setItem(PACE_STORE, String(v)); };
@@ -107,62 +102,84 @@ function stepPause(s) {
 const clipDur = (id) => (DATA.sessionClips[id] && DATA.sessionClips[id].durationSec) || 2;
 const stepDur = (s) => (s.pause != null ? stepPause(s) : clipDur(s.clip));
 function sessionTotal(id) { return (DATA.sessions[id] || []).reduce((a, s) => a + stepDur(s), 0); }
-function sessionTick() {
-  if (!session) return;
-  if (!session.paused) { const now = performance.now(); session.elapsed = Math.min(session.total, session.elapsed + (now - session.lastTick) / 1000); }
-  session.lastTick = performance.now();
-  if (session.seeking) return;
-  mini.seek.value = session.total ? Math.round((session.elapsed / session.total) * 1000) : 0;
-  mini.cur.textContent = fmt(session.elapsed); mini.dur.textContent = fmt(session.total);
-}
-function seekSession(t) {
-  if (!session) return;
-  let acc = 0, idx = session.steps.length - 1;
-  for (let i = 0; i < session.steps.length; i++) { const d = stepDur(session.steps[i]); if (acc + d > t) { idx = i; break; } acc += d; }
-  clearTimeout(session.timer); try { player.pause(); } catch (e) {}
-  session.i = idx; session.elapsed = acc; session.paused = false; session.lastTick = performance.now();
-  mini.play.textContent = '❚❚';
-  mini.seek.value = session.total ? Math.round((acc / session.total) * 1000) : 0; mini.cur.textContent = fmt(acc);
-  stepSession();
-}
-function runSession(id, title, sleep) {
-  const steps = DATA.sessions && DATA.sessions[id];
-  if (!steps) { console.warn('no session', id); return; }
-  stopSession();
-  if (activeBtn) { setBtnState(activeBtn, false); activeBtn = null; }
-  const total = steps.reduce((a, s) => a + stepDur(s), 0);
-  session = { steps, i: 0, timer: null, ticker: null, paused: false, total, elapsed: 0, lastTick: performance.now(), sleep: !!sleep, seeking: false };
-  mini.root.hidden = false; mini.root.classList.add('session'); mini.play.textContent = '❚❚';
-  mini.title.textContent = title; mini.seek.value = 0; mini.cur.textContent = '0:00'; mini.dur.textContent = fmt(total);
-  session.ticker = setInterval(sessionTick, 250);
-  stepSession();
-}
-function stepSession() {
-  if (!session) return;
-  if (session.i >= session.steps.length) { stopSession(); return; }
-  const s = session.steps[session.i++];
-  if (s.pause != null) { session.timer = setTimeout(() => { if (session && !session.paused) stepSession(); }, stepPause(s) * 1000); }
-  else { player.src = DATA.sessionClips[s.clip].audio; player.play().catch(() => {}); }
-}
-function toggleSession() {
-  if (!session) return;
-  if (session.paused) {
-    session.paused = false; session.lastTick = performance.now(); mini.play.textContent = '❚❚';
-    if (player.src && player.paused && player.currentTime > 0 && !player.ended) player.play(); else stepSession();
-  } else {
-    session.paused = true; mini.play.textContent = '▶'; clearTimeout(session.timer); if (!player.paused) player.pause();
-  }
-}
-function stopSession() {
-  if (!session) return;
-  clearTimeout(session.timer); clearInterval(session.ticker); try { player.pause(); } catch (e) {}
-  session = null; mini.root.classList.remove('session'); mini.root.hidden = true;
-}
-function stopTrack() {   // stop single-track playback (orientation / cumulative) and dismiss the mini-player
+function stopTrack() {   // stop playback and dismiss the mini-player
   if (activeBtn) setBtnState(activeBtn, false);
   activeBtn = null;
   try { player.pause(); } catch (e) {}
+  freeBlob(); releaseWake();
   mini.root.hidden = true;
+}
+
+/* ---------- JIT single-file assembly ----------
+ * A full nidra is stitched, on tap, into ONE continuous audio file (clips +
+ * sankalpa-/pace-sized silences) and played through a single <audio> element.
+ * That way playback survives a screen lock (the OS keeps one media element
+ * going), unlike the old step engine which needed JS to advance between clips. */
+let blobUrl = null, wakeLock = null;
+function freeBlob() { if (blobUrl) { try { URL.revokeObjectURL(blobUrl); } catch (e) {} blobUrl = null; } }
+async function acquireWake() { try { if ('wakeLock' in navigator && !wakeLock) wakeLock = await navigator.wakeLock.request('screen'); } catch (e) {} }
+function releaseWake() { try { if (wakeLock) { wakeLock.release(); wakeLock = null; } } catch (e) {} }
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && activeBtn && !player.paused && !activeBtn.classList.contains('sleep')) acquireWake();
+});
+function setMediaSession(title) {
+  if (!('mediaSession' in navigator)) return;
+  try {
+    navigator.mediaSession.metadata = new MediaMetadata({ title, artist: 'Yoga Nidra' });
+    navigator.mediaSession.setActionHandler('play', () => player.play());
+    navigator.mediaSession.setActionHandler('pause', () => player.pause());
+  } catch (e) {}
+}
+function wavBlobUrl(chunks, samples, sr) {
+  const h = new DataView(new ArrayBuffer(44));
+  const ws = (o, s) => { for (let i = 0; i < s.length; i++) h.setUint8(o + i, s.charCodeAt(i)); };
+  const bytes = samples * 2;
+  ws(0, 'RIFF'); h.setUint32(4, 36 + bytes, true); ws(8, 'WAVE'); ws(12, 'fmt ');
+  h.setUint32(16, 16, true); h.setUint16(20, 1, true); h.setUint16(22, 1, true);
+  h.setUint32(24, sr, true); h.setUint32(28, sr * 2, true); h.setUint16(32, 2, true); h.setUint16(34, 16, true);
+  ws(36, 'data'); h.setUint32(40, bytes, true);
+  return URL.createObjectURL(new Blob([h.buffer, ...chunks], { type: 'audio/wav' }));
+}
+async function assembleSession(steps) {
+  const ac = new (window.AudioContext || window.webkitAudioContext)();
+  let sr = 24000, total = 0;
+  const chunks = [];
+  try {
+    for (const s of steps) {
+      if (s.clip != null) {
+        const buf = await ac.decodeAudioData(await (await fetch(DATA.sessionClips[s.clip].audio)).arrayBuffer());
+        sr = buf.sampleRate;
+        const ch = buf.getChannelData(0), pcm = new Int16Array(ch.length);
+        for (let i = 0; i < ch.length; i++) { const v = ch[i]; pcm[i] = (v < -1 ? -1 : v > 1 ? 1 : v) * 32767; }
+        chunks.push(pcm); total += pcm.length;
+      } else {
+        const n = Math.round(stepPause(s) * sr);
+        chunks.push(new Int16Array(n)); total += n;   // silence
+      }
+    }
+  } finally { try { ac.close(); } catch (e) {} }
+  return wavBlobUrl(chunks, total, sr);
+}
+async function assembleAndPlay(btn) {
+  const steps = DATA.sessions && DATA.sessions[btn.dataset.session];
+  if (!steps) { console.warn('no session', btn.dataset.session); return; }
+  if (activeBtn === btn && player.src && !player.error) { player.paused ? player.play() : player.pause(); return; }
+  freeBlob();
+  if (activeBtn) setBtnState(activeBtn, false);
+  activeBtn = btn; setBtnState(btn, true);
+  const title = `${btn.dataset.title} · ${btn.dataset.part}`;
+  mini.root.hidden = false; mini.root.classList.remove('session');
+  mini.title.textContent = 'Preparing…'; mini.seek.value = 0; mini.cur.textContent = '0:00'; mini.dur.textContent = '0:00';
+  try {
+    const url = await assembleSession(steps);
+    if (activeBtn !== btn) { URL.revokeObjectURL(url); return; }   // user switched away while preparing
+    blobUrl = url; player.src = url;
+    mini.title.textContent = title; setMediaSession(btn.dataset.title);
+    await player.play();
+  } catch (e) {
+    console.warn('assemble failed', e);
+    if (activeBtn === btn) { mini.title.textContent = 'Could not prepare audio'; setBtnState(btn, false); }
+  }
 }
 
 /* ---------- cue card modal (renders markdown in-app) ---------- */
@@ -205,8 +222,7 @@ function dismissCue() { if (modalPushed) history.back(); else closeCue(); }
 window.addEventListener('popstate', () => {
   if (!cueModal.hidden) { modalPushed = false; closeCue(); return; }   // a sheet is open → Back closes it
   history.pushState({ root: true }, '');                               // stay in the app, never a blank page
-  if (session) stopSession();                                         // …then Back stops a playing session…
-  else if (activeBtn) stopTrack();                                    // …or a single track
+  if (activeBtn) stopTrack();                                          // Back also stops playback
 });
 // Seed one history entry at load so the first Back press on the journey is caught above, not sent to a blank page.
 history.pushState({ root: true }, '');
@@ -577,7 +593,7 @@ async function init() {
     journeyEl.querySelectorAll('.play[data-src]').forEach((b) =>
       b.addEventListener('click', () => startTrack(b)));
     journeyEl.querySelectorAll('.play[data-session]').forEach((b) =>
-      b.addEventListener('click', () => runSession(b.dataset.session, `${b.dataset.title} · ${b.dataset.part}`, b.classList.contains('sleep'))));
+      b.addEventListener('click', () => assembleAndPlay(b)));
     journeyEl.querySelectorAll('.check').forEach((c) =>
       c.addEventListener('click', () => toggleDone(c)));
     journeyEl.querySelectorAll('.cue-open').forEach((b) =>
